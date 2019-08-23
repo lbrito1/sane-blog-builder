@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+compile '/index.html' do
+  layout '/default.*'
+  write '/index.html'
+end
+
+compile '/**/*.html' do
+  layout '/default.*'
+  write item.identifier.without_ext + '/index.html'
+end
+
+compile '/**/*.html.erb' do
+  filter :erb
+  layout '/default.*'
+  write ext: 'html'
+end
+
+compile '/**/*.md' do
+  filter :kramdown
+  layout '/default.*'
+  write ext: 'html'
+end
+
+compile '/**/*' do
+  write item.identifier.to_s
+end
+
+layout '/**/*', :erb

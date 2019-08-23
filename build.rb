@@ -1,8 +1,8 @@
 require 'kramdown'
-require './lib/logger'
+require './lib/foo_logger'
 
 class Builder
-  include Logger
+  include FooLogger
 
   def call
     Dir["./input/*.md"].each do |path|
