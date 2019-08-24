@@ -8,23 +8,24 @@ $color4: #999;
 html { font-size: calc(1em + 2vw);  }
 
 body {
-  // color: #222;
+  color: #222;
   font-family:  Didot, serif;
 }
 
 .text {
-  // color: $color2;
+  font-family:  Didot, serif;
+  color: $color2;
   line-height: 2em;
 }
 
 // Navigation
 nav {
   padding-top: 10px;
-  // color: $color2;
+  color: $color2;
   font-style: italic;
   a {
     font-size: 1.1em;
-    // color: $color1;
+    color: $color1;
     text-decoration: none;
   }
 }
@@ -55,7 +56,7 @@ nav {
 
 .header {
   margin: 0;
-  // color: #333;
+  color: #333;
   text-align: center;
   padding: 2.5em 2em 0;
   border-bottom: 1px solid #eee;
@@ -69,7 +70,7 @@ nav {
     text-decoration: none;
   }
   a {
-    // color: $color1;
+    color: $color1;
     text-decoration: none;
   }
 }
@@ -79,30 +80,30 @@ nav {
   border-bottom: 1px solid #eee;
   padding: 3rem 0;
   a {
-    // color: $color2;
+    color: $color2;
     font-weight: 300;
     text-decoration: none;
   }
   aside {
     font-style: italic;
-    // color: $color3;
+    color: $color3;
   }
   .read-more {
     font-style: italic;
-    // color: $color2 !important;
+    color: $color2 !important;
   }
 }
 
 .post-show {
   h1 {
     text-align: center;
-    // color: $color2;
+    color: $color2;
     font-weight: 300;
   }
   aside {
     text-align: center;
     font-style: italic;
-    // color: $color3;
+    color: $color3;
   }
 }
 
