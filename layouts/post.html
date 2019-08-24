@@ -1,9 +1,9 @@
 <% render '/default.*' do %>
-  <div class='post'>
+  <div class='post-show'>
     <h1><%= item[:title] %></h1>
-    <aside>Posted at: <%= item[:created_at]&.strftime('%b %d, %Y') %></aside>
     <article class="text">
       <%= yield %>
     </article>
+    <aside>Posted at: <%= item[:created_at]&.strftime('%b %d, %Y') %></aside>
   </div>
 <% end %>

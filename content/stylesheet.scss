@@ -19,6 +19,11 @@ body { color: #222; }
 #menu {
   padding-top: 10px;
   text-align: center;
+
+  a {
+    color: $color1;
+    text-decoration: none;
+  }
 }
 
 
@@ -38,16 +43,23 @@ body { color: #222; }
 }
 
 .header {
- margin: 0;
- color: #333;
- text-align: center;
- padding: 2.5em 2em 0;
- border-bottom: 1px solid #eee;
+  margin: 0;
+  color: #333;
+  text-align: center;
+  padding: 2.5em 2em 0;
+  border-bottom: 1px solid #eee;
+  // background-image: linear-gradient(to left top, #bfcbe1, #b4c5e2, #aabee4, #9fb8e5, #94b1e6, #8aa9e4, #7fa2e2, #759ae0, #688fda, #5b84d4, #4e7ace, #406fc8);
 
- h1 {
+  // Site title
+  h1 {
     margin: 0.2em 0;
     font-weight: 300;
+    font-size: 3em;
+    text-decoration: none;
+  }
+  a {
     color: $color1;
+    text-decoration: none;
   }
 }
 
@@ -64,10 +76,22 @@ body { color: #222; }
     font-style: italic;
     color: $color3;
   }
-
   .read-more {
     font-style: italic;
     color: $color2 !important;
+  }
+}
+
+.post-show {
+  h1 {
+    text-align: center;
+    color: $color2;
+    font-weight: 300;
+  }
+  aside {
+    text-align: center;
+    font-style: italic;
+    color: $color3;
   }
 }
 
@@ -85,6 +109,6 @@ body { color: #222; }
 }
 @media screen and (min-width: 800px) {
   div {
-     font-size: 22px;
-  }
+   font-size: 22px;
+ }
 }

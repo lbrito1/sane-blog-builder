@@ -12,11 +12,13 @@
   <body>
     <div id="layout">
       <div class="header">
-        <h1><%= SITE_TITLE %></h1>
+        <h1>
+          <%= link_to(SITE_TITLE, "/") %>
+        </h1>
       </div>
 
       <div id="menu">
-        Home | About | Posts
+        <%= link_to("About", '/about.html') %>
       </div>
 
       <div class="content">
