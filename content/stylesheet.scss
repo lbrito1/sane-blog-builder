@@ -10,7 +10,8 @@ $color4: #999;
 }
 
 body {
-  color: #111;
+  color: #222;
+  font-size: 12px;
 }
 
 .text {
@@ -47,7 +48,7 @@ The content `<div>` is where all your content goes.
   padding: 0 2em;
   max-width: 800px;
   margin-bottom: 50px;
-  line-height: 1.6em;
+  line-height: 1.8em;
 }
 
 .header {
@@ -57,25 +58,13 @@ The content `<div>` is where all your content goes.
  padding: 2.5em 2em 0;
  border-bottom: 1px solid #eee;
 }
+
 .header h1 {
   margin: 0.2em 0;
   font-size: 4em;
   font-weight: 300;
   color: $color1;
 }
-/*.header h2 {
-  font-weight: 300;
-  color: #ccc;
-  padding: 0;
-  margin-top: 0;
-}*/
-
-/*.content-subhead {
-  margin: 50px 0 20px 0;
-  font-weight: 300;
-  color: #888;
-}*/
-
 .title {
   font-size: 2rem;
   text-align: center;
@@ -98,11 +87,6 @@ The content `<div>` is where all your content goes.
   text-decoration: none;
 }
 
-.post, .content {
-  margin: 12px 0 10px;
-  line-height: 1.8;
-}
-
 aside {
   font-style: italic;
   color: $color3;
@@ -122,27 +106,11 @@ Hides the menu at `48em`, but modify this based on your app's needs.
 */
 @media (min-width: 48em) {
 
-  .header,
-  .content {
-    padding-left: 2em;
-    padding-right: 2em;
-  }
-
   #layout {
-    padding-left: 10%; /* left col width "#menu" */
-    padding-right: 10%; /* left col width "#menu" */
+    padding-left: 5%; /* left col width "#menu" */
+    padding-right: 5%; /* left col width "#menu" */
+  }
+  body{
+    font-size: 20px;
   }
 }
-
-@media (max-width: 48em) {
-    /* Only apply this when the window is small. Otherwise, the following
-    case results in extra padding on the left:
-        * Make the window small.
-        * Tap the menu to trigger the active state.
-        * Make the window large again.
-        */
-        #layout.active {
-          position: relative;
-          left: 150px;
-        }
-      }

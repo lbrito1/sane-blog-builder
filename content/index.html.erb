@@ -2,12 +2,14 @@
 title: Home
 ---
 
-<% sorted_articles.each do |post| %>
-  <div class='post'>
-    <div class='post-title'><%= link_to post[:title], post.path %></div>
-    <aside>Posted at: <%= post[:created_at]&.strftime('%b %d, %Y') %></aside>
-    <article class="text">
-      <%= get_post_start(post) %>
-    </article>
-  </div>
-<% end %>
+<div class='pure-g'>
+  <% sorted_articles.each do |post| %>
+    <div class='post pure-u-1-1'>
+      <div class='post-title'><%= link_to post[:title], post.path %></div>
+      <aside>Posted at: <%= post[:created_at]&.strftime('%b %d, %Y') %></aside>
+      <article class="text">
+        <%= get_post_start(post) %>
+      </article>
+    </div>
+  <% end %>
+</div>
