@@ -8,7 +8,8 @@ end
 
 compile '/posts/*.md' do
   y, m, d, slug = /([0-9]+)\-([0-9]+)\-([0-9]+)\-([^\/]+)/.match(item.identifier).captures
-  filter :kramdown
+  filter :kramdown, syntax_highlighter: :rouge, syntax_highlighter_opts: { span: { line_numbers: false }, block: { line_numbers: true }}
+  filter :colorize_syntax, default_colorizer: :rouge
   layout '/post.*'
   write "/#{y}/#{m}/#{slug.split('.').first}.html"
 end
@@ -34,6 +35,7 @@ compile '/**/*.scss' do
   filter :sass, syntax: :scss
   write @item.identifier.without_ext + '.css'
 end
+
 
 compile '/**/*' do
   write item.identifier.to_s

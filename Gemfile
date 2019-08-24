@@ -1,14 +1,14 @@
 source 'https://rubygems.org'
 
-group :development do
-  gem 'kramdown'
-  gem 'nanoc'
-  gem 'adsf'
-  gem 'guard'
-  gem 'byebug'
-  gem 'awesome_print'
-  gem 'sass'
-end
+gem 'kramdown'
+gem 'nanoc'
+gem 'adsf'
+gem 'guard'
+gem 'byebug'
+gem 'awesome_print'
+gem 'sass'
+gem 'rouge'
+gem 'nokogiri'
 
 group :nanoc do
   gem 'guard-nanoc'
