@@ -79,6 +79,7 @@ nav {
 .post-index {
   border-bottom: 1px solid #eee;
   padding: 3rem 0;
+  font-family:  Didot, serif;
   a {
     color: $color2;
     font-weight: 300;
@@ -107,13 +108,15 @@ nav {
   }
 }
 
-.highlight {
-  padding: 20px;
-}
-
 .pure-img-responsive {
   max-width: 100%;
   height: auto;
+}
+
+// Syntax highlighting
+.highlight {
+  padding: 0 10px;
+  font-size: 18px;
 }
 
 // Responsive media queries
