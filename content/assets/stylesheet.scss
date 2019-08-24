@@ -16,17 +16,27 @@ body { color: #222; }
   line-height: 2em;
 }
 
-#menu {
+// Navigation
+nav {
   padding-top: 10px;
-  text-align: center;
-
+  color: $color2;
+  font-style: italic;
   a {
+    font-size: 1.1em;
     color: $color1;
     text-decoration: none;
   }
 }
 
+.contact {
+  margin: 10px;
+  float: right;
+  span {
+    margin: 6px;
+  }
+}
 
+// Layout
 #layout {
   position: relative;
   left: 0;
@@ -94,6 +104,8 @@ body { color: #222; }
     color: $color3;
   }
 }
+
+
 
 .pure-img-responsive {
   max-width: 100%;

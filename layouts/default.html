@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title><%= SITE_TITLE %> - <%= @item[:title] %></title>
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
-    <link rel="stylesheet" href="/stylesheet.css">
+    <link rel="stylesheet" href="/assets/stylesheet.css">
 
     <!-- you don't need to keep this, but it's cool for stats! -->
     <meta name="generator" content="Nanoc <%= Nanoc::VERSION %>">
@@ -17,9 +17,26 @@
         </h1>
       </div>
 
-      <div id="menu">
-        <%= link_to("About", '/about.html') %>
-      </div>
+      <nav class="pure-g">
+        <div class="pure-u-1-2 links">
+          <%= link_to("About", '/about.html') %>
+        </div>
+
+        <div class="pure-u-1-2">
+          <div class="contact">
+            <span>
+              <a href="https://github.com/lbrito1" download="">
+                <img src="/assets/icons/github.svg" alt="Github icon" height="24px" width="24px" />
+                </a>
+            </span>
+            <span>
+              <a href="https://www.linkedin.com/in/leonardo-mendes-brito/">
+              <img src="/assets/icons/linkedin.svg" alt="LinkedIn icon" height="24px" width="24px" />
+              </a>
+            </span>
+          </div>
+        </div>
+      </nav>
 
       <div class="content">
         <%= yield %>
