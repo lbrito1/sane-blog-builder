@@ -1,8 +1,8 @@
 <% render '/default.*' do %>
   <div class='post'>
     <h1><%= item[:title] %></h1>
-    <aside>Posted at: <%= item[:created_at] %></aside>
-    <article>
+    <aside>Posted at: <%= item[:created_at]&.strftime('%b %d, %Y') %></aside>
+    <article class="text">
       <%= yield %>
     </article>
   </div>

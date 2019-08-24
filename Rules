@@ -30,6 +30,10 @@ compile '/**/*.md' do
   write ext: 'html'
 end
 
+compile '/**/*.scss' do
+  filter :sass, syntax: :scss
+  write @item.identifier.without_ext + '.css'
+end
 
 compile '/**/*' do
   write item.identifier.to_s

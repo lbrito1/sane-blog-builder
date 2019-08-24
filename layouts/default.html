@@ -2,28 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>A Brand New Nanoc Site - <%= @item[:title] %></title>
+    <title><%= SITE_TITLE %> - <%= @item[:title] %></title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
     <link rel="stylesheet" href="/stylesheet.css">
+    <link rel="stylesheet" href="/palette.css">
 
     <!-- you don't need to keep this, but it's cool for stats! -->
     <meta name="generator" content="Nanoc <%= Nanoc::VERSION %>">
   </head>
   <body>
-    <div id="main">
-      <%= yield %>
-    </div>
-    <div id="sidebar">
-      <h2>Documentation</h2>
-      <ul>
-        <li><a href="https://nanoc.ws/doc/">Documentation</a></li>
-        <li><a href="https://nanoc.ws/doc/tutorial/">Tutorial</a></li>
-      </ul>
-      <h2>Community</h2>
-      <ul>
-        <li><a href="http://groups.google.com/group/nanoc/">Discussion group</a></li>
-        <li><a href="https://gitter.im/nanoc/nanoc">Gitter channel</a></li>
-        <li><a href="https://nanoc.ws/contributing/">Contributing</a></li>
-      </ul>
+    <div id="layout">
+      <div class="header">
+        <h1><%= SITE_TITLE %></h1>
+      </div>
+
+      <div id="menu">
+        Home | About | Posts
+      </div>
+
+      <div class="content">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>
