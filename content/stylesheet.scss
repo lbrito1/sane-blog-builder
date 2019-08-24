@@ -1,48 +1,34 @@
-/* RGB */
+// Palette
 $color1: #000;
 $color2: #444;
 $color3: #777;
 $color4: #999;
 
+// Globals
+* { font-family:  Didot, serif; }
 
-* {
-  font-family: Didot, serif;
-}
+html { font-size: calc(1em + 2vw); }
 
-body {
-  color: #222;
-  font-size: 18px;
-}
+body { color: #222; }
 
 .text {
   color: $color2;
   line-height: 2em;
 }
 
-.pure-img-responsive {
-  max-width: 100%;
-  height: auto;
-}
-
 #menu {
   padding-top: 10px;
-  font-size: 1.5rem;
   text-align: center;
 }
 
 
-/*
-This is the parent `<div>` that contains the menu and the content area.
-*/
 #layout {
   position: relative;
   left: 0;
   padding-left: 0;
 }
 
-/*
-The content `<div>` is where all your content goes.
-*/
+// Main content
 .content {
   margin: 0 auto;
   padding: 0 2em;
@@ -57,69 +43,48 @@ The content `<div>` is where all your content goes.
  text-align: center;
  padding: 2.5em 2em 0;
  border-bottom: 1px solid #eee;
+
+ h1 {
+    margin: 0.2em 0;
+    font-weight: 300;
+    color: $color1;
+  }
 }
 
-.header h1 {
-  margin: 0.2em 0;
-  font-size: 4em;
-  font-weight: 300;
-  color: $color1;
-}
-.title {
-  font-size: 2rem;
-  text-align: center;
-}
-
-/* Post (Index) */
-
-.post {
+// Post (Index)
+.post-index {
   border-bottom: 1px solid #eee;
   padding: 3rem 0;
+  a {
+    color: $color2;
+    font-weight: 300;
+    text-decoration: none;
+  }
+  aside {
+    font-style: italic;
+    color: $color3;
+  }
+
+  .read-more {
+    font-style: italic;
+    color: $color2 !important;
+  }
 }
 
-.post-title {
-  font-size: 2rem;
+.pure-img-responsive {
+  max-width: 100%;
+  height: auto;
 }
 
-.post a {
-  color: $color2;
-  font-weight: 300;
-  text-decoration: none;
-}
-
-aside {
-  font-style: italic;
-  color: $color3;
-}
-
-.read-more {
-  font-style: italic;
-  color: $color2 !important;
-  font-size: 1.2rem;
-}
-
-
-/* -- Responsive Styles (Media Queries) ------------------------------------- */
-
-/*
-Hides the menu at `48em`, but modify this based on your app's needs.
-*/
+// Responsive media queries
 @media (min-width: 48em) {
-
   #layout {
     padding-left: 5%; /* left col width "#menu" */
     padding-right: 5%; /* left col width "#menu" */
   }
 }
-
-@media only screen and (max-width: 768px) {
-  b {
-    font-size: 20px;
-  }
-}
-
-@media only screen and (max-width: 320px) {
-  b {
-    font-size: 10px;
+@media screen and (min-width: 800px) {
+  div {
+     font-size: 22px;
   }
 }
