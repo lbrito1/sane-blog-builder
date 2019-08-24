@@ -11,7 +11,7 @@ $color4: #999;
 
 body {
   color: #222;
-  font-size: 12px;
+  font-size: 18px;
 }
 
 .text {
@@ -110,7 +110,16 @@ Hides the menu at `48em`, but modify this based on your app's needs.
     padding-left: 5%; /* left col width "#menu" */
     padding-right: 5%; /* left col width "#menu" */
   }
-  body{
+}
+
+@media only screen and (max-width: 768px) {
+  b {
     font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  b {
+    font-size: 10px;
   }
 }
