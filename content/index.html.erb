@@ -2,14 +2,6 @@
 title: Home
 ---
 
-<div class='pure-g'>
-  <% sorted_articles.each do |post| %>
-    <div class='post-index pure-u-1-1'>
-      <h2><%= link_to post[:title], post.path %></h2>
-      <aside>Posted at: <%= post[:created_at]&.strftime('%b %d, %Y') %></aside>
-      <article class="text">
-        <%= get_post_start(post) %>
-      </article>
-    </div>
-  <% end %>
-</div>
+<% render('/posts_index.*', posts: sorted_articles, title: nil) do %>
+  <%= yield %>
+<% end %>

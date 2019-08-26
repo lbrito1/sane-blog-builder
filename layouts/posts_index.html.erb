@@ -1,0 +1,18 @@
+<%= title if title %>
+
+<div class='pure-g'>
+  <% posts.each do |post| %>
+    <div class='post-index pure-u-1-1'>
+      <h2><%= link_to post[:title], post.path %></h2>
+      <div>
+        <% post[:tags]&.each do |tag| %>
+          <%= link_for_tag(tag, 'tags/') %>
+        <% end %>
+      </div>
+      <aside>Posted at: <%= post[:created_at]&.strftime('%b %d, %Y') %></aside>
+      <article class="text">
+        <%= get_post_start(post) %>
+      </article>
+    </div>
+  <% end %>
+</div>

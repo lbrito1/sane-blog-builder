@@ -1,0 +1,11 @@
+---
+title: Tags
+---
+
+<% render '/default.*' do %>
+  <h1><%= @item[:tag] %></h1>
+
+  <% render('/posts_index.*', posts: items_with_tag(@item[:tag]), title: @item[:tag]) do %>
+    <%= yield %>
+  <% end %>
+<% end %>

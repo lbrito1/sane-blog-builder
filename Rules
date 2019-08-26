@@ -1,5 +1,25 @@
 #!/usr/bin/env ruby
 
+preprocess do
+  tags = @items.map { |i| i[:tags] }.flatten.uniq
+  tags.each do |tag|
+    next unless tag
+    content = ''
+    attributes = { tag: tag }
+    identifier = "/tags/#{tag}"
+
+    @items.create(content, attributes, identifier)
+  end
+end
+
+compile '/tags/*' do
+  layout '/tags.*'
+end
+
+route '/tags/*' do
+  '/tags/' + item.identifier.to_s.split('/')[-1] + '/index.html'
+end
+
 compile '/index.html.erb' do
   filter :erb
   layout '/default.*'
@@ -31,11 +51,20 @@ compile '/**/*.md' do
   write ext: 'html'
 end
 
+compile '/**/*.md' do
+  filter :kramdown
+  layout '/default.*'
+  write ext: 'html'
+end
+
+# Assets
+
 compile '/**/*.scss' do
   filter :sass, syntax: :scss
   write @item.identifier.without_ext + '.css'
 end
 
+# Wildcards
 
 compile '/**/*' do
   write item.identifier.to_s
