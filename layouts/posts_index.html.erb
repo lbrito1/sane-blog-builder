@@ -5,8 +5,12 @@
     <div class='post-index pure-u-1-1'>
       <h2><%= link_to post[:title], post.path %></h2>
       <div>
-        <% post[:tags]&.each do |tag| %>
-          <%= link_for_tag(tag, 'tags/') %>
+        <% if post[:tags] %>
+          <div class="tags">Tags:
+          <% post[:tags].each.with_index do |tag, i| %>
+            <%= link_for_tag(tag, 'tags/') %><%= ', ' if i < post[:tags]&.size - 1 %>
+          <% end %>
+          </div>
         <% end %>
       </div>
       <aside>Posted at: <%= post[:created_at]&.strftime('%b %d, %Y') %></aside>

@@ -4,8 +4,15 @@ $color2: #444;
 $color3: #777;
 $color4: #999;
 
+$color-hyperlink: #5aafdb;
+
 // Globals
-html { font-size: calc(1em + 2vw);  }
+html { font-size: calc(1em + 0.5vw);  }
+
+a {
+  color: $color-hyperlink;
+  text-decoration: none;
+}
 
 body {
   color: #222;
@@ -20,21 +27,19 @@ body {
 
 // Navigation
 nav {
-  padding-top: 10px;
+  padding: 1em 1em;
   color: $color2;
   font-style: italic;
   a {
     font-size: 1.1em;
     color: $color1;
-    text-decoration: none;
   }
-}
 
-.contact {
-  margin: 10px;
-  float: right;
-  span {
-    margin: 6px;
+  .contact {
+    float: right;
+    span {
+      margin: 2px;
+    }
   }
 }
 
@@ -48,7 +53,7 @@ nav {
 // Main content
 .content {
   margin: 0 auto;
-  padding: 0 2em;
+  padding: 0 1em;
   max-width: 800px;
   margin-bottom: 50px;
   line-height: 1.8em;
@@ -67,11 +72,9 @@ nav {
     margin: 0.2em 0;
     font-weight: 300;
     font-size: 3em;
-    text-decoration: none;
   }
   a {
     color: $color1;
-    text-decoration: none;
   }
 }
 
@@ -80,10 +83,9 @@ nav {
   border-bottom: 1px solid #eee;
   padding: 3rem 0;
   font-family:  Didot, serif;
-  a {
+  h2 a {
     color: $color2;
     font-weight: 300;
-    text-decoration: none;
   }
   aside {
     font-style: italic;
@@ -91,7 +93,9 @@ nav {
   }
   .read-more {
     font-style: italic;
-    color: $color2 !important;
+  }
+  .tags {
+    color: $color3;
   }
 }
 
