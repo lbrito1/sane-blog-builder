@@ -27,10 +27,10 @@ body {
 
 // Navigation
 nav {
-  padding: 1em 1em;
+  padding: 1em 0;
   color: $color2;
-  font-style: italic;
   a {
+    font-family:  Didot, serif;
     font-size: 1.1em;
     color: $color1;
   }
@@ -84,6 +84,7 @@ nav {
   padding: 3rem 0;
   font-family:  Didot, serif;
   h2 a {
+    font-family:  Didot, serif;
     color: $color2;
     font-weight: 300;
   }
