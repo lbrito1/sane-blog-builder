@@ -18,10 +18,7 @@ end
 
 compile '/years/*' do
   layout '/years.*'
-end
-
-route '/years/*' do
-  '/' + item.identifier.to_s.split('/')[-1] + '/index.html'
+  write '/' + item.identifier.to_s.split('/')[-1] + '/index.html'
 end
 
 compile '/index.html.erb' do
