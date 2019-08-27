@@ -1,8 +1,9 @@
 // Palette
 $color1: #000;
 $color2: #444;
-$color3: #777;
-$color4: #999;
+$color3: #999;
+$color4: #BBB;
+$color5: #EEE;
 
 $color-hyperlink: #5aafdb;
 
@@ -35,7 +36,7 @@ body {
 nav {
   padding: 1em 0;
   color: $color2;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid $color5;
   a {
     font-family:  Didot, serif;
     font-size: 1.1em;
@@ -87,22 +88,21 @@ nav {
 
 // Post (Index)
 .post-index {
-  border-bottom: 1px solid #eee;
-  padding: 1.5gem 0;
-  font-family:  Didot, serif;
+  border-bottom: 1px solid $color5;
+  padding: 1.5em 0;
   h2 a {
     font-family:  Didot, serif;
     color: $color2;
     font-weight: 300;
   }
   aside {
-    font-style: italic;
     color: $color3;
   }
   .read-more {
     font-style: italic;
   }
   .tags {
+    font-family:  Didot, serif;
     color: $color3;
   }
 }
