@@ -24,5 +24,21 @@ def all_tags
     end
   end
 
-  tags.to_h
+  tags
+end
+
+def all_years
+  years = {}
+
+  @items.each do |i|
+    next unless i[:created_at]
+    years[i[:created_at].year] ||= 0
+    years[i[:created_at].year] += 1
+  end
+
+  years
+end
+
+def posts_in_year(year)
+  @items.select { |item| item[:created_at]&.year == year }
 end

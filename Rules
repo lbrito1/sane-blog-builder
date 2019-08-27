@@ -1,15 +1,11 @@
 #!/usr/bin/env ruby
 
 preprocess do
-  tags = @items.map { |i| i[:tags] }.flatten.uniq
-  tags.each do |tag|
-    next unless tag
-    content = ''
-    attributes = { tag: tag }
-    identifier = "/tags/#{tag}"
+  tags = @items.map { |i| i[:tags] }.flatten.uniq.compact
+  tags.each { |tag| @items.create('', { tag: tag }, "/tags/#{tag}") }
 
-    @items.create(content, attributes, identifier)
-  end
+  years = @items.map { |i| i[:created_at]&.year }.flatten.uniq.compact
+  years.each { |year| @items.create('', { year: year }, "/years/#{year}") }
 end
 
 compile '/tags/*' do
@@ -18,6 +14,14 @@ end
 
 route '/tags/*' do
   '/tags/' + item.identifier.to_s.split('/')[-1] + '/index.html'
+end
+
+compile '/years/*' do
+  layout '/years.*'
+end
+
+route '/years/*' do
+  '/' + item.identifier.to_s.split('/')[-1] + '/index.html'
 end
 
 compile '/index.html.erb' do

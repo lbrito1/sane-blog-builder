@@ -9,17 +9,13 @@ $color-hyperlink: #5aafdb;
 
 $font-serif: "Didot", serif;
 
-// Globals
-html { font-size: calc(1em + 0.5vw);  }
-
 a {
   color: $color-hyperlink;
   text-decoration: none;
 }
 
-h1 {
-  font-weight: 300;
-}
+h1 { font-weight: 300; }
+h2 { font-weight: 300; }
 
 aside { font-family:  $font-serif; }
 
