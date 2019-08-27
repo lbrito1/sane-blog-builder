@@ -2,6 +2,6 @@
 title: Home
 ---
 
-<% render('/posts_index.*', posts: sorted_articles, title: nil) do %>
+<% render('/posts_index.*', posts: sorted_articles, title: nil, show_tags: true) do %>
   <%= yield %>
 <% end %>

@@ -14,6 +14,10 @@ a {
   text-decoration: none;
 }
 
+h1 {
+  font-weight: 300;
+}
+
 aside { font-family:  Didot, serif; }
 
 body {
@@ -31,6 +35,7 @@ body {
 nav {
   padding: 1em 0;
   color: $color2;
+  border-bottom: 1px solid #eee;
   a {
     font-family:  Didot, serif;
     font-size: 1.1em;
@@ -59,6 +64,7 @@ nav {
   max-width: 800px;
   margin-bottom: 50px;
   line-height: 1.8em;
+  h1 { text-align: center; }
 }
 
 .header {
@@ -66,7 +72,6 @@ nav {
   color: #333;
   text-align: center;
   padding: 2.5em 2em 0;
-  border-bottom: 1px solid #eee;
   // background-image: linear-gradient(to left top, #bfcbe1, #b4c5e2, #aabee4, #9fb8e5, #94b1e6, #8aa9e4, #7fa2e2, #759ae0, #688fda, #5b84d4, #4e7ace, #406fc8);
 
   // Site title
@@ -83,7 +88,7 @@ nav {
 // Post (Index)
 .post-index {
   border-bottom: 1px solid #eee;
-  padding: 3rem 0;
+  padding: 1.5gem 0;
   font-family:  Didot, serif;
   h2 a {
     font-family:  Didot, serif;

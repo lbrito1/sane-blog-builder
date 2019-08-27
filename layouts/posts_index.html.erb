@@ -1,11 +1,9 @@
-<%= title if title %>
-
 <div class='pure-g'>
   <% posts.each do |post| %>
     <div class='post-index pure-u-1-1'>
       <h2><%= link_to post[:title], post.path %></h2>
       <div>
-        <% if post[:tags] %>
+        <% if post[:tags] && show_tags %>
           <div class="tags">Tags:
           <% post[:tags].each.with_index do |tag, i| %>
             <%= link_for_tag(tag, 'tags/') %><%= ', ' if i < post[:tags]&.size - 1 %>
