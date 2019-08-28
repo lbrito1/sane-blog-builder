@@ -4,8 +4,7 @@ created_at: 2019-08-27 21:56:52 -0300
 kind: article
 ---
 
-
-![](https://cdn-images-1.medium.com/max/2560/1*mgVZOuAHmp9Ipm2asL0IQQ.png)
+<%= render('/image.*', src: 'https://cdn-images-1.medium.com/max/2560/1*mgVZOuAHmp9Ipm2asL0IQQ.png', alt: 'View of a city skyline', caption: 'A nice view of Saint Petersburg.') %>
 
 We're a small team here at Guava, and we've always considered ourselves _remote friendly._ Most of us work remotely every now and then pushed by varied _force majeure_ situations— be it the flu, the need to supervise renovation or construction work at home, flash floods near the office, receiving guests at home or any number of other situations. We've also had a few of us working remotely for a few days or weeks while traveling to or back from a conference, or when visiting relatives that live out of town. In other words, remote working has always been a very temporary and circumstantial thing among us.
 <!-- more -->

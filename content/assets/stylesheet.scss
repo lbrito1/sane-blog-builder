@@ -113,7 +113,6 @@ nav {
     font-weight: 300;
   }
   aside {
-    text-align: center;
     font-style: italic;
     color: $color3;
   }
@@ -123,9 +122,11 @@ article {
   img { width: 100%; }
 }
 
-.pure-img-responsive {
-  max-width: 100%;
-  height: auto;
+.image-caption {
+  color: $color3;
+  font-style: italic;
+  text-align: center;
+  font-size: 0.8em;
 }
 
 // Syntax highlighting
