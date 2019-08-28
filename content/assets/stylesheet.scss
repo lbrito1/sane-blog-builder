@@ -105,6 +105,7 @@ nav {
   }
 }
 
+// Post (Show)
 .post-show {
   h1 {
     text-align: center;
@@ -116,6 +117,10 @@ nav {
     font-style: italic;
     color: $color3;
   }
+}
+
+article {
+  img { width: 100%; }
 }
 
 .pure-img-responsive {
