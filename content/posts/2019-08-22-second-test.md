@@ -1,5 +1,5 @@
 ---
-title: "Second test post"
+title: "Another test post. Nothing to see here"
 created_at: 2019-08-23 10:00:00 -0300
 kind: article
 ---
