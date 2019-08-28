@@ -37,7 +37,7 @@ nav {
   border-bottom: 1px solid $color5;
   a {
     font-family:  $font-serif;
-    font-size: 0.8em;
+    font-size: 80%;
     color: $color1;
   }
 
@@ -88,6 +88,9 @@ nav {
 .post-index {
   border-bottom: 1px solid $color5;
   padding: 1.5em 0;
+  .post-tags {
+    display: inline-block;
+  }
   h2 a {
     font-family:  $font-serif;
     color: $color2;
@@ -102,6 +105,9 @@ nav {
   .tags {
     font-family:  $font-serif;
     color: $color3;
+  }
+  .post-meta {
+    text-align: right;
   }
 }
 
@@ -122,17 +128,22 @@ article {
   img { width: 100%; }
 }
 
+
+.button-xsmall {
+    font-size: 70%;
+}
+
 .image-caption {
   color: $color3;
   font-style: italic;
   text-align: center;
-  font-size: 0.8em;
+  font-size: 70%;
 }
 
 // Syntax highlighting
 .highlight {
   padding: 0 10px;
-  font-size: 18px;
+  font-size: 80%;
 }
 
 // Responsive media queries
