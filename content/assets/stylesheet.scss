@@ -90,6 +90,7 @@ nav {
   padding: 1.5em 0;
   .post-tags {
     display: inline-block;
+    margin: 10px 0;
   }
   h2 a {
     font-family:  $font-serif;
@@ -100,7 +101,6 @@ nav {
     color: $color3;
   }
   .read-more {
-    font-style: italic;
   }
   .tags {
     font-family:  $font-serif;
@@ -108,6 +108,8 @@ nav {
   }
   .post-meta {
     text-align: right;
+  }
+  .post-footer {
   }
 }
 
