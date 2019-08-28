@@ -14,7 +14,7 @@ task :new_post, :title do |t, args|
 
   content = <<~EOF
     ---
-    title:"#{title}\"
+    title: #{title}
     created_at: #{Time.now}
     kind: article
     published: false
