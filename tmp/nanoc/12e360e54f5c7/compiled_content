@@ -1,0 +1,2055 @@
+{:	data{o:Nanoc::Core::Identifier:
+@type:	full:@stringI"./posts/2019-08-27-third_post_test_rake.md:ET{:default{
+:rawU: Nanoc::Core::TextualContent[I"V/home/leo/work/sane-blog-builder/content/posts/2019-08-27-third_post_test_rake.md;
+TI"y<%= render('/image.*', src: '/assets/images/spb.jpg', alt: 'View of a city skyline', caption: 'A nice view of Saint Petersburg.') %>
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+
+<!-- more -->
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+;
+T:preU;[0I"<div class="image-box">
+  <div>
+    <a href="/assets/images/spb.jpg" target="_blank">
+      <img src="/assets/images/spb.jpg" alt="View of a city skyline">
+    </a>
+  </div>
+  <div class="image-caption">A nice view of Saint Petersburg.</div>
+</div>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+<!-- more -->
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+;
+T:_0U;[0I"•<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Sane Blog Builder - Sample post with an incredible picture</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/highlight.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.9">
+  </head>
+  <body>
+    <div id="layout">
+      <div class="header">
+        <h1>
+          <a href="../../">Sane Blog Builder</a>
+        </h1>
+      </div>
+
+
+      <div class="content">
+        <nav class="pure-g">
+          <div class="pure-u-2-3 links">
+            <a href="../../index.html">Home</a> ¬∑
+            <a href="../../tags.html">Tags</a> ¬∑
+            <a href="../../years.html">Years</a> ¬∑
+            <a href="../../about.html">About</a>
+          </div>
+
+          <div class="pure-u-1-3">
+            <div class="contact">
+              <span>
+                <a href="https://github.com/lbrito1" download="">
+                  <img src="../../assets/icons/github.svg" alt="Github icon">
+                  </a>
+              </span>
+              <span>
+                <a href="https://www.linkedin.com/in/leonardo-mendes-brito/">
+                <img src="../../assets/icons/linkedin.svg" alt="LinkedIn icon">
+                </a>
+              </span>
+            </div>
+          </div>
+        </nav>
+        
+  <div class="post-show">
+    <h1>Sample post with an incredible picture</h1>
+    <article class="text">
+      <div class="image-box">
+  <div>
+    <a href="../../assets/images/spb.jpg" target="_blank">
+      <img src="../../assets/images/spb.jpg" alt="View of a city skyline">
+    </a>
+  </div>
+  <div class="image-caption">A nice view of Saint Petersburg.</div>
+</div>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+<!-- more -->
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+    </article>
+    <aside>Posted at: Aug 27, 2019</aside>
+    <div class="post-footer">
+      <a href="../../index.html">Back</a>
+    </div>
+  </div>
+
+      </div>
+    </div>
+  
+
+
+</body></html>;
+T:	post@:	last@o;;;;	I"/posts/2019-08-21-test.md;
+T{;{
+;U;[I"F/home/leo/work/sane-blog-builder/content/posts/2019-08-21-test.md;
+TI"¸<div class="highlight">
+<pre><code class="language-ruby">
+puts "Hello world!"
+foo.each do |bar| # Woo hoo
+  puts baz
+end
+</code></pre>
+</div>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+<!-- more -->
+
+
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+;
+T;U;[0I"6	<div class="highlight">
+<pre><code class="language-ruby"><span class="nb">puts</span> <span class="s2">"Hello world!"</span>
+<span class="n">foo</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">bar</span><span class="o">|</span> <span class="c1"># Woo hoo</span>
+  <span class="nb">puts</span> <span class="n">baz</span>
+<span class="k">end</span></code></pre>
+</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+
+<!-- more -->
+
+<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+;
+T;U;[0I"≥<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Sane Blog Builder - Test post with syntax highlighting</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/highlight.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.9">
+  </head>
+  <body>
+    <div id="layout">
+      <div class="header">
+        <h1>
+          <a href="../../">Sane Blog Builder</a>
+        </h1>
+      </div>
+
+
+      <div class="content">
+        <nav class="pure-g">
+          <div class="pure-u-2-3 links">
+            <a href="../../index.html">Home</a> ¬∑
+            <a href="../../tags.html">Tags</a> ¬∑
+            <a href="../../years.html">Years</a> ¬∑
+            <a href="../../about.html">About</a>
+          </div>
+
+          <div class="pure-u-1-3">
+            <div class="contact">
+              <span>
+                <a href="https://github.com/lbrito1" download="">
+                  <img src="../../assets/icons/github.svg" alt="Github icon">
+                  </a>
+              </span>
+              <span>
+                <a href="https://www.linkedin.com/in/leonardo-mendes-brito/">
+                <img src="../../assets/icons/linkedin.svg" alt="LinkedIn icon">
+                </a>
+              </span>
+            </div>
+          </div>
+        </nav>
+        
+  <div class="post-show">
+    <h1>Test post with syntax highlighting</h1>
+    <article class="text">
+      <div class="highlight">
+<pre><code class="language-ruby"><span class="nb">puts</span> <span class="s2">"Hello world!"</span>
+<span class="n">foo</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">bar</span><span class="o">|</span> <span class="c1"># Woo hoo</span>
+  <span class="nb">puts</span> <span class="n">baz</span>
+<span class="k">end</span></code></pre>
+</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+
+<!-- more -->
+
+<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+    </article>
+    <aside>Posted at: Aug 21, 2019</aside>
+    <div class="post-footer">
+      <a href="../../index.html">Back</a>
+    </div>
+  </div>
+
+      </div>
+    </div>
+  
+
+
+</body></html>;
+T;@ ;@ o;;;;	I"%/posts/2019-08-22-second-test.md;
+T{;{
+;U;[I"M/home/leo/work/sane-blog-builder/content/posts/2019-08-22-second-test.md;
+TI"ÛLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+
+<!-- more -->
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+;
+T;U;[0I"<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+<!-- more -->
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+;
+T;U;[0I"°<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Sane Blog Builder - Another test post. Nothing to see here</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/highlight.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.9">
+  </head>
+  <body>
+    <div id="layout">
+      <div class="header">
+        <h1>
+          <a href="../../">Sane Blog Builder</a>
+        </h1>
+      </div>
+
+
+      <div class="content">
+        <nav class="pure-g">
+          <div class="pure-u-2-3 links">
+            <a href="../../index.html">Home</a> ¬∑
+            <a href="../../tags.html">Tags</a> ¬∑
+            <a href="../../years.html">Years</a> ¬∑
+            <a href="../../about.html">About</a>
+          </div>
+
+          <div class="pure-u-1-3">
+            <div class="contact">
+              <span>
+                <a href="https://github.com/lbrito1" download="">
+                  <img src="../../assets/icons/github.svg" alt="Github icon">
+                  </a>
+              </span>
+              <span>
+                <a href="https://www.linkedin.com/in/leonardo-mendes-brito/">
+                <img src="../../assets/icons/linkedin.svg" alt="LinkedIn icon">
+                </a>
+              </span>
+            </div>
+          </div>
+        </nav>
+        
+  <div class="post-show">
+    <h1>Another test post. Nothing to see here</h1>
+    <article class="text">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+<!-- more -->
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+    </article>
+    <aside>Posted at: Aug 13, 2019</aside>
+    <div class="post-footer">
+      <a href="../../index.html">Back</a>
+    </div>
+  </div>
+
+      </div>
+    </div>
+  
+
+
+</body></html>;
+T;@.;@.o;;;;	I"/tags.html.erb;
+T{;{
+;U;[I";/home/leo/work/sane-blog-builder/content/tags.html.erb;
+TI"ò<h1>Tags</h1>
+
+<% all_tags.each do |tag, count| %>
+  <h2><%= link_for_tag(tag, 'tags/') %> (<%= count %> post<%= 's' if count > 1 %>)
+  </h2>
+<% end %>
+;
+T;U;[0I"<h1>Tags</h1>
+
+
+  <h2><a href="tags/awesome" rel="tag">awesome</a> (2 posts)
+  </h2>
+
+  <h2><a href="tags/foobar" rel="tag">foobar</a> (2 posts)
+  </h2>
+
+  <h2><a href="tags/baz" rel="tag">baz</a> (1 post)
+  </h2>
+
+  <h2><a href="tags/foo" rel="tag">foo</a> (1 post)
+  </h2>
+
+;
+T;U;[0I";<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Sane Blog Builder - Tags</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/stylesheet.css">
+    <link rel="stylesheet" href="assets/highlight.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.9">
+  </head>
+  <body>
+    <div id="layout">
+      <div class="header">
+        <h1>
+          <a href="./">Sane Blog Builder</a>
+        </h1>
+      </div>
+
+
+      <div class="content">
+        <nav class="pure-g">
+          <div class="pure-u-2-3 links">
+            <a href="index.html">Home</a> ¬∑
+            <a href="tags.html">Tags</a> ¬∑
+            <a href="years.html">Years</a> ¬∑
+            <a href="about.html">About</a>
+          </div>
+
+          <div class="pure-u-1-3">
+            <div class="contact">
+              <span>
+                <a href="https://github.com/lbrito1" download="">
+                  <img src="assets/icons/github.svg" alt="Github icon">
+                  </a>
+              </span>
+              <span>
+                <a href="https://www.linkedin.com/in/leonardo-mendes-brito/">
+                <img src="assets/icons/linkedin.svg" alt="LinkedIn icon">
+                </a>
+              </span>
+            </div>
+          </div>
+        </nav>
+        <h1>Tags</h1>
+
+
+  <h2><a href="tags/awesome" rel="tag">awesome</a> (2 posts)
+  </h2>
+
+  <h2><a href="tags/foobar" rel="tag">foobar</a> (2 posts)
+  </h2>
+
+  <h2><a href="tags/baz" rel="tag">baz</a> (1 post)
+  </h2>
+
+  <h2><a href="tags/foo" rel="tag">foo</a> (1 post)
+  </h2>
+
+
+      </div>
+    </div>
+  
+
+</body></html>;
+T;@<;@<o;;;;	I"/about.md;
+T{;{
+;U;[I"6/home/leo/work/sane-blog-builder/content/about.md;
+TI"C# About
+
+This is a static blog generator.
+
+There are approximately 1 trillion similar projects spread over an [unfathomable amount of different libraries](https://www.staticgen.com/).
+
+This uses Ruby (more specifically, the excellent [Nanoc](https://nanoc.ws) lib) to generate static HTML pages from Markdown or other HTML files.
+
+[Pure CSS](https://purecss.io/) is sparingly used to help with layouts and such. I recommend that you don't look at the CSS, just trust that it works most times.
+
+<%= render('/image.*', src: '/assets/images/monkey.gif', alt: 'A monkey typing on a computer', caption: 'Myself trying to write CSS.') %>
+
+## Features
+* Zero amount of Javascript;
+* Basic blogging functionalities (a page that lists all posts, a page to show the actual post, tagging etc);
+* Syntax highlighting;
+* Readable on any device known to mankind (actually I tested only on my monitor and smartphone);
+* A page that shows posts by year;
+* A page that shows posts by tag;
+* A helper for images;
+* A rake task that helps set up a new post;
+* Small: the entire output of this skeleton is like 100KB (images excluded);
+* Has stupid emojis üé® (okay that's just your browser);
+* That's about it.
+
+## Why?
+Why not?
+
+## Myself
+
+My name is Leo and I'm a software developer. I enjoy Ruby. You can find my Github and Linkedin profiles in the page header.
+;
+T;U;[0I"ƒ<h1 id="about">About</h1>
+
+<p>This is a static blog generator.</p>
+
+<p>There are approximately 1 trillion similar projects spread over an <a href="https://www.staticgen.com/">unfathomable amount of different libraries</a>.</p>
+
+<p>This uses Ruby (more specifically, the excellent <a href="https://nanoc.ws">Nanoc</a> lib) to generate static HTML pages from Markdown or other HTML files.</p>
+
+<p><a href="https://purecss.io/">Pure CSS</a> is sparingly used to help with layouts and such. I recommend that you don‚Äôt look at the CSS, just trust that it works most times.</p>
+
+<div class="image-box">
+  <div>
+    <a href="/assets/images/monkey.gif" target="_blank">
+      <img src="/assets/images/monkey.gif" alt="A monkey typing on a computer" />
+    </a>
+  </div>
+  <div class="image-caption">Myself trying to write CSS.</div>
+</div>
+
+<h2 id="features">Features</h2>
+<ul>
+  <li>Zero amount of Javascript;</li>
+  <li>Basic blogging functionalities (a page that lists all posts, a page to show the actual post, tagging etc);</li>
+  <li>Syntax highlighting;</li>
+  <li>Readable on any device known to mankind (actually I tested only on my monitor and smartphone);</li>
+  <li>A page that shows posts by year;</li>
+  <li>A page that shows posts by tag;</li>
+  <li>A helper for images;</li>
+  <li>A rake task that helps set up a new post;</li>
+  <li>Small: the entire output of this skeleton is like 100KB (images excluded);</li>
+  <li>Has stupid emojis üé® (okay that‚Äôs just your browser);</li>
+  <li>That‚Äôs about it.</li>
+</ul>
+
+<h2 id="why">Why?</h2>
+<p>Why not?</p>
+
+<h2 id="myself">Myself</h2>
+
+<p>My name is Leo and I‚Äôm a software developer. I enjoy Ruby. You can find my Github and Linkedin profiles in the page header.</p>
+;
+T;U;[0I"Ë<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Sane Blog Builder - About</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/stylesheet.css">
+    <link rel="stylesheet" href="assets/highlight.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.9">
+  </head>
+  <body>
+    <div id="layout">
+      <div class="header">
+        <h1>
+          <a href="./">Sane Blog Builder</a>
+        </h1>
+      </div>
+
+
+      <div class="content">
+        <nav class="pure-g">
+          <div class="pure-u-2-3 links">
+            <a href="index.html">Home</a> ¬∑
+            <a href="tags.html">Tags</a> ¬∑
+            <a href="years.html">Years</a> ¬∑
+            <a href="about.html">About</a>
+          </div>
+
+          <div class="pure-u-1-3">
+            <div class="contact">
+              <span>
+                <a href="https://github.com/lbrito1" download="">
+                  <img src="assets/icons/github.svg" alt="Github icon">
+                  </a>
+              </span>
+              <span>
+                <a href="https://www.linkedin.com/in/leonardo-mendes-brito/">
+                <img src="assets/icons/linkedin.svg" alt="LinkedIn icon">
+                </a>
+              </span>
+            </div>
+          </div>
+        </nav>
+        <h1 id="about">About</h1>
+
+<p>This is a static blog generator.</p>
+
+<p>There are approximately 1 trillion similar projects spread over an <a href="https://www.staticgen.com/">unfathomable amount of different libraries</a>.</p>
+
+<p>This uses Ruby (more specifically, the excellent <a href="https://nanoc.ws">Nanoc</a> lib) to generate static HTML pages from Markdown or other HTML files.</p>
+
+<p><a href="https://purecss.io/">Pure CSS</a> is sparingly used to help with layouts and such. I recommend that you don‚Äôt look at the CSS, just trust that it works most times.</p>
+
+<div class="image-box">
+  <div>
+    <a href="assets/images/monkey.gif" target="_blank">
+      <img src="assets/images/monkey.gif" alt="A monkey typing on a computer">
+    </a>
+  </div>
+  <div class="image-caption">Myself trying to write CSS.</div>
+</div>
+
+<h2 id="features">Features</h2>
+<ul>
+  <li>Zero amount of Javascript;</li>
+  <li>Basic blogging functionalities (a page that lists all posts, a page to show the actual post, tagging etc);</li>
+  <li>Syntax highlighting;</li>
+  <li>Readable on any device known to mankind (actually I tested only on my monitor and smartphone);</li>
+  <li>A page that shows posts by year;</li>
+  <li>A page that shows posts by tag;</li>
+  <li>A helper for images;</li>
+  <li>A rake task that helps set up a new post;</li>
+  <li>Small: the entire output of this skeleton is like 100KB (images excluded);</li>
+  <li>Has stupid emojis üé® (okay that‚Äôs just your browser);</li>
+  <li>That‚Äôs about it.</li>
+</ul>
+
+<h2 id="why">Why?</h2>
+<p>Why not?</p>
+
+<h2 id="myself">Myself</h2>
+
+<p>My name is Leo and I‚Äôm a software developer. I enjoy Ruby. You can find my Github and Linkedin profiles in the page header.</p>
+
+      </div>
+    </div>
+  
+
+</body></html>;
+T;@J;@Jo;;;;	I"/assets/icons/linkedin.svg;
+T{;{	;o:Nanoc::Core::BinaryContent:@filenameI"G/home/leo/work/sane-blog-builder/content/assets/icons/linkedin.svg;
+T;@Q;@Q;@Qo;;;;	I"/assets/icons/github.svg;
+T{;{	;o;;I"E/home/leo/work/sane-blog-builder/content/assets/icons/github.svg;
+T;@W;@W;@Wo;;;;	I"/assets/stylesheet.scss;
+T{;{	;U;[I"D/home/leo/work/sane-blog-builder/content/assets/stylesheet.scss;
+TI""
+// Palette
+$color1: #000;
+$color2: #444;
+$color3: #999;
+$color4: #BBB;
+$color5: #EEE;
+
+$color-hyperlink: #5aafdb;
+
+$font-serif: "Didot", serif;
+
+a {
+  color: $color-hyperlink;
+  text-decoration: none;
+}
+
+h1 { font-weight: 300; }
+h2 { font-weight: 300; }
+
+aside { font-family:  $font-serif; }
+
+body {
+  color: #222;
+  font-family:  $font-serif;
+  font-size: 22px;
+}
+
+.text {
+  font-family:  $font-serif;
+  color: $color2;
+  line-height: 2em;
+}
+
+// Navigation
+nav {
+  padding: 1em 0;
+  color: $color2;
+  border-bottom: 1px solid $color3;
+  margin-bottom: 1em;
+  a {
+    font-family:  $font-serif;
+    font-size: 95%;
+    color: $color1;
+  }
+
+  .contact {
+    img {
+      width: 1em;
+      height: 1em;
+    }
+    float: right;
+    span {
+      margin: 2px;
+    }
+  }
+}
+
+// Layout
+#layout {
+  position: relative;
+  left: 0;
+  padding-left: 0;
+}
+
+// Main content
+.content {
+  margin: 0 auto;
+  padding: 0 1em;
+  max-width: 800px;
+  margin-bottom: 50px;
+  line-height: 1.8em;
+  h1 { text-align: center; }
+}
+
+.header {
+  margin: 0;
+  color: #333;
+  text-align: center;
+  padding: 2.5em 2em 0;
+  // background-image: linear-gradient(to left top, #bfcbe1, #b4c5e2, #aabee4, #9fb8e5, #94b1e6, #8aa9e4, #7fa2e2, #759ae0, #688fda, #5b84d4, #4e7ace, #406fc8);
+
+  // Site title
+  h1 {
+    margin: 0.2em 0;
+    font-weight: 300;
+    font-size: 300%;
+  }
+  a {
+    color: $color1;
+  }
+}
+
+// Post (Index)
+.post-index {
+  border-bottom: 1px solid $color3;
+  padding: 1.5em 0;
+  .post-tags {
+    display: inline-block;
+    margin: 10px 0;
+  }
+  h2 a {
+    font-family:  $font-serif;
+    color: $color2;
+    font-weight: 300;
+  }
+  aside {
+    color: $color3;
+  }
+  .read-more {
+    font-size: 90%;
+  }
+  .tags {
+    font-family:  $font-serif;
+    color: $color3;
+  }
+  .post-meta {
+    text-align: right;
+    font-size: 90%;
+  }
+  .post-footer {
+  }
+}
+
+// Post (Show)
+.post-show {
+  h1 {
+    text-align: center;
+    color: $color2;
+    font-weight: 300;
+  }
+  aside {
+    font-style: italic;
+    color: $color3;
+  }
+  .post-footer {
+    padding: 40px 0;
+  }
+}
+
+article {
+  img {
+    width: 100%;
+  }
+}
+
+.button-xsmall {
+    font-size: 70%;
+}
+
+.image-box {
+  text-align: center;
+  .image-caption {
+    color: $color3;
+    font-style: italic;
+    text-align: center;
+    font-size: 70%;
+  }
+}
+
+// Syntax highlighting
+.highlight {
+  padding: 0 10px;
+  font-size: 80%;
+}
+
+// Responsive media queries
+@media(max-width: 1000px) {
+  .content {
+    margin: 0.5em;
+    max-width: 100%;
+  }
+  * { font-size: 110%; }
+  h2 {
+    font-size: 180%;
+    line-height: 1.5em;
+  }
+  nav {
+    a {
+      font-size: 120%;
+    }
+  }
+}
+;
+T;U;[0I"ãa {
+  color: #5aafdb;
+  text-decoration: none; }
+
+h1 {
+  font-weight: 300; }
+
+h2 {
+  font-weight: 300; }
+
+aside {
+  font-family: "Didot", serif; }
+
+body {
+  color: #222;
+  font-family: "Didot", serif;
+  font-size: 22px; }
+
+.text {
+  font-family: "Didot", serif;
+  color: #444;
+  line-height: 2em; }
+
+nav {
+  padding: 1em 0;
+  color: #444;
+  border-bottom: 1px solid #999;
+  margin-bottom: 1em; }
+  nav a {
+    font-family: "Didot", serif;
+    font-size: 95%;
+    color: #000; }
+  nav .contact {
+    float: right; }
+    nav .contact img {
+      width: 1em;
+      height: 1em; }
+    nav .contact span {
+      margin: 2px; }
+
+#layout {
+  position: relative;
+  left: 0;
+  padding-left: 0; }
+
+.content {
+  margin: 0 auto;
+  padding: 0 1em;
+  max-width: 800px;
+  margin-bottom: 50px;
+  line-height: 1.8em; }
+  .content h1 {
+    text-align: center; }
+
+.header {
+  margin: 0;
+  color: #333;
+  text-align: center;
+  padding: 2.5em 2em 0; }
+  .header h1 {
+    margin: 0.2em 0;
+    font-weight: 300;
+    font-size: 300%; }
+  .header a {
+    color: #000; }
+
+.post-index {
+  border-bottom: 1px solid #999;
+  padding: 1.5em 0; }
+  .post-index .post-tags {
+    display: inline-block;
+    margin: 10px 0; }
+  .post-index h2 a {
+    font-family: "Didot", serif;
+    color: #444;
+    font-weight: 300; }
+  .post-index aside {
+    color: #999; }
+  .post-index .read-more {
+    font-size: 90%; }
+  .post-index .tags {
+    font-family: "Didot", serif;
+    color: #999; }
+  .post-index .post-meta {
+    text-align: right;
+    font-size: 90%; }
+
+.post-show h1 {
+  text-align: center;
+  color: #444;
+  font-weight: 300; }
+.post-show aside {
+  font-style: italic;
+  color: #999; }
+.post-show .post-footer {
+  padding: 40px 0; }
+
+article img {
+  width: 100%; }
+
+.button-xsmall {
+  font-size: 70%; }
+
+.image-box {
+  text-align: center; }
+  .image-box .image-caption {
+    color: #999;
+    font-style: italic;
+    text-align: center;
+    font-size: 70%; }
+
+.highlight {
+  padding: 0 10px;
+  font-size: 80%; }
+
+@media (max-width: 1000px) {
+  .content {
+    margin: 0.5em;
+    max-width: 100%; }
+
+  * {
+    font-size: 110%; }
+
+  h2 {
+    font-size: 180%;
+    line-height: 1.5em; }
+
+  nav a {
+    font-size: 120%; } }
+;
+T;@a;@ao;;;;	I"/assets/images/spb.jpg;
+T{;{	;o;;I"C/home/leo/work/sane-blog-builder/content/assets/images/spb.jpg;
+T;@h;@h;@ho;;;;	I"/assets/images/monkey.gif;
+T{;{	;o;;I"F/home/leo/work/sane-blog-builder/content/assets/images/monkey.gif;
+T;@n;@n;@no;;;;	I"/assets/highlight.css;
+T{;{	;U;[I"B/home/leo/work/sane-blog-builder/content/assets/highlight.css;
+TI"Ë.highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+  font-style: italic;
+}
+.highlight .cm {
+  color: #75715e;
+  font-style: italic;
+}
+.highlight .c1 {
+  color: #75715e;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #75715e;
+  font-weight: bold;
+}
+.highlight .cs {
+  color: #75715e;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .err {
+  color: #960050;
+  background-color: #1e0010;
+}
+.highlight .gi {
+  color: #ffffff;
+  background-color: #324932;
+}
+.highlight .gd {
+  color: #ffffff;
+  background-color: #493131;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .k, .highlight .kv {
+  color: #66d9ef;
+  font-weight: bold;
+}
+.highlight .kc {
+  color: #66d9ef;
+  font-weight: bold;
+}
+.highlight .kd {
+  color: #66d9ef;
+  font-weight: bold;
+}
+.highlight .kp {
+  color: #66d9ef;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #66d9ef;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #66d9ef;
+  font-weight: bold;
+}
+.highlight .kn {
+  color: #f92672;
+  font-weight: bold;
+}
+.highlight .ow {
+  color: #f92672;
+  font-weight: bold;
+}
+.highlight .o {
+  color: #f92672;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sc {
+  color: #e6db74;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .sr {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .ss {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+  font-weight: bold;
+}
+.highlight .nd {
+  color: #a6e22e;
+  font-weight: bold;
+}
+.highlight .ne {
+  color: #a6e22e;
+  font-weight: bold;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .bp {
+  color: #f8f8f2;
+}
+.highlight .nb {
+  color: #f8f8f2;
+}
+.highlight .ni {
+  color: #f8f8f2;
+}
+.highlight .nn {
+  color: #f8f8f2;
+}
+.highlight .vc {
+  color: #f8f8f2;
+}
+.highlight .vg {
+  color: #f8f8f2;
+}
+.highlight .vi {
+  color: #f8f8f2;
+}
+.highlight .nv, .highlight .vm {
+  color: #f8f8f2;
+}
+.highlight .w {
+  color: #f8f8f2;
+}
+.highlight .nl {
+  color: #f8f8f2;
+  font-weight: bold;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight {
+  color: #f8f8f2;
+  background-color: #49483e;
+}
+;
+T;@t;@t;@to;;;;	I"/index.html.erb;
+T{;{
+;U;[I"</home/leo/work/sane-blog-builder/content/index.html.erb;
+TI"u<% render('/posts_index.*', posts: sorted_articles, title: nil, show_tags: true) do %>
+  <%= yield %>
+<% end %>
+;
+T;U;[0I"f<div class='pure-g'>
+  
+    <div class='post-index pure-u-1-1'>
+      <h2><a href="/2019/08/third_post_test_rake.html">Sample post with an incredible picture</a></h2>
+
+      <article class="text">
+          <div class="image-box">
+  <div>
+    <a href="/assets/images/spb.jpg" target="_blank">
+      <img src="/assets/images/spb.jpg" alt="View of a city skyline">
+    </a>
+  </div>
+  <div class="image-caption">A nice view of Saint Petersburg.</div>
+</div>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+
+        <div class="post-tags">
+          
+            <div class="tags">
+            
+              <a class="pure-button button-xsmall" href="/tags/awesome">awesome</a>
+            
+            </div>
+          
+        </div>
+
+        <div class="pure-g post-footer">
+          <div class = pure-u-1-2>
+              <a class='read-more' href='/2019/08/third_post_test_rake.html'>Continue reading &rsaquo;</a>
+          </div>
+          <div class="pure-u-1-2 post-meta">
+            <aside>Posted Aug 27, 2019</aside>
+
+          </div>
+        </div>
+      </article>
+    </div>
+  
+    <div class='post-index pure-u-1-1'>
+      <h2><a href="/2019/08/test.html">Test post with syntax highlighting</a></h2>
+
+      <article class="text">
+          <div class="highlight">
+<pre><code class="language-ruby"><span class="nb">puts</span> <span class="s2">"Hello world!"</span>
+<span class="n">foo</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">bar</span><span class="o">|</span> <span class="c1"># Woo hoo</span>
+  <span class="nb">puts</span> <span class="n">baz</span>
+<span class="k">end</span></code></pre>
+</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+
+
+        <div class="post-tags">
+          
+            <div class="tags">
+            
+              <a class="pure-button button-xsmall" href="/tags/awesome">awesome</a>
+            
+              <a class="pure-button button-xsmall" href="/tags/foobar">foobar</a>
+            
+              <a class="pure-button button-xsmall" href="/tags/baz">baz</a>
+            
+            </div>
+          
+        </div>
+
+        <div class="pure-g post-footer">
+          <div class = pure-u-1-2>
+              <a class='read-more' href='/2019/08/test.html'>Continue reading &rsaquo;</a>
+          </div>
+          <div class="pure-u-1-2 post-meta">
+            <aside>Posted Aug 21, 2019</aside>
+
+          </div>
+        </div>
+      </article>
+    </div>
+  
+    <div class='post-index pure-u-1-1'>
+      <h2><a href="/2019/08/second-test.html">Another test post. Nothing to see here</a></h2>
+
+      <article class="text">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+
+        <div class="post-tags">
+          
+            <div class="tags">
+            
+              <a class="pure-button button-xsmall" href="/tags/foo">foo</a>
+            
+              <a class="pure-button button-xsmall" href="/tags/foobar">foobar</a>
+            
+            </div>
+          
+        </div>
+
+        <div class="pure-g post-footer">
+          <div class = pure-u-1-2>
+              <a class='read-more' href='/2019/08/second-test.html'>Continue reading &rsaquo;</a>
+          </div>
+          <div class="pure-u-1-2 post-meta">
+            <aside>Posted Aug 13, 2019</aside>
+
+          </div>
+        </div>
+      </article>
+    </div>
+  
+</div>
+
+;
+T;U;[0I"p<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Sane Blog Builder - Home</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/stylesheet.css">
+    <link rel="stylesheet" href="assets/highlight.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.9">
+  </head>
+  <body>
+    <div id="layout">
+      <div class="header">
+        <h1>
+          <a href="./">Sane Blog Builder</a>
+        </h1>
+      </div>
+
+
+      <div class="content">
+        <nav class="pure-g">
+          <div class="pure-u-2-3 links">
+            <a href="index.html">Home</a> ¬∑
+            <a href="tags.html">Tags</a> ¬∑
+            <a href="years.html">Years</a> ¬∑
+            <a href="about.html">About</a>
+          </div>
+
+          <div class="pure-u-1-3">
+            <div class="contact">
+              <span>
+                <a href="https://github.com/lbrito1" download="">
+                  <img src="assets/icons/github.svg" alt="Github icon">
+                  </a>
+              </span>
+              <span>
+                <a href="https://www.linkedin.com/in/leonardo-mendes-brito/">
+                <img src="assets/icons/linkedin.svg" alt="LinkedIn icon">
+                </a>
+              </span>
+            </div>
+          </div>
+        </nav>
+        <div class="pure-g">
+  
+    <div class="post-index pure-u-1-1">
+      <h2><a href="2019/08/third_post_test_rake.html">Sample post with an incredible picture</a></h2>
+
+      <article class="text">
+          <div class="image-box">
+  <div>
+    <a href="assets/images/spb.jpg" target="_blank">
+      <img src="assets/images/spb.jpg" alt="View of a city skyline">
+    </a>
+  </div>
+  <div class="image-caption">A nice view of Saint Petersburg.</div>
+</div>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+
+        <div class="post-tags">
+          
+            <div class="tags">
+            
+              <a class="pure-button button-xsmall" href="tags/awesome">awesome</a>
+            
+            </div>
+          
+        </div>
+
+        <div class="pure-g post-footer">
+          <div class="pure-u-1-2">
+              <a class="read-more" href="2019/08/third_post_test_rake.html">Continue reading ‚Ä∫</a>
+          </div>
+          <div class="pure-u-1-2 post-meta">
+            <aside>Posted Aug 27, 2019</aside>
+
+          </div>
+        </div>
+      </article>
+    </div>
+  
+    <div class="post-index pure-u-1-1">
+      <h2><a href="2019/08/test.html">Test post with syntax highlighting</a></h2>
+
+      <article class="text">
+          <div class="highlight">
+<pre><code class="language-ruby"><span class="nb">puts</span> <span class="s2">"Hello world!"</span>
+<span class="n">foo</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">bar</span><span class="o">|</span> <span class="c1"># Woo hoo</span>
+  <span class="nb">puts</span> <span class="n">baz</span>
+<span class="k">end</span></code></pre>
+</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+
+
+        <div class="post-tags">
+          
+            <div class="tags">
+            
+              <a class="pure-button button-xsmall" href="tags/awesome">awesome</a>
+            
+              <a class="pure-button button-xsmall" href="tags/foobar">foobar</a>
+            
+              <a class="pure-button button-xsmall" href="tags/baz">baz</a>
+            
+            </div>
+          
+        </div>
+
+        <div class="pure-g post-footer">
+          <div class="pure-u-1-2">
+              <a class="read-more" href="2019/08/test.html">Continue reading ‚Ä∫</a>
+          </div>
+          <div class="pure-u-1-2 post-meta">
+            <aside>Posted Aug 21, 2019</aside>
+
+          </div>
+        </div>
+      </article>
+    </div>
+  
+    <div class="post-index pure-u-1-1">
+      <h2><a href="2019/08/second-test.html">Another test post. Nothing to see here</a></h2>
+
+      <article class="text">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+
+        <div class="post-tags">
+          
+            <div class="tags">
+            
+              <a class="pure-button button-xsmall" href="tags/foo">foo</a>
+            
+              <a class="pure-button button-xsmall" href="tags/foobar">foobar</a>
+            
+            </div>
+          
+        </div>
+
+        <div class="pure-g post-footer">
+          <div class="pure-u-1-2">
+              <a class="read-more" href="2019/08/second-test.html">Continue reading ‚Ä∫</a>
+          </div>
+          <div class="pure-u-1-2 post-meta">
+            <aside>Posted Aug 13, 2019</aside>
+
+          </div>
+        </div>
+      </article>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+  
+
+</body></html>;
+T;@~;@~o;;;;	I"/years.html.erb;
+T{;{
+;U;[I"</home/leo/work/sane-blog-builder/content/years.html.erb;
+TI"Ô<h1>Posts by year</h1>
+
+<% all_years.each do |year, count| %>
+  <% year_page = @items.find { |i| i.identifier == "/years/#{year}" } %>
+  <h2><%= link_to(year.to_s, year_page) %> (<%= count %> post<%= 's' if count > 1 %>)
+  </h2>
+<% end %>
+;
+T;U;[0I"T<h1>Posts by year</h1>
+
+
+  
+  <h2><a href="/2019/">2019</a> (3 posts)
+  </h2>
+
+;
+T;U;[0I"v<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Sane Blog Builder - Years</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/stylesheet.css">
+    <link rel="stylesheet" href="assets/highlight.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.9">
+  </head>
+  <body>
+    <div id="layout">
+      <div class="header">
+        <h1>
+          <a href="./">Sane Blog Builder</a>
+        </h1>
+      </div>
+
+
+      <div class="content">
+        <nav class="pure-g">
+          <div class="pure-u-2-3 links">
+            <a href="index.html">Home</a> ¬∑
+            <a href="tags.html">Tags</a> ¬∑
+            <a href="years.html">Years</a> ¬∑
+            <a href="about.html">About</a>
+          </div>
+
+          <div class="pure-u-1-3">
+            <div class="contact">
+              <span>
+                <a href="https://github.com/lbrito1" download="">
+                  <img src="assets/icons/github.svg" alt="Github icon">
+                  </a>
+              </span>
+              <span>
+                <a href="https://www.linkedin.com/in/leonardo-mendes-brito/">
+                <img src="assets/icons/linkedin.svg" alt="LinkedIn icon">
+                </a>
+              </span>
+            </div>
+          </div>
+        </nav>
+        <h1>Posts by year</h1>
+
+
+  
+  <h2><a href="2019/">2019</a> (3 posts)
+  </h2>
+
+
+      </div>
+    </div>
+  
+
+</body></html>;
+T;@å;@åo;;;;	I"/tags/awesome;
+T{;{	;U;[0I" ;
+T;@ì;U;[0I"ˆ<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Sane Blog Builder - </title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/highlight.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.9">
+  </head>
+  <body>
+    <div id="layout">
+      <div class="header">
+        <h1>
+          <a href="../../">Sane Blog Builder</a>
+        </h1>
+      </div>
+
+
+      <div class="content">
+        <nav class="pure-g">
+          <div class="pure-u-2-3 links">
+            <a href="../../index.html">Home</a> ¬∑
+            <a href="../../tags.html">Tags</a> ¬∑
+            <a href="../../years.html">Years</a> ¬∑
+            <a href="../../about.html">About</a>
+          </div>
+
+          <div class="pure-u-1-3">
+            <div class="contact">
+              <span>
+                <a href="https://github.com/lbrito1" download="">
+                  <img src="../../assets/icons/github.svg" alt="Github icon">
+                  </a>
+              </span>
+              <span>
+                <a href="https://www.linkedin.com/in/leonardo-mendes-brito/">
+                <img src="../../assets/icons/linkedin.svg" alt="LinkedIn icon">
+                </a>
+              </span>
+            </div>
+          </div>
+        </nav>
+        
+  <h1>Posts tagged "awesome"</h1>
+
+  <div class="pure-g">
+  
+    <div class="post-index pure-u-1-1">
+      <h2><a href="../../2019/08/third_post_test_rake.html">Sample post with an incredible picture</a></h2>
+
+      <article class="text">
+          <div class="image-box">
+  <div>
+    <a href="../../assets/images/spb.jpg" target="_blank">
+      <img src="../../assets/images/spb.jpg" alt="View of a city skyline">
+    </a>
+  </div>
+  <div class="image-caption">A nice view of Saint Petersburg.</div>
+</div>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+
+        <div class="post-tags">
+          
+        </div>
+
+        <div class="pure-g post-footer">
+          <div class="pure-u-1-2">
+              <a class="read-more" href="../../2019/08/third_post_test_rake.html">Continue reading ‚Ä∫</a>
+          </div>
+          <div class="pure-u-1-2 post-meta">
+            <aside>Posted Aug 27, 2019</aside>
+
+          </div>
+        </div>
+      </article>
+    </div>
+  
+    <div class="post-index pure-u-1-1">
+      <h2><a href="../../2019/08/test.html">Test post with syntax highlighting</a></h2>
+
+      <article class="text">
+          <div class="highlight">
+<pre><code class="language-ruby"><span class="nb">puts</span> <span class="s2">"Hello world!"</span>
+<span class="n">foo</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">bar</span><span class="o">|</span> <span class="c1"># Woo hoo</span>
+  <span class="nb">puts</span> <span class="n">baz</span>
+<span class="k">end</span></code></pre>
+</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+
+
+        <div class="post-tags">
+          
+        </div>
+
+        <div class="pure-g post-footer">
+          <div class="pure-u-1-2">
+              <a class="read-more" href="../../2019/08/test.html">Continue reading ‚Ä∫</a>
+          </div>
+          <div class="pure-u-1-2 post-meta">
+            <aside>Posted Aug 21, 2019</aside>
+
+          </div>
+        </div>
+      </article>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+  
+
+
+</body></html>;
+T;@ño;;;;	I"/tags/foobar;
+T{;{	;U;[0I" ;
+T;@ù;U;[0I"ﬂ<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Sane Blog Builder - </title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/highlight.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.9">
+  </head>
+  <body>
+    <div id="layout">
+      <div class="header">
+        <h1>
+          <a href="../../">Sane Blog Builder</a>
+        </h1>
+      </div>
+
+
+      <div class="content">
+        <nav class="pure-g">
+          <div class="pure-u-2-3 links">
+            <a href="../../index.html">Home</a> ¬∑
+            <a href="../../tags.html">Tags</a> ¬∑
+            <a href="../../years.html">Years</a> ¬∑
+            <a href="../../about.html">About</a>
+          </div>
+
+          <div class="pure-u-1-3">
+            <div class="contact">
+              <span>
+                <a href="https://github.com/lbrito1" download="">
+                  <img src="../../assets/icons/github.svg" alt="Github icon">
+                  </a>
+              </span>
+              <span>
+                <a href="https://www.linkedin.com/in/leonardo-mendes-brito/">
+                <img src="../../assets/icons/linkedin.svg" alt="LinkedIn icon">
+                </a>
+              </span>
+            </div>
+          </div>
+        </nav>
+        
+  <h1>Posts tagged "foobar"</h1>
+
+  <div class="pure-g">
+  
+    <div class="post-index pure-u-1-1">
+      <h2><a href="../../2019/08/test.html">Test post with syntax highlighting</a></h2>
+
+      <article class="text">
+          <div class="highlight">
+<pre><code class="language-ruby"><span class="nb">puts</span> <span class="s2">"Hello world!"</span>
+<span class="n">foo</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">bar</span><span class="o">|</span> <span class="c1"># Woo hoo</span>
+  <span class="nb">puts</span> <span class="n">baz</span>
+<span class="k">end</span></code></pre>
+</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+
+
+        <div class="post-tags">
+          
+        </div>
+
+        <div class="pure-g post-footer">
+          <div class="pure-u-1-2">
+              <a class="read-more" href="../../2019/08/test.html">Continue reading ‚Ä∫</a>
+          </div>
+          <div class="pure-u-1-2 post-meta">
+            <aside>Posted Aug 21, 2019</aside>
+
+          </div>
+        </div>
+      </article>
+    </div>
+  
+    <div class="post-index pure-u-1-1">
+      <h2><a href="../../2019/08/second-test.html">Another test post. Nothing to see here</a></h2>
+
+      <article class="text">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+
+        <div class="post-tags">
+          
+        </div>
+
+        <div class="pure-g post-footer">
+          <div class="pure-u-1-2">
+              <a class="read-more" href="../../2019/08/second-test.html">Continue reading ‚Ä∫</a>
+          </div>
+          <div class="pure-u-1-2 post-meta">
+            <aside>Posted Aug 13, 2019</aside>
+
+          </div>
+        </div>
+      </article>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+  
+
+
+</body></html>;
+T;@†o;;;;	I"/tags/baz;
+T{;{	;U;[0I" ;
+T;@ß;U;[0I"Â<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Sane Blog Builder - </title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/highlight.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.9">
+  </head>
+  <body>
+    <div id="layout">
+      <div class="header">
+        <h1>
+          <a href="../../">Sane Blog Builder</a>
+        </h1>
+      </div>
+
+
+      <div class="content">
+        <nav class="pure-g">
+          <div class="pure-u-2-3 links">
+            <a href="../../index.html">Home</a> ¬∑
+            <a href="../../tags.html">Tags</a> ¬∑
+            <a href="../../years.html">Years</a> ¬∑
+            <a href="../../about.html">About</a>
+          </div>
+
+          <div class="pure-u-1-3">
+            <div class="contact">
+              <span>
+                <a href="https://github.com/lbrito1" download="">
+                  <img src="../../assets/icons/github.svg" alt="Github icon">
+                  </a>
+              </span>
+              <span>
+                <a href="https://www.linkedin.com/in/leonardo-mendes-brito/">
+                <img src="../../assets/icons/linkedin.svg" alt="LinkedIn icon">
+                </a>
+              </span>
+            </div>
+          </div>
+        </nav>
+        
+  <h1>Posts tagged "baz"</h1>
+
+  <div class="pure-g">
+  
+    <div class="post-index pure-u-1-1">
+      <h2><a href="../../2019/08/test.html">Test post with syntax highlighting</a></h2>
+
+      <article class="text">
+          <div class="highlight">
+<pre><code class="language-ruby"><span class="nb">puts</span> <span class="s2">"Hello world!"</span>
+<span class="n">foo</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">bar</span><span class="o">|</span> <span class="c1"># Woo hoo</span>
+  <span class="nb">puts</span> <span class="n">baz</span>
+<span class="k">end</span></code></pre>
+</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+
+
+        <div class="post-tags">
+          
+        </div>
+
+        <div class="pure-g post-footer">
+          <div class="pure-u-1-2">
+              <a class="read-more" href="../../2019/08/test.html">Continue reading ‚Ä∫</a>
+          </div>
+          <div class="pure-u-1-2 post-meta">
+            <aside>Posted Aug 21, 2019</aside>
+
+          </div>
+        </div>
+      </article>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+  
+
+
+</body></html>;
+T;@™o;;;;	I"/tags/foo;
+T{;{	;U;[0I" ;
+T;@±;U;[0I"ë<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Sane Blog Builder - </title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/highlight.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.9">
+  </head>
+  <body>
+    <div id="layout">
+      <div class="header">
+        <h1>
+          <a href="../../">Sane Blog Builder</a>
+        </h1>
+      </div>
+
+
+      <div class="content">
+        <nav class="pure-g">
+          <div class="pure-u-2-3 links">
+            <a href="../../index.html">Home</a> ¬∑
+            <a href="../../tags.html">Tags</a> ¬∑
+            <a href="../../years.html">Years</a> ¬∑
+            <a href="../../about.html">About</a>
+          </div>
+
+          <div class="pure-u-1-3">
+            <div class="contact">
+              <span>
+                <a href="https://github.com/lbrito1" download="">
+                  <img src="../../assets/icons/github.svg" alt="Github icon">
+                  </a>
+              </span>
+              <span>
+                <a href="https://www.linkedin.com/in/leonardo-mendes-brito/">
+                <img src="../../assets/icons/linkedin.svg" alt="LinkedIn icon">
+                </a>
+              </span>
+            </div>
+          </div>
+        </nav>
+        
+  <h1>Posts tagged "foo"</h1>
+
+  <div class="pure-g">
+  
+    <div class="post-index pure-u-1-1">
+      <h2><a href="../../2019/08/second-test.html">Another test post. Nothing to see here</a></h2>
+
+      <article class="text">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+
+        <div class="post-tags">
+          
+        </div>
+
+        <div class="pure-g post-footer">
+          <div class="pure-u-1-2">
+              <a class="read-more" href="../../2019/08/second-test.html">Continue reading ‚Ä∫</a>
+          </div>
+          <div class="pure-u-1-2 post-meta">
+            <aside>Posted Aug 13, 2019</aside>
+
+          </div>
+        </div>
+      </article>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+  
+
+
+</body></html>;
+T;@¥o;;;;	I"/years/2019;
+T{;{
+;U;[0I" ;
+T;@ª;U;[0I"û<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Sane Blog Builder - </title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/stylesheet.css">
+    <link rel="stylesheet" href="../assets/highlight.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.9">
+  </head>
+  <body>
+    <div id="layout">
+      <div class="header">
+        <h1>
+          <a href="../">Sane Blog Builder</a>
+        </h1>
+      </div>
+
+
+      <div class="content">
+        <nav class="pure-g">
+          <div class="pure-u-2-3 links">
+            <a href="../index.html">Home</a> ¬∑
+            <a href="../tags.html">Tags</a> ¬∑
+            <a href="../years.html">Years</a> ¬∑
+            <a href="../about.html">About</a>
+          </div>
+
+          <div class="pure-u-1-3">
+            <div class="contact">
+              <span>
+                <a href="https://github.com/lbrito1" download="">
+                  <img src="../assets/icons/github.svg" alt="Github icon">
+                  </a>
+              </span>
+              <span>
+                <a href="https://www.linkedin.com/in/leonardo-mendes-brito/">
+                <img src="../assets/icons/linkedin.svg" alt="LinkedIn icon">
+                </a>
+              </span>
+            </div>
+          </div>
+        </nav>
+        
+  <h1>Posted in 2019</h1>
+
+  <div class="pure-g">
+  
+    <div class="post-index pure-u-1-1">
+      <h2><a href="08/third_post_test_rake.html">Sample post with an incredible picture</a></h2>
+
+      <article class="text">
+          <div class="image-box">
+  <div>
+    <a href="../assets/images/spb.jpg" target="_blank">
+      <img src="../assets/images/spb.jpg" alt="View of a city skyline">
+    </a>
+  </div>
+  <div class="image-caption">A nice view of Saint Petersburg.</div>
+</div>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+
+        <div class="post-tags">
+          
+            <div class="tags">
+            
+              <a class="pure-button button-xsmall" href="../tags/awesome">awesome</a>
+            
+            </div>
+          
+        </div>
+
+        <div class="pure-g post-footer">
+          <div class="pure-u-1-2">
+              <a class="read-more" href="08/third_post_test_rake.html">Continue reading ‚Ä∫</a>
+          </div>
+          <div class="pure-u-1-2 post-meta">
+            <aside>Posted Aug 27, 2019</aside>
+
+          </div>
+        </div>
+      </article>
+    </div>
+  
+    <div class="post-index pure-u-1-1">
+      <h2><a href="08/test.html">Test post with syntax highlighting</a></h2>
+
+      <article class="text">
+          <div class="highlight">
+<pre><code class="language-ruby"><span class="nb">puts</span> <span class="s2">"Hello world!"</span>
+<span class="n">foo</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">bar</span><span class="o">|</span> <span class="c1"># Woo hoo</span>
+  <span class="nb">puts</span> <span class="n">baz</span>
+<span class="k">end</span></code></pre>
+</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+
+
+        <div class="post-tags">
+          
+            <div class="tags">
+            
+              <a class="pure-button button-xsmall" href="../tags/awesome">awesome</a>
+            
+              <a class="pure-button button-xsmall" href="../tags/foobar">foobar</a>
+            
+              <a class="pure-button button-xsmall" href="../tags/baz">baz</a>
+            
+            </div>
+          
+        </div>
+
+        <div class="pure-g post-footer">
+          <div class="pure-u-1-2">
+              <a class="read-more" href="08/test.html">Continue reading ‚Ä∫</a>
+          </div>
+          <div class="pure-u-1-2 post-meta">
+            <aside>Posted Aug 21, 2019</aside>
+
+          </div>
+        </div>
+      </article>
+    </div>
+  
+    <div class="post-index pure-u-1-1">
+      <h2><a href="08/second-test.html">Another test post. Nothing to see here</a></h2>
+
+      <article class="text">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+
+        <div class="post-tags">
+          
+            <div class="tags">
+            
+              <a class="pure-button button-xsmall" href="../tags/foo">foo</a>
+            
+              <a class="pure-button button-xsmall" href="../tags/foobar">foobar</a>
+            
+            </div>
+          
+        </div>
+
+        <div class="pure-g post-footer">
+          <div class="pure-u-1-2">
+              <a class="read-more" href="08/second-test.html">Continue reading ‚Ä∫</a>
+          </div>
+          <div class="pure-u-1-2 post-meta">
+            <aside>Posted Aug 13, 2019</aside>
+
+          </div>
+        </div>
+      </article>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+  
+
+
+</body></html>;
+T;@æ;@æo;;;;	I"*/assets/images/screenshot-desktop.png;
+T{;{	;o;;I"R/home/leo/work/sane-blog-builder/content/assets/images/screenshot-desktop.png;
+T;@≈;@≈;@≈:versioni
