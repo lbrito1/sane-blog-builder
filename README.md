@@ -1,10 +1,10 @@
 # Sane blog builder
 
-![](content/assets/images/screenshot-desktop.png)
+This is a static blog generator. Click on the image or [here](https://lbrito1.github.io/sane-blog-builder/) for a live demo.
 
-This is a static blog generator.
+![https://lbrito1.github.io/sane-blog-builder/](content/assets/images/screenshot-desktop.png)
 
-There are approximately 1 trillion similar projects spread over an [unfathomable amount of different libraries](https://www.staticgen.com/).
+There are approximately 1 trillion other projects using an [unfathomable amount of different libraries](https://www.staticgen.com/) that do the same thing as this humble thing.
 
 This uses Ruby (more specifically, the excellent [Nanoc](https://nanoc.ws) lib) to generate static HTML pages from Markdown or other HTML files.
 
@@ -23,6 +23,10 @@ This uses Ruby (more specifically, the excellent [Nanoc](https://nanoc.ws) lib) 
 * Small: the entire output of this skeleton is like 100KB (images excluded);
 * Has stupid emojis 🎨 (okay that's just your browser);
 * That's about it.
+
+## Deployment instructions
+
+There's a [convenience script](deploy.sh) for Github Pages deployment.
 
 ## Why?
 Why not?
