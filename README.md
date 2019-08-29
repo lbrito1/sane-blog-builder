@@ -4,7 +4,7 @@ This is a static blog generator. Click [here](https://lbrito1.github.io/sane-blo
 
 ![https://lbrito1.github.io/sane-blog-builder/](content/assets/images/screenshot-desktop.png)
 
-There are approximately 1 trillion other projects using an [unfathomable amount of different libraries](https://www.staticgen.com/) that do the same thing as this humble thing.
+There are approximately 1 trillion other projects using an [unfathomable amount of different libraries](https://www.staticgen.com/) that do more or less the same as this humble thing.
 
 This uses Ruby (more specifically, the excellent [Nanoc](https://nanoc.ws) lib) to generate static HTML pages from Markdown or other HTML files.
 
