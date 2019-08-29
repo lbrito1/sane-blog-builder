@@ -9,8 +9,8 @@ preprocess do
 end
 
 compile '/tags/*' do
-  filter :relativize_paths, type: :html5
   layout '/tags.*'
+  filter :relativize_paths, type: :html5
 end
 
 route '/tags/*' do
@@ -18,15 +18,15 @@ route '/tags/*' do
 end
 
 compile '/years/*' do
-  filter :relativize_paths, type: :html5
   layout '/years.*'
+  filter :relativize_paths, type: :html5
   write '/' + item.identifier.to_s.split('/')[-1] + '/index.html'
 end
 
 compile '/index.html.erb' do
   filter :erb
-  filter :relativize_paths, type: :html5
   layout '/default.*'
+  filter :relativize_paths, type: :html5
   write '/index.html'
 end
 
@@ -35,29 +35,29 @@ compile '/posts/*.md' do
   filter :erb
   filter :kramdown, syntax_highlighter: :rouge, syntax_highlighter_opts: { span: { line_numbers: false }, block: { line_numbers: true }}
   filter :colorize_syntax, default_colorizer: :rouge
-  filter :relativize_paths, type: :html5
   layout '/post.*'
+  filter :relativize_paths, type: :html5
   write "/#{y}/#{m}/#{slug.split('.').first}.html"
 end
 
 compile '/**/*.html' do
-  filter :relativize_paths, type: :html5
   layout '/default.*'
+  filter :relativize_paths, type: :html5
   write item.identifier.without_ext + '/index.html'
 end
 
 compile '/**/*.html.erb' do
   filter :erb
-  filter :relativize_paths, type: :html5
   layout '/default.*'
+  filter :relativize_paths, type: :html5
   write ext: 'html'
 end
 
 compile '/**/*.md' do
   filter :erb
   filter :kramdown
-  filter :relativize_paths, type: :html5
   layout '/default.*'
+  filter :relativize_paths, type: :html5
   write ext: 'html'
 end
 
