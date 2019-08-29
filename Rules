@@ -48,8 +48,8 @@ compile '/**/*.html.erb' do
 end
 
 compile '/**/*.md' do
-  filter :kramdown
   filter :erb
+  filter :kramdown
   layout '/default.*'
   write ext: 'html'
 end

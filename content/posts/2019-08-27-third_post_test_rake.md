@@ -2,6 +2,7 @@
 title: Sample post with an incredible picture
 created_at: 2019-08-27 21:56:52 -0300
 kind: article
+tags: ['awesome']
 ---
 
 <%= render('/image.*', src: '/assets/images/spb.png', alt: 'View of a city skyline', caption: 'A nice view of Saint Petersburg.') %>

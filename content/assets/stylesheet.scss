@@ -130,19 +130,23 @@ nav {
 }
 
 article {
-  img { width: 100%; }
+  img {
+    width: 100%;
+  }
 }
-
 
 .button-xsmall {
     font-size: 70%;
 }
 
-.image-caption {
-  color: $color3;
-  font-style: italic;
+.image-box {
   text-align: center;
-  font-size: 70%;
+  .image-caption {
+    color: $color3;
+    font-style: italic;
+    text-align: center;
+    font-size: 70%;
+  }
 }
 
 // Syntax highlighting
