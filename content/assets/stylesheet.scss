@@ -43,6 +43,10 @@ nav {
   }
 
   .contact {
+    img {
+      width: 1em;
+      height: 1em;
+    }
     float: right;
     span {
       margin: 2px;
@@ -78,7 +82,7 @@ nav {
   h1 {
     margin: 0.2em 0;
     font-weight: 300;
-    font-size: 3em;
+    font-size: 300%;
   }
   a {
     color: $color1;
@@ -159,12 +163,19 @@ article {
 }
 
 // Responsive media queries
-@media (min-width: 48em) {
-  #layout {
-    padding-left: 5%; /* left col width "#menu" */
-    padding-right: 5%; /* left col width "#menu" */
-  }
-}
 @media(max-width: 1000px) {
-  * { font-size: 115% }
+  .content {
+    margin: 0.5em;
+    max-width: 100%;
+  }
+  * { font-size: 110%; }
+  h2 {
+    font-size: 180%;
+    line-height: 1.5em;
+  }
+  nav {
+    a {
+      font-size: 120%;
+    }
+  }
 }
