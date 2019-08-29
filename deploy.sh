@@ -9,7 +9,7 @@ git stash
 
 # Switch to Github Pages branch
 git checkout blog-master
-git rm *
+git rm * -r
 git checkout blog-dev
 git add .
 git commit -m "Builds blog. (automated commit)"
