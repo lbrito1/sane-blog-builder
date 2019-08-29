@@ -1,11 +1,13 @@
 #!/bin/bash
 
-# Compile output pages/assets
+# Make sure we're in the correct dir
 git checkout blog-dev
-nanoc
 
 # Temporarily stash changes
 git stash
+
+# Compile output pages/assets
+nanoc
 
 # Switch to Github Pages branch
 git checkout blog-master
