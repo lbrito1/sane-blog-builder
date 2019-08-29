@@ -1,6 +1,6 @@
 # Sane blog builder
 
-This is a static blog generator. Click on the image or [here](https://lbrito1.github.io/sane-blog-builder/) for a live demo.
+This is a static blog generator. Click [here](https://lbrito1.github.io/sane-blog-builder/) for a live demo.
 
 ![https://lbrito1.github.io/sane-blog-builder/](content/assets/images/screenshot-desktop.png)
 
