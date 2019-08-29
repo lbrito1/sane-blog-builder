@@ -35,7 +35,8 @@ body {
 nav {
   padding: 1em 0;
   color: $color2;
-  border-bottom: 1px solid $color5;
+  border-bottom: 1px solid $color3;
+  margin-bottom: 1em;
   a {
     font-family:  $font-serif;
     font-size: 95%;
@@ -91,7 +92,7 @@ nav {
 
 // Post (Index)
 .post-index {
-  border-bottom: 1px solid $color5;
+  border-bottom: 1px solid $color3;
   padding: 1.5em 0;
   .post-tags {
     display: inline-block;
