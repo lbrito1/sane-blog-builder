@@ -12,7 +12,7 @@ This uses Ruby (more specifically, the excellent [Nanoc](https://nanoc.ws) lib) 
 
 [Pure CSS](https://purecss.io/) is sparingly used to help with layouts and such. I recommend that you don't look at the CSS, just trust that it works most times.
 
-<%= render('/image.*', src: '/assets/images/monkey.gif', alt: 'View of a city skyline', caption: 'Myself trying to write CSS.') %>
+<%= render('/image.*', src: '/assets/images/monkey.gif', alt: 'A monkey typing on a computer', caption: 'Myself trying to write CSS.') %>
 
 ## Features
 * Zero amount of Javascript;
