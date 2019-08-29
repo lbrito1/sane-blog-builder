@@ -3,7 +3,7 @@ include Nanoc::Helpers::Tagging
 include Nanoc::Helpers::Rendering
 include Nanoc::Helpers::LinkTo
 
-SITE_TITLE = "Blog"
+SITE_TITLE = "Sane Blog Builder"
 
 def get_post_start(post)
   content = post.compiled_content
