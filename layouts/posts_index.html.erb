@@ -17,7 +17,7 @@
 
         <div class="pure-g post-footer">
           <div class = pure-u-1-2>
-              <a class='read-more' href='#{post.path}'>Continue reading &rsaquo;</a>
+              <a class='read-more' href='<%= post.path %>'>Continue reading &rsaquo;</a>
           </div>
           <div class="pure-u-1-2 post-meta">
             <aside>Posted <%= post[:created_at]&.strftime('%b %d, %Y') %></aside>
