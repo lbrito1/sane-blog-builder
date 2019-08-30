@@ -4,6 +4,8 @@
 git checkout blog-dev
 
 # Update remote
+git add .
+git commit -m "Updates development branch. (automated commit)"
 git push blog blog-dev:development
 
 # Temporarily stash changes
