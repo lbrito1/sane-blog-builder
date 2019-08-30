@@ -2,7 +2,7 @@
 
 This is a static blog generator. Click [here](https://lbrito1.github.io/sane-blog-builder/) for a live demo.
 
-![https://lbrito1.github.io/sane-blog-builder/](assets/images/screenshot-desktop.png)
+![https://lbrito1.github.io/sane-blog-builder/](content/assets/images/screenshot-desktop.png)
 
 There are approximately 1 trillion other projects using an [unfathomable amount of different libraries](https://www.staticgen.com/) that do more or less the same as this humble thing.
 
@@ -31,4 +31,4 @@ There's a [convenience script](deploy.sh) for Github Pages deployment.
 ## Why?
 Why not?
 
-Okay, here's a longer answer: (to-do)
+Okay, [here's a longer answer](https://lbrito1.github.io/blog/2019/08/test.html).
