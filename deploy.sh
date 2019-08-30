@@ -17,9 +17,13 @@ nanoc
 # Switch to Github Pages branch
 git checkout blog-master
 git rm * -r
+
+# Copy nanoc output to root
 git checkout blog-dev output/
 cp -r output/* ./
 rm -rf ./output/*
+
+# Send changes to remote (production branch)
 git add .
 git commit -m "Builds blog. (automated commit)"
 
