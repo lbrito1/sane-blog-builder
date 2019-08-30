@@ -3,6 +3,9 @@
 # Make sure we're in the correct dir
 git checkout blog-dev
 
+# Update remote
+git push blog blog-dev:development
+
 # Temporarily stash changes
 git stash
 
@@ -13,6 +16,8 @@ nanoc
 git checkout blog-master
 git rm * -r
 git checkout blog-dev output/
+cp -r output/* ./
+rm -rf ./output/*
 git add .
 git commit -m "Builds blog. (automated commit)"
 
