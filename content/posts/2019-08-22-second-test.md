@@ -1,5 +1,5 @@
 ---
-title: "Another test post. Nothing to see here"
+title: "Another test post for personal blog"
 created_at: 2019-08-13 10:00:00 -0300
 kind: article
 tags: ["foo", "foobar"]
