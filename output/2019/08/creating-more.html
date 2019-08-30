@@ -53,24 +53,46 @@
 
 <!-- more -->
 
-<p>Alas, as I opened my eyes to the wonders of web development I started noticing a few things. First, Wordpress is written in PHP, which is gross (just kidding). Second, you don’t really control much: you can pick themes or whatever, but you won’t have the full control you’d have by creating a website from scratch or nearly scratch. Third, and maybe a corollary to the previous point, that stuff is <em>bloated</em>. There’s approximately 3 terabytes of mostly useless javascript, ads and all kind of crap I don’t care about.</p>
+<p>Alas, as I opened my eyes to the wonders of web development I started noticing a few things. First, Wordpress is written in PHP, which is gross (just kidding). Second, you don’t really control much: you can pick themes or whatever, but you won’t have the full control you’d have by creating a website from scratch or nearly scratch. Third, and maybe a corollary to the previous point, that stuff is <em>bloated</em>. There’s approximately 3 terabytes of mostly useless JavaScript, ads and all kind of crap I don’t care about.</p>
 
 <p>But most importantly, I understood the hidden costs of most “free” web services. You don’t really own anything. You provide content, and Wordpress or Google or whoever package that content into a neat bundle and servce it to your audience together with whatever else (<em>cough, trackers</em>) they see fit.</p>
 
 <p>That’s one of the reasons that pushed me towards a less-walled-garden approach towards blogging. But there’s a nother reason as well.</p>
 
-<p>As <a href="https://code.divshot.com/geo-bootstrap/">many others</a>, I have fond memories of the late-90s/early-2000s Web 1.0 Internet. There is something warm and fuzzy about those beautifully terrible Geocities pages that pierced the eyes of the viewer. As I said, I’m not alone: Web 1.0 nostalgia is definitively <a href="https://gizmodo.com/the-great-web-1-0-revival-1651487835">on the rise</a>.</p>
+<p>As <a href="https://code.divshot.com/geo-bootstrap/">many others</a>, I have fond memories of the late-90s/early-2000s Web 1.0 Internet. There is something warm and fuzzy about those beautifully terrible Geocities pages. They pierced the eyes of the viewer but were wondrous in a way. As I said, I’m not alone: Web 1.0 nostalgia is definitively <a href="https://gizmodo.com/the-great-web-1-0-revival-1651487835">on the rise</a>.</p>
 
 <p>But why? What is not to like in our world of beautiful walled gardens? Surely it is better than those gross-looking Web 1.0 fan sites about some crappy GameBoy game, right? …Right?</p>
 
+<div class="image-box">
+  <div>
+    <a href="../../assets/images/fan_page_screenshot.png" target="_blank">
+      <img src="../../assets/images/fan_page_screenshot.png" alt="View of an old website about Pokemon">
+    </a>
+  </div>
+  <div class="image-caption">We're soooo cooler than this in 2019.</div>
+</div>
+
+<p><em>Wrong.</em></p>
+
+<p>Well, in many ways the Internet has of course improved over time. It has useful things like search engines and Wikipedia, and convenient subscription-based entertainment like Netflix. It has a whole bunch of nice stuff I could spend hours blabbering about.</p>
+
+<p>But it also has a lot of problems. At this point there are surely many PhD theses about most of them, so I won’t bother. I’m just going to recommend one <a href="https://www.nytimes.com/2019/08/11/world/americas/youtube-brazil.html">New York Times article</a> that explains how YouTube indirectly helped elect a buffoon that <a href="https://extra.globo.com/noticias/brasil/bolsonaro-faz-piada-com-oriental-tudo-pequenininho-ai-veja-video-rv1-1-23668287.html">makes high school-tier penis jokes</a> as president of Brazil.</p>
+
+<p>Now, the specific problem with today’s Internet that I feel is most relevant regarding blogging is how we’re gravitating towards all these “free” services all the time. Medium, for instance, is so <em>nice looking</em> that one doesn’t even think of perhaps using something else. But what happens when <em>everyone</em> uses Medium? First: all the blogs look exactly the same, which is lame. Second, Medium gets all that content and traffic for itself, for free.</p>
+
+<p>Of course, not everyone is skilled enough to build a personal blog from scratch. I am just barely able, as you can see from my lackluster front-end skills (I promise you I’m good on back-end things). So I’m definitively not dismissing the inclusiveness that services like Medium offer.</p>
+
+<p>But as I searched for a way out of the walled gardens and fiddled with <a href="https://jekyllrb.com/">Jekyll</a> for a while, I figured I might as well just <a href="https://tjcx.me/posts/consumption-distraction/">build something to call my own</a>.</p>
+
+<h2 id="so-i-built-this">So I built this.</h2>
+
+<p>The goals were to create the simplest possible blogging system with as little fluff as possible. It should meet what I defined as basic blogging needs: list posts, show post, use tags, use images etc. And also not have 3 terabytes of JavaScript split in 90 requests just to show a fancy menu button.</p>
+
+<p>So I started messing with Nanoc, an excellent Ruby library for static page generation, and came up with <a href="https://github.com/lbrito1/sane-blog-builder">this bad boy</a>.</p>
+
 <p>I won’t pretend these ideas are new. They aren’t! I feel there’s been an increasing amount of <a href="https://code.divshot.com/geo-bootstrap/">Web 1.0 nostalgia</a> going on, and a big part of that is probably fueled by <a href="https://tjcx.me/posts/consumption-distraction/">similar sentiments</a> as those I described. The <a href="https://thebestmotherfucking.website/">longing for simplicity</a> in a world of trillions of new JS frameworks is also quite widespread these days.</p>
 
-<h3 id="so-i-built-this">So I built this</h3>
-
-<p>I tried <a href="https://jekyllrb.com/">Jekyll</a> for a while, but I found myself endlessly tweaking CSS details and config files and weird deployment issues instead of actually improving the blog or writing stuff, so I gave up on that and started this thing. The goals were to create the simplest possible blogging system with as little fluff as possible.</p>
-
-<p>This small project is nothing special. There are <a href="https://github.com/remko/blog-skeleton">much better projects</a> <a href="https://clarkdave.net/2012/02/building-a-static-blog-with-nanoc/">available for free</a> on the interwebs done by people that actually know what they’re doing with a CSS file. This here is just a tiny vase with some ugly flowers – it would be ridiculous to compare it to the beautiful walled gardens of Medium or Wordpress. But, ugly as they are, they’re <strong>mine</strong>!</p>
-
+<p>This small project is nothing special. There are <a href="https://github.com/remko/blog-skeleton">much better projects</a> <a href="https://clarkdave.net/2012/02/building-a-static-blog-with-nanoc/">available for free</a> on the Internet done by people that actually know what they’re doing with a CSS file. This here is just a tiny vase with some ugly flowers – it would be ridiculous to compare it to the beautiful walled gardens of Medium or Wordpress. But, ugly as they are, they’re <strong>mine</strong>!</p>
 
     </article>
     <aside>Posted at: Aug 29, 2019</aside>
