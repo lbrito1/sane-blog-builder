@@ -70,6 +70,13 @@ nav {
   margin-bottom: 50px;
   line-height: 1.8em;
   h1 { text-align: center; }
+
+  .footer {
+    margin: 20px 0;
+    color: $color2;
+    font-size: 90%;
+    text-align: center;
+  }
 }
 
 .header {
