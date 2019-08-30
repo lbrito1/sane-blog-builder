@@ -31,4 +31,4 @@ There's a [convenience script](deploy.sh) for Github Pages deployment.
 ## Why?
 Why not?
 
-Okay, [here's a longer answer](https://lbrito1.github.io/blog/2019/08/test.html).
+Okay, [here's a longer answer](https://lbrito1.github.io/blog/2019/08/creating-more.html).
