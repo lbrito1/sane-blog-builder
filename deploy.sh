@@ -8,9 +8,6 @@ git add .
 git commit -m "Updates development branch. (automated commit)"
 git push blog blog-dev:development
 
-# Temporarily stash changes
-git stash
-
 # Compile output pages/assets
 nanoc
 
@@ -32,4 +29,3 @@ git push blog blog-master:master
 
 # Pop files
 git checkout blog-dev
-git stash pop
