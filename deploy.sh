@@ -12,12 +12,12 @@ nanoc
 # Switch to Github Pages branch
 git checkout blog-master
 git rm * -r
-git checkout blog-dev
+git checkout blog-dev output/
 git add .
 git commit -m "Builds blog. (automated commit)"
 
 # Push & deploy
-git push blog/master blog-master
+git push blog blog-master:master
 
 # Pop files
 git checkout blog-dev
