@@ -1,0 +1,304 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Sane Blog Builder - Graph</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/highlight.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.9">
+  </head>
+  <body>
+    <div id="layout">
+      <div class="header">
+        <h1>
+          <a href="../../">Sane Blog Builder</a>
+        </h1>
+      </div>
+
+
+      <div class="content">
+        <nav class="pure-g">
+          <div class="pure-u-2-3 links">
+            <a href="../../index.html">Home</a> ·
+            <a href="../../tags.html">Tags</a> ·
+            <a href="../../years.html">Years</a> ·
+            <a href="../../about.html">About</a>
+          </div>
+
+          <div class="pure-u-1-3">
+            <div class="contact">
+              <span>
+                <a href="https://github.com/lbrito1" download="">
+                  <img src="../../assets/icons/github.svg" alt="Github icon">
+                  </a>
+              </span>
+              <span>
+                <a href="https://www.linkedin.com/in/leonardo-mendes-brito/">
+                <img src="../../assets/icons/linkedin.svg" alt="LinkedIn icon">
+                </a>
+              </span>
+            </div>
+          </div>
+        </nav>
+        
+  <div class="post-show">
+    <h1>Graph</h1>
+    <article class="text">
+      <p>Mathematically, a graph is a set of vertices and edges, thus a graph <code>G</code> is usually written as <code>G(V,E)</code>. Besides linking vertices in the graph, edges can also carry a specific value which may be interpreted as cost, weight, distance etc.</p>
+
+<p><a href="../../assets/images/codedeposit/2014/03/graph1.jpg"><img src="../../assets/images/codedeposit/2014/03/graph1.jpg" alt="graph viewed with BurgerGFX"></a></p>
+
+<p>In computer science, we’re interested in the (abstract) data structure used to implement the graph mathematical concept. Let’s first discuss the basic elements in a graph - vertices and edges:</p>
+
+<pre><code class="language-c"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">vertex</span>
+<span class="p">{</span>
+ <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">id</span><span class="p">;</span>
+ <span class="kt">int</span> <span class="n">status</span><span class="p">;</span>
+ <span class="kt">double</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">;</span>
+ <span class="kt">void</span><span class="o">*</span> <span class="n">data</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">vertex</span><span class="p">;</span></code></pre>
+
+<p>Vertices should be able to hold any kind of data, so we’ll just throw in a void pointer for that. Other than that we have an id, status (marked or unmarked - more on that later) and 2D coordinates so we can draw the vertices somewhere.</p>
+
+<pre><code class="language-c"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">edge</span>
+<span class="p">{</span>
+ <span class="n">vertex</span><span class="o">*</span> <span class="n">from</span><span class="p">,</span> <span class="o">*</span><span class="n">to</span><span class="p">;</span>
+ <span class="kt">int</span> <span class="n">cost</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">edge</span><span class="p">;</span></code></pre>
+
+<p>Edges consist of just pointers to the vertices they link and an optional value used as weight, distance, cost etc. Strictly speaking we could use a void pointer for that value as well, as long as we also defined a comparison function. But let’s save the hassle and just use an integer instead - most algorithms will be fine with that.</p>
+
+<!-- more -->
+
+<p>Those two structs together with their allocation and compare functions comprise the basic code we need to start building a graph. Full code can be found in <code>graphs/graph_ve.c</code>.</p>
+
+<p>Now that we have a way to represent edges and vertices, we need a convenient way to represent the graph itself. Namely, we need to be able to quickly and conveniently identify, add and remove vertices and edges. There are two traditional approaches to do that, each with its own appropriate usages: adjacency matrix and adjacency list.</p>
+
+<p>Adjacency matrices use a matrix to represent edges (and possibly the edge’s value), e.g. if graph <code>G</code> has <code>v</code> vertices, matrix <code>E(v x v)</code> represents <code>G</code>’s edges, each matrix element representing if the edge exists and if so what value it has. This is a fast and straightforward approach to representing edges, but the fixed n² space requirement is very bad if we have a sparse graph, which unfortunately is often the case.</p>
+
+<p>Adjacency lists on the other hand use lists to represent edges. Each vertex has it’s own list holding pointers to all of its neighbors. In its simplest form, a graph <code>G(V,E)</code> will have an <code>|V|</code> sized array with lists containing only integers (corresponding to the vertex id) – <code>adj_list[a]</code> would contain the ids to every neighbor of vertex <code>v</code> with <code>id=a</code>. We’re using linked lists with our edge struct.</p>
+
+<p>Adding and identifying vertices is trivial: vertex <code>v</code> with <code>id=i</code> is located at <code>vertices[i]</code>. Adding edges is also trivial (adding <code>edge*</code> to the linked list). If we have an undirected graph, we add 2 edges instead, one at <code>adj_list[vertex_from]</code> and one at <code>adj_list[vertex_to]</code>.</p>
+
+<p>Testing code can be found in the test folder together with some drawing functions that print the graph with our BurgerGFX utility.</p>
+
+<pre><code class="language-c"><span class="cm">/*
+ File: al_graph.c
+
+Dependencies: linked_list.c, graph_ve.c
+
+This is a graph implementation with adjacency lists.
+
+ A graph with nv vertices will have nv (readable) adjacency lists,
+ located at the adj_list array (double pointer to linked list).
+
+ adj_list[idx] contains all edges originating from vertex v with
+ v-&gt;id = idx. If G is an undirected graph, adding an edge from
+ vertex vf to vertex vt will add equivalent edges to the both lists,
+ i.e. adj_list[vf-&gt;id] and adj_list[vt-&gt;id].
+
+ Copyright (c) 2014 Leonardo Brito &lt;lbrito@gmail.com&gt;
+
+This software is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write the Free Software Foundation, Inc., 51
+ Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+*/</span>
+
+<span class="cp">#define DIRECTED 0
+#define UNDIRECTED 1
+#include "graph_ve.c"
+#include "../data_structures/linked_list.c"
+</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">graph</span>
+<span class="p">{</span>
+ <span class="n">vertex</span><span class="o">**</span> <span class="n">vertices</span><span class="p">;</span>
+ <span class="kt">int</span> <span class="n">directed</span><span class="p">;</span>
+ <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">max_vertices</span><span class="p">;</span>
+ <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">n_edges</span><span class="p">;</span>
+ <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">nv</span><span class="p">;</span>
+ <span class="n">linked_list</span><span class="o">**</span> <span class="n">adj_list</span><span class="p">;</span>
+ <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">printvert</span><span class="p">)</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">);</span>
+<span class="p">}</span> <span class="n">graph</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">edge_iter</span>
+<span class="p">{</span>
+ <span class="n">graph</span><span class="o">*</span> <span class="n">g</span><span class="p">;</span>
+ <span class="n">vertex</span><span class="o">*</span> <span class="n">origin</span><span class="p">;</span>
+ <span class="n">element</span><span class="o">*</span> <span class="n">head</span><span class="p">;</span>
+ <span class="kt">int</span> <span class="n">idx</span><span class="p">,</span> <span class="n">length</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">edge_iter</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief
+ *
+ * @param [in] n_vertices max n vertices
+ * @param [in] directed DIRECTED or UNDIRECTED graph
+ * @return
+ */</span>
+<span class="n">graph</span><span class="o">*</span> <span class="nf">new_graph</span><span class="p">(</span><span class="kt">int</span> <span class="n">n_vertices</span><span class="p">,</span> <span class="kt">int</span> <span class="n">directed</span><span class="p">)</span>
+<span class="p">{</span>
+ <span class="n">graph</span><span class="o">*</span> <span class="n">g_p</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">graph</span><span class="p">));</span>
+ <span class="n">g_p</span><span class="o">-&gt;</span><span class="n">directed</span> <span class="o">=</span> <span class="n">directed</span><span class="p">;</span>
+ <span class="n">g_p</span><span class="o">-&gt;</span><span class="n">max_vertices</span> <span class="o">=</span> <span class="n">n_vertices</span><span class="p">;</span>
+ <span class="n">g_p</span><span class="o">-&gt;</span><span class="n">vertices</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">vertex</span><span class="o">*</span><span class="p">)</span><span class="o">*</span><span class="n">g_p</span><span class="o">-&gt;</span><span class="n">max_vertices</span><span class="p">);</span>
+ <span class="n">g_p</span><span class="o">-&gt;</span><span class="n">nv</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="n">g_p</span><span class="o">-&gt;</span><span class="n">n_edges</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="n">g_p</span><span class="o">-&gt;</span><span class="n">adj_list</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">linked_list</span><span class="o">*</span><span class="p">)</span><span class="o">*</span><span class="n">g_p</span><span class="o">-&gt;</span><span class="n">max_vertices</span><span class="p">);</span>
+ <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+ <span class="k">for</span> <span class="p">(;</span><span class="n">imax_vertices</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">g_p</span><span class="o">-&gt;</span><span class="n">adj_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_list</span><span class="p">(</span><span class="n">compare_e</span><span class="p">);</span>
+ <span class="k">return</span> <span class="n">g_p</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+ * @brief Edge iterator: all neighbors of vertex 'from'
+ *
+ * @param [in] g
+ * @param [in] from
+ * @return
+ */</span>
+<span class="n">edge_iter</span><span class="o">*</span> <span class="nf">new_edge_it</span><span class="p">(</span><span class="n">graph</span><span class="o">*</span> <span class="n">g</span><span class="p">,</span> <span class="n">vertex</span><span class="o">*</span> <span class="n">from</span><span class="p">)</span>
+<span class="p">{</span>
+ <span class="n">edge_iter</span><span class="o">*</span> <span class="n">it</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">edge_iter</span><span class="p">));</span>
+ <span class="n">it</span><span class="o">-&gt;</span><span class="n">g</span> <span class="o">=</span> <span class="n">g</span><span class="p">;</span>
+ <span class="n">it</span><span class="o">-&gt;</span><span class="n">origin</span> <span class="o">=</span> <span class="n">from</span><span class="p">;</span>
+ <span class="n">it</span><span class="o">-&gt;</span><span class="n">head</span> <span class="o">=</span> <span class="n">g</span><span class="o">-&gt;</span><span class="n">adj_list</span><span class="p">[</span><span class="n">from</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+ <span class="n">it</span><span class="o">-&gt;</span><span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="n">it</span><span class="o">-&gt;</span><span class="n">length</span> <span class="o">=</span> <span class="n">g</span><span class="o">-&gt;</span><span class="n">adj_list</span><span class="p">[</span><span class="n">from</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span>
+ <span class="k">return</span> <span class="n">it</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+ * @brief Next edge in list
+ *
+ * @param [in] it
+ * @return
+ */</span>
+<span class="n">edge</span><span class="o">*</span> <span class="nf">next_edge</span><span class="p">(</span><span class="n">edge_iter</span><span class="o">*</span> <span class="n">it</span><span class="p">)</span>
+<span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="o">++</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">idx</span> <span class="o">&lt;</span> <span class="n">it</span><span class="o">-&gt;</span><span class="n">length</span><span class="p">)</span>
+ <span class="p">{</span>
+ <span class="n">edge</span><span class="o">*</span> <span class="n">e</span> <span class="o">=</span> <span class="p">(</span><span class="n">edge</span><span class="o">*</span><span class="p">)</span> <span class="n">it</span><span class="o">-&gt;</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span>
+ <span class="n">it</span><span class="o">-&gt;</span><span class="n">head</span> <span class="o">=</span> <span class="n">it</span><span class="o">-&gt;</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+ <span class="k">return</span> <span class="n">e</span><span class="p">;</span>
+ <span class="p">}</span>
+ <span class="k">else</span> <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+ * @brief Get edge from adjacency list
+ *
+ * @param [in] g
+ * @param [in] from
+ * @param [in] to
+ * @return
+ */</span>
+<span class="n">edge</span><span class="o">*</span> <span class="nf">get_edge</span><span class="p">(</span><span class="n">graph</span><span class="o">*</span> <span class="n">g</span><span class="p">,</span> <span class="kt">int</span> <span class="n">from</span><span class="p">,</span> <span class="kt">int</span> <span class="n">to</span><span class="p">)</span>
+<span class="p">{</span>
+ <span class="n">element</span><span class="o">*</span> <span class="n">e</span> <span class="o">=</span> <span class="n">g</span><span class="o">-&gt;</span><span class="n">adj_list</span><span class="p">[</span><span class="n">from</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span>
+ <span class="k">while</span> <span class="p">((</span><span class="n">e</span><span class="o">=</span><span class="n">e</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="k">if</span> <span class="p">(((((</span><span class="n">edge</span><span class="o">*</span><span class="p">)</span> <span class="n">e</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">to</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">)</span> <span class="o">==</span> <span class="n">to</span><span class="p">)</span> <span class="k">return</span> <span class="p">((</span><span class="n">edge</span><span class="o">*</span><span class="p">)</span> <span class="n">e</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span>
+ <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+ * @brief Get vertex from array @idx
+ *
+ * @param [in] g
+ * @param [in] idx
+ * @return
+ */</span>
+<span class="n">vertex</span><span class="o">*</span> <span class="nf">get_vertex</span><span class="p">(</span><span class="n">graph</span><span class="o">*</span> <span class="n">g</span><span class="p">,</span> <span class="kt">int</span> <span class="n">idx</span><span class="p">)</span>
+<span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="n">idx</span><span class="o">&gt;</span><span class="n">g</span><span class="o">-&gt;</span><span class="n">nv</span><span class="p">)</span> <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+ <span class="k">return</span> <span class="n">g</span><span class="o">-&gt;</span><span class="n">vertices</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+ * @brief Add vertex to graph
+ *
+ * @param [in] g
+ * @param [in] data vertex data
+ * @return created vertex
+ */</span>
+<span class="n">vertex</span><span class="o">*</span> <span class="nf">add_vertex</span><span class="p">(</span><span class="n">graph</span><span class="o">*</span> <span class="n">g</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">data</span><span class="p">)</span>
+<span class="p">{</span>
+ <span class="n">vertex</span><span class="o">*</span> <span class="n">v</span><span class="p">;</span>
+ <span class="kt">int</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">g</span><span class="o">-&gt;</span><span class="n">nv</span><span class="p">;</span>
+ <span class="k">if</span> <span class="p">(</span><span class="n">pos</span> <span class="o">&lt;</span> <span class="n">g</span><span class="o">-&gt;</span><span class="n">max_vertices</span><span class="p">)</span>
+ <span class="p">{</span>
+ <span class="n">v</span> <span class="o">=</span> <span class="p">(</span><span class="n">g</span><span class="o">-&gt;</span><span class="n">vertices</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_vertex</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">data</span><span class="p">));</span>
+ <span class="n">add</span><span class="p">((</span><span class="n">g</span><span class="o">-&gt;</span><span class="n">adj_list</span><span class="p">[</span><span class="n">pos</span><span class="p">]),</span> <span class="nb">NULL</span><span class="p">);</span> <span class="c1">//prepare adjlist</span>
+ <span class="n">g</span><span class="o">-&gt;</span><span class="n">nv</span><span class="o">++</span><span class="p">;</span>
+ <span class="p">}</span>
+ <span class="k">else</span> <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+
+ <span class="k">return</span> <span class="n">v</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+ * @brief Add edge to graph
+ *
+ * @param [in] g
+ * @param [in] vf
+ * @param [in] vt
+ * @param [in] cost
+ * @return
+ */</span>
+<span class="kt">void</span> <span class="nf">add_edge</span><span class="p">(</span><span class="n">graph</span><span class="o">*</span> <span class="n">g</span><span class="p">,</span> <span class="n">vertex</span><span class="o">*</span> <span class="n">vf</span><span class="p">,</span> <span class="n">vertex</span><span class="o">*</span> <span class="n">vt</span><span class="p">,</span> <span class="kt">int</span> <span class="n">cost</span><span class="p">)</span>
+<span class="p">{</span>
+ <span class="n">add</span><span class="p">((</span><span class="n">g</span><span class="o">-&gt;</span><span class="n">adj_list</span><span class="p">[</span><span class="n">vf</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">]),</span> <span class="n">new_edge</span><span class="p">(</span><span class="n">vf</span><span class="p">,</span><span class="n">vt</span><span class="p">,</span><span class="n">cost</span><span class="p">));</span>
+ <span class="k">if</span> <span class="p">(</span><span class="n">g</span><span class="o">-&gt;</span><span class="n">directed</span> <span class="o">==</span> <span class="n">UNDIRECTED</span><span class="p">)</span> <span class="n">add</span><span class="p">((</span><span class="n">g</span><span class="o">-&gt;</span><span class="n">adj_list</span><span class="p">[</span><span class="n">vt</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">]),</span> <span class="n">new_edge</span><span class="p">(</span><span class="n">vt</span><span class="p">,</span><span class="n">vf</span><span class="p">,</span><span class="n">cost</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+ * @brief Get number of vertices in graph
+ *
+ * @param [in] g
+ * @return
+ */</span>
+<span class="kt">int</span> <span class="nf">get_nv</span><span class="p">(</span><span class="n">graph</span><span class="o">*</span> <span class="n">g</span><span class="p">)</span>
+<span class="p">{</span>
+ <span class="k">return</span> <span class="n">g</span><span class="o">-&gt;</span><span class="n">nv</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+ * @brief Visit vertex @idx
+ *
+ * @param [in] g
+ * @param [in] idx
+ * @return
+ */</span>
+<span class="kt">int</span> <span class="nf">visit_vert</span><span class="p">(</span><span class="n">graph</span><span class="o">*</span> <span class="n">g</span><span class="p">,</span> <span class="kt">int</span> <span class="n">idx</span><span class="p">)</span>
+<span class="p">{</span>
+ <span class="k">return</span> <span class="n">visit</span><span class="p">(</span><span class="n">g</span><span class="o">-&gt;</span><span class="n">vertices</span><span class="p">[</span><span class="n">idx</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span></code></pre>
+
+    </article>
+    <aside>Posted at: Mar 23, 2014</aside>
+    <div class="post-footer">
+      <a href="../../index.html">Back</a>
+    </div>
+  </div>
+
+        <div class="footer">
+          2019 Leonardo Brito
+        </div>
+      </div>
+
+    </div>
+  
+
+
+</body></html>

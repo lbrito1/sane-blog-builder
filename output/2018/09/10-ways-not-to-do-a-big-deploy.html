@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Sane Blog Builder - 10 ways not to do a big deploy</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/highlight.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.9">
+  </head>
+  <body>
+    <div id="layout">
+      <div class="header">
+        <h1>
+          <a href="../../">Sane Blog Builder</a>
+        </h1>
+      </div>
+
+
+      <div class="content">
+        <nav class="pure-g">
+          <div class="pure-u-2-3 links">
+            <a href="../../index.html">Home</a> ·
+            <a href="../../tags.html">Tags</a> ·
+            <a href="../../years.html">Years</a> ·
+            <a href="../../about.html">About</a>
+          </div>
+
+          <div class="pure-u-1-3">
+            <div class="contact">
+              <span>
+                <a href="https://github.com/lbrito1" download="">
+                  <img src="../../assets/icons/github.svg" alt="Github icon">
+                  </a>
+              </span>
+              <span>
+                <a href="https://www.linkedin.com/in/leonardo-mendes-brito/">
+                <img src="../../assets/icons/linkedin.svg" alt="LinkedIn icon">
+                </a>
+              </span>
+            </div>
+          </div>
+        </nav>
+        
+  <div class="post-show">
+    <h1>10 ways not to do a big deploy</h1>
+    <article class="text">
+      <p>Ideally, deploys should be small, concise, easily revertible, fast and with a small or nil footprint on the database. However, no matter how awesome you are, sometimes that is just unattainable and you end up needing to deploy something that is just the opposite: big, messy, hard to revert, painfully slow and rubbing the DB the wrong way. If the deploy messes with a mission-critical part of your software, all the worse for you.</p>
+
+<p>But there are actually many ways you can make those situations even worse. Here are a few bullet points you can follow to guarantee a nightmarish deploy complete with nasty side-effects that will haunt you and your coworkers for days to come.</p>
+
+<!-- more -->
+
+<h2 id="dont-make-aplan">1. Don’t make a&nbsp;plan</h2>
+
+<p>Plans suck. They take time and effort, and don’t add any new features to your software. Planning a deploy requires thinking carefully about what it should do and, more importantly, what it shouldn’t do (but potentially could). A good deploy plan is a step-by-step happy path that is written clearly and concisely, followed by a list of everything nasty that can happen. Making a deploy plan is basically trying to cover as many blind spots as you can before pulling the trigger. But, of course, you and your team are code ninjas or master software crafters or whatever the hippest term is nowadays, and you don’t need a plan! Just wing it. Press the button and solve every problem that might arise in an ad-hoc fashion. What could go wrong?</p>
+
+<h2 id="dont-scheduledowntime">2. Don’t schedule&nbsp;downtime</h2>
+
+<p>Downtime sucks: it usually is in odd hours, late in the night or early in the morning, when customers are fast asleep (and you would very much like to be as well). Why bother blocking public access and redirecting customers to a nice “scheduled maintenance page”? Why gift you and your team with peace of mind and a clear timeframe to work with if you can feel the rush of breaking stuff in production with live customers? Production debugging is the best kind of debugging! Confuse your customers with inconsistent states and leave them waiting while your team tries to fix those bugs that were definitively fixed last Friday night.</p>
+
+<h2 id="dont-have-a-great-logsystem">3. Don’t have a great log&nbsp;system</h2>
+
+<p>Logs are for buggy software, you won’t need them. Why spend time and possibly money with a great logging-as-a-service (LaaS) platform? Just have your whole team <code>ssh</code> into production and watch the log tails. Or, even better, use a terrible LaaS that is slow, unreliable and has a confusing user interface so everyone can get frustrated trying to find errors during the deploy.</p>
+
+<h2 id="dont-have-a-bugtracker">4. Don’t have a bug&nbsp;tracker</h2>
+
+<p>See above: just like logs, bug trackers are also lame. Your awesome PR won’t have any bugs, now, will it? Regressions never happen under your watch. Also, who needs to track exceptions with a great, fast, reliable bug tracking platform when you have logs available? Aren’t you hacker enough to <code>grep</code> every single exception that might be raised?</p>
+
+<h2 id="dont-have-a-stagingserver">5. Don’t have a staging&nbsp;server</h2>
+
+<p>Staging servers are a waste of resources, both time and money. What is the point of having a close-to-exact copy of your production servers, which by this point are radically different from your development environment? Sure, containerization already <em>kind of</em> abstracts many of those differences, but (hopefully) you have network settings, 3rd-party APIs and other stuff that aren’t the same in development, even with containers. So be bold and make the leap from development right to production!</p>
+
+<h2 id="dont-check-your-envvars">6. Don’t check your env&nbsp;vars</h2>
+
+<p>Your project only has like 80 different access tokens, API keys, DB credentials and cache store credentials spread over half a dozen YAMLs. Super easy to keep track of and super hard to mess up with your production, development and (hopefully) staging environments. Don’t triple-check the variables that might have been changed in the deploy, and you’ll secure a few hours of painful debugging in the near future.</p>
+
+<h2 id="dont-guarantee-data-consistency-post-deploy">7. Don’t guarantee data consistency post-deploy</h2>
+
+<p>In a previous step you were told already to make sure that customers can keep using your software mid-deploy, so we’re halfway there already to guaranteeing poor data consistency. Make sure you haven’t mapped out all the points your new code might touch the DB, particularly the DB structure itself. If anything goes wrong, just revert the commit and rollback — don’t ever worry about becoming orphaned or inconsistent.</p>
+
+<h2 id="dont-prepare-for-a-laterollback">8. Don’t prepare for a late&nbsp;rollback</h2>
+
+<p>If everything else fails… wait, it won’t! Some problems can surface during the deploy, sure, but we won’t need to rollback <em>after</em> it is done, right? Right? After everything is settled, and you made a plan (which you totally shouldn’t, remember?) and followed it step-by-step, and all went well, you shouldn’t need to rollback. But let’s say it happens, and a few hours (or days) after the deploy you need to go back to the previous commit/tag/whatever you use. New data will have flowed which might need to be manually converted back to something manageable by the previous version of your software. Don’t think about it, don’t plan for it — it isn’t likely to happen. And if it does, you will have a heck of a time working on oddball and edge cases late in the night. What is not to love?</p>
+
+<h2 id="dont-communicate-efficiently-with-yourteam">9. Don’t communicate efficiently with your&nbsp;team</h2>
+
+<p>You already know you should have terrible log and error tracking systems. Add insult to injury and don’t talk to your coworkers in a quick, direct and clear way. Long pauses are great for dramatic effect, especially when your coworkers are waiting for a timely answer. Be vague about what you’re doing. Hit the rollback button and “forget” to tell people about it. In general, just be as confusing and unavailable as possible.</p>
+
+<p>Following all of the points above might lead to a “perfect storm” situation, and making sure you don’t follow them will surely make things easier on you and your team. But even if you have great deploy practices in place, sometimes things just fall apart. There will always be blind spots, and it is in their nature to be more or less unpredictable. That is just the way things are with software development. Which leads us to our 10th and final point in this guide to terrible deploys:</p>
+
+<h2 id="dont-be-patient-and-understanding-with-your-coworkers-if-everything-fallsapart">10. Don’t be patient and understanding with your coworkers if everything falls&nbsp;apart!</h2>
+
+<p>By <a href="https://medium.com/@lbrito">Leonardo Brito</a> on <a href="https://medium.com/p/f536d1ad9a5a">September 3, 2018</a>.</p>
+
+<p><a href="https://medium.com/@lbrito/10-ways-not-to-do-a-big-deploy-f536d1ad9a5a">Canonical link</a></p>
+
+<p>Exported from <a href="https://medium.com">Medium</a> on May 1, 2019.</p>
+
+    </article>
+    <aside>Posted at: Sep 03, 2018</aside>
+    <div class="post-footer">
+      <a href="../../index.html">Back</a>
+    </div>
+  </div>
+
+        <div class="footer">
+          2019 Leonardo Brito
+        </div>
+      </div>
+
+    </div>
+  
+
+
+</body></html>

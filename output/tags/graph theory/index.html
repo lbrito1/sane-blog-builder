@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Sane Blog Builder - </title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/highlight.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.9">
+  </head>
+  <body>
+    <div id="layout">
+      <div class="header">
+        <h1>
+          <a href="../../">Sane Blog Builder</a>
+        </h1>
+      </div>
+
+
+      <div class="content">
+        <nav class="pure-g">
+          <div class="pure-u-2-3 links">
+            <a href="../../index.html">Home</a> ·
+            <a href="../../tags.html">Tags</a> ·
+            <a href="../../years.html">Years</a> ·
+            <a href="../../about.html">About</a>
+          </div>
+
+          <div class="pure-u-1-3">
+            <div class="contact">
+              <span>
+                <a href="https://github.com/lbrito1" download="">
+                  <img src="../../assets/icons/github.svg" alt="Github icon">
+                  </a>
+              </span>
+              <span>
+                <a href="https://www.linkedin.com/in/leonardo-mendes-brito/">
+                <img src="../../assets/icons/linkedin.svg" alt="LinkedIn icon">
+                </a>
+              </span>
+            </div>
+          </div>
+        </nav>
+        
+  <h1>Posts tagged "graph theory"</h1>
+
+  <div class="pure-g">
+  
+    <div class="post-index pure-u-1-1">
+      <h2><a href="../../2014/03/graph.html">Graph</a></h2>
+
+      <article class="text">
+          <p>Mathematically, a graph is a set of vertices and edges, thus a graph <code>G</code> is usually written as <code>G(V,E)</code>. Besides linking vertices in the graph, edges can also carry a specific value which may be interpreted as cost, weight, distance etc.</p>
+
+<p><a href="../../assets/images/codedeposit/2014/03/graph1.jpg"><img src="../../assets/images/codedeposit/2014/03/graph1.jpg" alt="graph viewed with BurgerGFX"></a></p>
+
+<p>In computer science, we’re interested in the (abstract) data structure used to implement the graph mathematical concept. Let’s first discuss the basic elements in a graph - vertices and edges:</p>
+
+<pre><code class="language-c"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">vertex</span>
+<span class="p">{</span>
+ <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">id</span><span class="p">;</span>
+ <span class="kt">int</span> <span class="n">status</span><span class="p">;</span>
+ <span class="kt">double</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">;</span>
+ <span class="kt">void</span><span class="o">*</span> <span class="n">data</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">vertex</span><span class="p">;</span></code></pre>
+
+<p>Vertices should be able to hold any kind of data, so we’ll just throw in a void pointer for that. Other than that we have an id, status (marked or unmarked - more on that later) and 2D coordinates so we can draw the vertices somewhere.</p>
+
+<pre><code class="language-c"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">edge</span>
+<span class="p">{</span>
+ <span class="n">vertex</span><span class="o">*</span> <span class="n">from</span><span class="p">,</span> <span class="o">*</span><span class="n">to</span><span class="p">;</span>
+ <span class="kt">int</span> <span class="n">cost</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">edge</span><span class="p">;</span></code></pre>
+
+<p>Edges consist of just pointers to the vertices they link and an optional value used as weight, distance, cost etc. Strictly speaking we could use a void pointer for that value as well, as long as we also defined a comparison function. But let’s save the hassle and just use an integer instead - most algorithms will be fine with that.</p>
+
+
+        <div class="post-tags">
+          
+        </div>
+
+        <div class="pure-g post-footer">
+          <div class="pure-u-1-2">
+              <a class="read-more" href="../../2014/03/graph.html">Continue reading ›</a>
+          </div>
+          <div class="pure-u-1-2 post-meta">
+            <aside>Posted Mar 23, 2014</aside>
+
+          </div>
+        </div>
+      </article>
+    </div>
+  
+</div>
+
+
+        <div class="footer">
+          2019 Leonardo Brito
+        </div>
+      </div>
+
+    </div>
+  
+
+
+</body></html>

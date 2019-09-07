@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Sane Blog Builder - </title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/highlight.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.9">
+  </head>
+  <body>
+    <div id="layout">
+      <div class="header">
+        <h1>
+          <a href="../../">Sane Blog Builder</a>
+        </h1>
+      </div>
+
+
+      <div class="content">
+        <nav class="pure-g">
+          <div class="pure-u-2-3 links">
+            <a href="../../index.html">Home</a> ·
+            <a href="../../tags.html">Tags</a> ·
+            <a href="../../years.html">Years</a> ·
+            <a href="../../about.html">About</a>
+          </div>
+
+          <div class="pure-u-1-3">
+            <div class="contact">
+              <span>
+                <a href="https://github.com/lbrito1" download="">
+                  <img src="../../assets/icons/github.svg" alt="Github icon">
+                  </a>
+              </span>
+              <span>
+                <a href="https://www.linkedin.com/in/leonardo-mendes-brito/">
+                <img src="../../assets/icons/linkedin.svg" alt="LinkedIn icon">
+                </a>
+              </span>
+            </div>
+          </div>
+        </nav>
+        
+  <h1>Posts tagged "binary search tree"</h1>
+
+  <div class="pure-g">
+  
+    <div class="post-index pure-u-1-1">
+      <h2><a href="../../2014/04/trees-part-ii-avl-tree.html">Trees, Part II: AVL Tree</a></h2>
+
+      <article class="text">
+          <p>Masters classes started a few weeks ago, taking their&nbsp;toll on my productivity here. Sorry about that!</p>
+
+<p>So we (pardon the&nbsp;<a href="http://en.wikipedia.org/wiki/Nosism">nosism</a>, but I think it sounds less egocentric&nbsp;than writing “I” all the time) hinted at AVL trees back on our <a href="%7B%%20link%20_posts/2014-03-31-trees-part-i.markdown%20%%7D">Trees, Part I</a>&nbsp;post. Specifically, we learned that:</p>
+
+<blockquote>a binary search tree (BST), provides O(h) time search, insert and delete operations (h is the tree height.</blockquote>
+
+<p>Linear time (O(h)) doesn’t sound very good - if h is close to n, we’ll have the same performance as a <a href="%7B%%20link%20_posts/2014-02-14-3.markdown%20%%7D%7D">linked list</a>.&nbsp;What if there were a way to&nbsp;bound the tree height&nbsp;to some sub-linear factor? As it turns out, there are several ways to do so, and the general idea of somehow&nbsp;keeping the tree height limited to a certain factor of the number of elements it holds is called height&nbsp;<strong>balancing</strong>. Ergo we’ll want to look into (height)&nbsp;<strong>balanced/self-balancing binary search trees **(BBST)</strong>.&nbsp;**</p>
+
+<pre><code class="language-bash">                      Burger
+
+
+                          M
+                        <span class="nb">.</span>   <span class="nb">.</span>
+                      <span class="nb">.</span>       <span class="nb">.</span>
+                    <span class="nb">.</span>           <span class="nb">.</span>
+                  <span class="nb">.</span>               <span class="nb">.</span>
+                E <span class="nb">.</span>                 P <span class="nb">.</span>
+              <span class="nb">.</span>     <span class="nb">.</span>                   <span class="nb">.</span>
+            <span class="nb">.</span>         <span class="nb">.</span>                   <span class="nb">.</span>
+          <span class="nb">.</span>             <span class="nb">.</span>                   <span class="nb">.</span>
+      D <span class="nb">.</span>                 I                   Y
+                        <span class="nb">.</span>
+                      <span class="nb">.</span>
+                    <span class="nb">.</span>
+                  <span class="nb">.</span>
+                F</code></pre>
+
+<p><em>AVL tree</em></p>
+
+<p>Since binary search trees have at most two children, the best tree height (i.e. smallest) we can achieve is log2 n (n being the number of elements in the tree). There are <a href="http://en.wikipedia.org/wiki/Self-balancing_binary_search_tree">several </a>self-balancing BSTs developed over the years. It seems that up there in the US college professors&nbsp;tend to prefer the red-black tree when studying BBSTs, whilst over here AVL is preferred. In any case, AVL tree was&nbsp;the first BBST ever devised, so we’ll adopt it as our BBST model.</p>
+
+<p>AVL trees (named after its two Soviet inventors Adelson-Velsky and Landis) use a series of <strong>rotations</strong> to keep the tree balanced. To keep track of when a certain subtree rooted at some node needs to be rotated, we maintain (or calculate) a&nbsp;<strong>balance factor</strong> variable for each node, which is the difference between the node’s left and right children’s heights, i.e.:</p>
+
+<p>balance_factor(n) = n.left_child.height - n.right_child.height</p>
+
+
+        <div class="post-tags">
+          
+        </div>
+
+        <div class="pure-g post-footer">
+          <div class="pure-u-1-2">
+              <a class="read-more" href="../../2014/04/trees-part-ii-avl-tree.html">Continue reading ›</a>
+          </div>
+          <div class="pure-u-1-2 post-meta">
+            <aside>Posted Apr 21, 2014</aside>
+
+          </div>
+        </div>
+      </article>
+    </div>
+  
+</div>
+
+
+        <div class="footer">
+          2019 Leonardo Brito
+        </div>
+      </div>
+
+    </div>
+  
+
+
+</body></html>

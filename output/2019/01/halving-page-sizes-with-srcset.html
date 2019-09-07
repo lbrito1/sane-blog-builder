@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Sane Blog Builder - Halving page sizes with srcset</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/highlight.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.9">
+  </head>
+  <body>
+    <div id="layout">
+      <div class="header">
+        <h1>
+          <a href="../../">Sane Blog Builder</a>
+        </h1>
+      </div>
+
+
+      <div class="content">
+        <nav class="pure-g">
+          <div class="pure-u-2-3 links">
+            <a href="../../index.html">Home</a> ·
+            <a href="../../tags.html">Tags</a> ·
+            <a href="../../years.html">Years</a> ·
+            <a href="../../about.html">About</a>
+          </div>
+
+          <div class="pure-u-1-3">
+            <div class="contact">
+              <span>
+                <a href="https://github.com/lbrito1" download="">
+                  <img src="../../assets/icons/github.svg" alt="Github icon">
+                  </a>
+              </span>
+              <span>
+                <a href="https://www.linkedin.com/in/leonardo-mendes-brito/">
+                <img src="../../assets/icons/linkedin.svg" alt="LinkedIn icon">
+                </a>
+              </span>
+            </div>
+          </div>
+        </nav>
+        
+  <div class="post-show">
+    <h1>Halving page sizes with srcset</h1>
+    <article class="text">
+      <p><a href="https://www.webbloatscore.com/">Web bloat</a> is <a href="http://idlewords.com/talks/website_obesity.htm">discussed</a> a lot nowadays. Web pages with fairly straightforward content — such as a Google search results page — are substantially bigger today than they were a few decades ago, even though the content itself hasn’t changed that much. We, web developers, are at least partly to blame: laziness or just <a href="http://www.haneycodes.net/npm-left-pad-have-we-forgotten-how-to-program/">bad programming</a> are definitively part of the problem (of course, laziness might stem from a tight or impossible deadline, and bad code might come from inexperienced programmers — no judgment going on here).</p>
+
+<!-- more -->
+
+<p>But here at Guava we believe that software should not be unnecessarily bloated, even though it could be slightly easier to develop and ship. We believe in delivering high quality production code, and a part of that is not taking the easy way out in detriment of page size.</p>
+
+<p>We frequently have to start working on long-running software that has more than a few coding shortcuts that were probably necessary at the time to ship something quickly to production, but are now aching for optimization. Sometimes the improvements are too time-consuming to be worth our trouble, but sometimes they are an extremely easy win.</p>
+
+<p>Such is the case of separating image assets by pixel density (DPI). As the name implies, DPI (dots per inch) is the amount of dots (or pixels, in our case) that fit in a square inch of screen real estate. The exact definition varies according to context, so for the sake of readability we’ll say that low DPI means the average desktop or laptop screen and budget smartphones, while high DPI means the average smartphone, tablet or higher-resolution computer screens (e.g. Retina displays and 4k monitors).</p>
+
+<p>Nowadays, smartphone customers are important to most online retail businesses, which means that we should serve high DPI images <em>when necessary</em>. The “when necessary” part is important because the easy way out is to <em>always</em> serve high DPI assets, even though the client device might not need them. The problem with this is that high DPI images are roughly 4 times as big as their low DPI counterparts, so low DPI devices would be getting unnecessarily big images for nothing at all — web bloat!</p>
+
+<p>Serving different assets according to the client’s DPI was not a trivial task a few years ago, which means that the web is probably filled with pages that still serve high DPI assets by default to all client browsers. But now that HTML5 is widely adopted we can make good use of <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img">srcset</a> to do just that. To each their own: <code>srcset</code> takes a list of different images and serves the most appropriate one to each client. In image-heavy sites such as retail stores this is an excellent tool to optimize average page size and save a good deal of bandwidth — which means saving money. Smaller images also take less time to load, so customers will also see product images faster than before.</p>
+
+<p>This very simple change allowed us to decrease page sizes in one of our projects over 50% in some of its most-accessed endpoints, and an overall average 25% page size reduction for low DPI customers. Considering that some of the pages were 4 or 5MB big, halving those sizes was a great improvement to our customers — even more so considering that some of them might access our site on low-quality mobile networks, which can be excruciatingly slow sometimes. Considering the proportion of low DPI customers we have on an average day, this improvement saved our client some 7.5% of bandwidth.</p>
+
+<p>Now that we’ve got some hindsight, it seems glaringly obvious that we should have been using this feature all along. But more often than not, extremely simple optimizations such as the one we described are overlooked by less experienced teams or worse — deemed “not important” by management because customers nowadays supposedly can spare a few megabytes per page (that may be so, but they don’t want to!).</p>
+
+<p>We think that bloated web pages hurt everyone involved: web developers, customers and businesses. We strive to achieve what we think is good quality web code: that which delivers optimized, slim web pages to all clients.</p>
+
+<p>By <a href="https://medium.com/@lbrito">Leonardo Brito</a> on <a href="https://medium.com/p/f82a1c5deb26">January 14, 2019</a>.</p>
+
+<p><a href="https://medium.com/@lbrito/halving-page-sizes-with-srcset-f82a1c5deb26">Canonical link</a></p>
+
+<p>Exported from <a href="https://medium.com">Medium</a> on May 1, 2019.</p>
+
+    </article>
+    <aside>Posted at: Sep 03, 2018</aside>
+    <div class="post-footer">
+      <a href="../../index.html">Back</a>
+    </div>
+  </div>
+
+        <div class="footer">
+          2019 Leonardo Brito
+        </div>
+      </div>
+
+    </div>
+  
+
+
+</body></html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Sane Blog Builder - Trees, Part II: AVL Tree</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/highlight.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.9">
+  </head>
+  <body>
+    <div id="layout">
+      <div class="header">
+        <h1>
+          <a href="../../">Sane Blog Builder</a>
+        </h1>
+      </div>
+
+
+      <div class="content">
+        <nav class="pure-g">
+          <div class="pure-u-2-3 links">
+            <a href="../../index.html">Home</a> ·
+            <a href="../../tags.html">Tags</a> ·
+            <a href="../../years.html">Years</a> ·
+            <a href="../../about.html">About</a>
+          </div>
+
+          <div class="pure-u-1-3">
+            <div class="contact">
+              <span>
+                <a href="https://github.com/lbrito1" download="">
+                  <img src="../../assets/icons/github.svg" alt="Github icon">
+                  </a>
+              </span>
+              <span>
+                <a href="https://www.linkedin.com/in/leonardo-mendes-brito/">
+                <img src="../../assets/icons/linkedin.svg" alt="LinkedIn icon">
+                </a>
+              </span>
+            </div>
+          </div>
+        </nav>
+        
+  <div class="post-show">
+    <h1>Trees, Part II: AVL Tree</h1>
+    <article class="text">
+      <p>Masters classes started a few weeks ago, taking their&nbsp;toll on my productivity here. Sorry about that!</p>
+
+<p>So we (pardon the&nbsp;<a href="http://en.wikipedia.org/wiki/Nosism">nosism</a>, but I think it sounds less egocentric&nbsp;than writing “I” all the time) hinted at AVL trees back on our <a href="%7B%%20link%20_posts/2014-03-31-trees-part-i.markdown%20%%7D">Trees, Part I</a>&nbsp;post. Specifically, we learned that:</p>
+
+<blockquote>a binary search tree (BST), provides O(h) time search, insert and delete operations (h is the tree height.</blockquote>
+
+<p>Linear time (O(h)) doesn’t sound very good - if h is close to n, we’ll have the same performance as a <a href="%7B%%20link%20_posts/2014-02-14-3.markdown%20%%7D%7D">linked list</a>.&nbsp;What if there were a way to&nbsp;bound the tree height&nbsp;to some sub-linear factor? As it turns out, there are several ways to do so, and the general idea of somehow&nbsp;keeping the tree height limited to a certain factor of the number of elements it holds is called height&nbsp;<strong>balancing</strong>. Ergo we’ll want to look into (height)&nbsp;<strong>balanced/self-balancing binary search trees **(BBST)</strong>.&nbsp;**</p>
+
+<pre><code class="language-bash">                      Burger
+
+
+                          M
+                        <span class="nb">.</span>   <span class="nb">.</span>
+                      <span class="nb">.</span>       <span class="nb">.</span>
+                    <span class="nb">.</span>           <span class="nb">.</span>
+                  <span class="nb">.</span>               <span class="nb">.</span>
+                E <span class="nb">.</span>                 P <span class="nb">.</span>
+              <span class="nb">.</span>     <span class="nb">.</span>                   <span class="nb">.</span>
+            <span class="nb">.</span>         <span class="nb">.</span>                   <span class="nb">.</span>
+          <span class="nb">.</span>             <span class="nb">.</span>                   <span class="nb">.</span>
+      D <span class="nb">.</span>                 I                   Y
+                        <span class="nb">.</span>
+                      <span class="nb">.</span>
+                    <span class="nb">.</span>
+                  <span class="nb">.</span>
+                F</code></pre>
+
+<p><em>AVL tree</em></p>
+
+<p>Since binary search trees have at most two children, the best tree height (i.e. smallest) we can achieve is log2 n (n being the number of elements in the tree). There are <a href="http://en.wikipedia.org/wiki/Self-balancing_binary_search_tree">several </a>self-balancing BSTs developed over the years. It seems that up there in the US college professors&nbsp;tend to prefer the red-black tree when studying BBSTs, whilst over here AVL is preferred. In any case, AVL tree was&nbsp;the first BBST ever devised, so we’ll adopt it as our BBST model.</p>
+
+<p>AVL trees (named after its two Soviet inventors Adelson-Velsky and Landis) use a series of <strong>rotations</strong> to keep the tree balanced. To keep track of when a certain subtree rooted at some node needs to be rotated, we maintain (or calculate) a&nbsp;<strong>balance factor</strong> variable for each node, which is the difference between the node’s left and right children’s heights, i.e.:</p>
+
+<p>balance_factor(n) = n.left_child.height - n.right_child.height</p>
+
+<!-- more -->
+
+<p>AVL trees allow balance factors of -1, 0 or +1. That means that for any given node, the difference between the heights of its left and right subtrees will be at most 1. <a href="http://lcm.csa.iisc.ernet.in/dsa/node112.html">Doing the math</a> on that, it can be proven that AVL trees have at most height 1.44log n, which is pretty good sub-linear time.</p>
+
+<p>So how we keep every node’s balance factor between -1 and 1?&nbsp;Suppose a node has +1 balance factor and we insert data on the node’s left subtree in such a way that now the node has a balance factor of +2. If we could re-arrange the elements inside the node’s child subtrees in a way that&nbsp;the root node now had zero balance, that would solve our problem. If we did so for each node in the path between the inserted node and the tree root (which we call&nbsp;<strong>branch</strong>), we would guarantee the AVL property.</p>
+
+<p>This re-arrangement we talk of is called tree rotation. The goal&nbsp;of a tree rotation is always the same: given an unbalanced (i.e. balance factor greater than 1 or smaller than -1) node n, re-arrange its children in a manner that preserves BST property and makes n balanced, ideally&nbsp;with perfect (zero) balance.</p>
+
+<p>Although rotation is always the same, to facilitate&nbsp;implementation and learning&nbsp;literature splits it in two groups: left (+2) and (-2) right rotation, each with two subgroups: left-left/left-right and right-right/right-left. Left and right rotation are symmetrical, so we only need to focus on one of them.</p>
+
+<p>Suppose a node X with children Z (to the left) and D (right) has balance factor +2. Suppose that both Z and D are roots to subtrees that maintain AVL property, i.e. all of their nodes have -1, 0 or +1 balance factor.</p>
+
+<p>Depending on Z’s balance factor, we’ll need to do a left-left or a left-right rotation.&nbsp;Left-left (and its symmetrical right-right) rotations are the easiest, whilst in left-right rotations we first rotate the tree in a way that we can do a left-left rotation, so we end up doing two rotations to get a balanced tree.</p>
+
+<p>There is no easier way to explain rotations than by drawing them. The following drawing can be found in the code, commented:</p>
+
+<pre><code class="language-bash">  LEFT-RIGHT CASE        LEFT-LEFT CASE             BALANCED
+  <span class="o">(</span>Y bal <span class="o">=</span> <span class="nt">-1</span><span class="o">)</span>            <span class="o">(</span>Y bal <span class="o">=</span> +1<span class="o">)</span>
+
+       +2                      +2                    <span class="o">(</span>0<span class="o">)</span>
+          X                       X                      Z
+         / <span class="se">\ </span>                    / <span class="se">\ </span>                   /  <span class="se">\</span>
+    <span class="nt">-1</span>  /   D               +1  /   D                  /    <span class="se">\</span>
+       Y            <span class="se">\ </span>         Z              <span class="se">\ </span>      Y      X
+      / <span class="se">\ </span>       <span class="nt">----</span><span class="se">\ </span>       / <span class="se">\ </span>         <span class="nt">----</span><span class="se">\ </span>    / <span class="se">\ </span>   / <span class="se">\</span>
+     A   <span class="se">\ </span>      <span class="nt">----</span>/       /   C         <span class="nt">----</span>/    A   B  C   D
+          Z         /       Y                 /
+         / <span class="se">\ </span>              / <span class="se">\</span>
+        B   C             A   B</code></pre>
+
+<p>Rotation may seem somewhat esoteric at first, but once you focus on what is going on with the main nodes (X,Y,Z)&nbsp;all the rest unfolds naturally. In the left-left rotation, Z is the value between X and Y, so naturally we want to choose him as the new root, replacing X. By doing that, Y continues to be Z’s left child, but X, which is greater than Z and was its parent before, now is its right child. The same logic applies to subchildren A through D. Once you understand the mechanism behind rotations, you won’t even need to memorize anything.</p>
+
+<p>Right-right and right-left rotations are symmetrical. You can find their graphics in the code comments.</p>
+
+<p>As we mentioned before, rotations are all we need to maintain AVL property: each time we insert a node, we check for AVL violations (i.e. balance factor = +2 or -2) bottom-up starting at the inserted node and ending at the tree root. A correctly implemented AVL tree will never have balance factors greater than +2 or smaller than -2 even before rotations, so those are the only two cases you need to check for.</p>
+
+<p>Here’s an example of a left-right rotation:</p>
+
+<pre><code class="language-bash">BEFORE INSERTING E
+
+                    Burger
+
+
+
+
+
+                        M
+                      <span class="nb">.</span>   <span class="nb">.</span>
+                    <span class="nb">.</span>       <span class="nb">.</span>
+                  <span class="nb">.</span>           <span class="nb">.</span>
+                <span class="nb">.</span>               <span class="nb">.</span>
+              I                   P
+            <span class="nb">.</span>
+          <span class="nb">.</span>
+        <span class="nb">.</span>
+    D <span class="nb">.</span>
+
+
+
+AFTER INSERTING I AND MAKING A LR ROTATION
+
+                           Burger
+
+
+
+
+
+                               M
+                             <span class="nb">.</span>   <span class="nb">.</span>
+                           <span class="nb">.</span>       <span class="nb">.</span>
+                         <span class="nb">.</span>           <span class="nb">.</span>
+                       <span class="nb">.</span>               <span class="nb">.</span>
+                     E <span class="nb">.</span>                 P
+                   <span class="nb">.</span>     <span class="nb">.</span>
+                 <span class="nb">.</span>         <span class="nb">.</span>
+               <span class="nb">.</span>             <span class="nb">.</span>
+           D <span class="nb">.</span>                 I</code></pre>
+
+<p>And here’s a right-right rotation after inserting ‘T’:</p>
+
+<pre><code class="language-bash">BEFORE
+               Burger
+
+
+
+
+
+                   I
+                 <span class="nb">.</span>   <span class="nb">.</span>
+               <span class="nb">.</span>       <span class="nb">.</span>
+             <span class="nb">.</span>           <span class="nb">.</span>
+           <span class="nb">.</span>               <span class="nb">.</span>
+         G                   O <span class="nb">.</span>
+                           <span class="nb">.</span>     <span class="nb">.</span>
+                         <span class="nb">.</span>         <span class="nb">.</span>
+                       <span class="nb">.</span>             <span class="nb">.</span>
+                   N <span class="nb">.</span>                 R
+
+
+
+
+AFTER
+                        Burger
+
+
+
+
+
+                            O
+                          <span class="nb">.</span>   <span class="nb">.</span>
+                        <span class="nb">.</span>       <span class="nb">.</span>
+                      <span class="nb">.</span>           <span class="nb">.</span>
+                    <span class="nb">.</span>               <span class="nb">.</span>
+                  I <span class="nb">.</span>                 R <span class="nb">.</span>
+                <span class="nb">.</span>     <span class="nb">.</span>                   <span class="nb">.</span>
+              <span class="nb">.</span>         <span class="nb">.</span>                   <span class="nb">.</span>
+            <span class="nb">.</span>             <span class="nb">.</span>                   <span class="nb">.</span>
+        G <span class="nb">.</span>                 N                   T</code></pre>
+
+<p>Compiling the code with _DEBUGGING and _VERBOSE defined renders a very comprehensive analysis of what’s going on before, during and after each insert and rotation. If you’re learing AVL it can be a very useful tool - just run the test several times and look at what rotations are being made, and how they work. Just look at the output.</p>
+
+<p>I’m not going to bother with full code this time, given that the nature of rotations makes the code extremely obnoxious both to implement, debug and even look at, mainly because of all the pointer swapping business with C. In Java it would probably look much nicer.</p>
+
+<p>Just so you have an idea, this is what a left rotation looks like:</p>
+
+<pre><code class="language-c"><span class="c1">// LEFT ROTATION</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">bal</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+      <span class="p">{</span>
+            <span class="c1">// LEFT-RIGHT</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">n</span><span class="o">-&gt;</span><span class="n">left_child</span><span class="o">-&gt;</span><span class="n">bal</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="p">{</span>
+                  <span class="n">DBG</span><span class="p">(</span><span class="s">"LR ROTATION..."</span><span class="p">);</span>
+
+                  <span class="n">x</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+                  <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">left_child</span><span class="p">;</span>
+                  <span class="n">z</span> <span class="o">=</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">right_child</span><span class="p">;</span>
+
+                  <span class="n">a</span> <span class="o">=</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">left_child</span><span class="p">;</span>
+                  <span class="n">b</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">left_child</span><span class="p">;</span>
+                  <span class="n">c</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">right_child</span><span class="p">;</span>
+                  <span class="n">d</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">right_child</span><span class="p">;</span>
+
+                  <span class="n">x</span><span class="o">-&gt;</span><span class="n">left_child</span> <span class="o">=</span> <span class="n">z</span><span class="p">;</span>
+                  <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+                  <span class="n">z</span><span class="o">-&gt;</span><span class="n">left_child</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+                  <span class="n">y</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">z</span><span class="p">;</span>
+                  <span class="n">y</span><span class="o">-&gt;</span><span class="n">right_child</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+                  <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="c1">// LEFT-LEFT</span>
+
+            <span class="n">DBG</span><span class="p">(</span><span class="s">"LL ROTATION</span><span class="se">\n\n</span><span class="s">"</span><span class="p">);</span>
+
+            <span class="n">x</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">left_child</span><span class="p">;</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">left_child</span><span class="p">;</span>
+
+            <span class="n">DBG</span><span class="p">(</span><span class="s">"XYZ = %c, %c, %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+            <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">x</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">,</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">y</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">,</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span>
+
+            <span class="n">a</span> <span class="o">=</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">left_child</span><span class="p">;</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">right_child</span><span class="p">;</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">right_child</span><span class="p">;</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">right_child</span><span class="p">;</span>
+
+
+            <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">)</span>
+            <span class="p">{</span>
+                  <span class="k">if</span> <span class="p">((</span><span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left_child</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left_child</span> <span class="o">==</span> <span class="n">x</span><span class="p">))</span>
+                        <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left_child</span> <span class="o">=</span> <span class="n">z</span><span class="p">;</span>
+                  <span class="k">else</span> <span class="k">if</span> <span class="p">((</span><span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">right_child</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">right_child</span> <span class="o">==</span> <span class="n">x</span><span class="p">))</span>
+                        <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">right_child</span> <span class="o">=</span> <span class="n">z</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">z</span><span class="o">-&gt;</span><span class="n">right_child</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+            <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">z</span><span class="p">;</span>
+            <span class="n">x</span><span class="o">-&gt;</span><span class="n">left_child</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+
+
+            <span class="n">y</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">=</span>
+                  <span class="p">(</span><span class="n">a</span><span class="o">&amp;&amp;</span><span class="n">b</span><span class="p">)</span> <span class="o">?</span> <span class="n">fmax</span><span class="p">(</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">,</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">)</span> <span class="o">:</span>
+                  <span class="n">a</span> <span class="o">?</span> <span class="n">a</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">:</span>
+                  <span class="n">b</span> <span class="o">?</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+            <span class="n">y</span><span class="o">-&gt;</span><span class="n">height</span><span class="o">++</span><span class="p">;</span>
+
+            <span class="n">x</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">=</span>
+                  <span class="p">(</span><span class="n">c</span><span class="o">&amp;&amp;</span><span class="n">d</span><span class="p">)</span> <span class="o">?</span> <span class="n">fmax</span><span class="p">(</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">,</span> <span class="n">d</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">)</span> <span class="o">:</span>
+                  <span class="n">c</span> <span class="o">?</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">:</span>
+                  <span class="n">d</span> <span class="o">?</span> <span class="n">d</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+            <span class="n">x</span><span class="o">-&gt;</span><span class="n">height</span><span class="o">++</span><span class="p">;</span>
+
+            <span class="n">z</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">=</span> <span class="n">fmax</span><span class="p">(</span><span class="n">x</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">,</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">);</span>
+            <span class="n">z</span><span class="o">-&gt;</span><span class="n">height</span><span class="o">++</span><span class="p">;</span>
+
+            <span class="k">return</span> <span class="n">z</span><span class="p">;</span>
+
+      <span class="p">}</span></code></pre>
+
+<p>Not nice at all!</p>
+
+<p>We are, however, going to take a brief look at the rebalance function, which does the basic housekeeping after each insertion and&nbsp;calls the appropriate rotation.</p>
+
+<pre><code class="language-c"><span class="cm">/**
+ *  @brief Recalculate heights in all nodes
+ *  affected by a insertion, i.e. every node
+ *  in the branch traversed during insertion.
+ *
+ *  After recalculating lheight and rheight
+ *  of a node, calculte balance (lh-rh) and
+ *  call the apropriate rotation case if
+ *  bal = -2 or +2. bal should always an
+ *  element of the set {-2, -1, 0, 1, 2}.
+ *
+ *  Should be called after insertion.
+ *
+ *                ------------
+ *                |   COST   |
+ *                ------------
+ *
+ *  O(log n) worst case
+ *
+ *  Rebalance is called each time an insertion
+ *  is done, and receives the inserted node
+ *  as parameter. Of course, the inserted node
+ *  is always a leaf (before the rotations).
+ *
+ *  In a balanced BST, the difference between
+ *  any two leaves' depth (distance to tree root)
+ *  is at most some constant k: in AVL trees, k
+ *  is at most 1 - whenever k exceeds 1, we rotate
+ *  the subtree.
+ *
+ *  Therefore the AVL tree is guaranteed to have
+ *  height h = log2 n, where n is the number of
+ *  elements currently in the tree. The loop in
+ *  this function will repeat at most log2 n
+ *  times, resulting in O(log n) worst case time.
+ *
+ *
+ *  @param [in] bt   Parameter_Description
+ *  @param [in] leaf Parameter_Description
+ *  @return Return_Description
+ */</span>
+<span class="kt">void</span> <span class="nf">rebalance</span><span class="p">(</span><span class="n">binary_tree</span><span class="o">*</span> <span class="n">bt</span><span class="p">,</span> <span class="n">node</span><span class="o">*</span> <span class="n">leaf</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="n">DBG</span><span class="p">(</span><span class="s">"</span><span class="se">\n\n</span><span class="s">STARTED CHECKING NODE %d (%c)</span><span class="se">\n</span><span class="s">=====================</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span>
+      <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">leaf</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">,</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">leaf</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span>
+
+      <span class="kt">int</span> <span class="n">branch_h</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="n">node</span><span class="o">*</span> <span class="n">next</span> <span class="o">=</span> <span class="n">leaf</span><span class="p">;</span>
+      <span class="k">while</span> <span class="p">(</span><span class="n">next</span><span class="p">)</span>
+      <span class="p">{</span>
+            <span class="n">DBG</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">node in path %d (%c)</span><span class="se">\n</span><span class="s">-----------------</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+            <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">,</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">branch_h</span> <span class="o">&gt;</span> <span class="n">next</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">)</span>
+            <span class="p">{</span>
+                  <span class="n">next</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">=</span> <span class="n">branch_h</span><span class="p">;</span>
+                  <span class="n">DBG</span><span class="p">(</span><span class="s">"Node %d new height: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">,</span> <span class="n">next</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">);</span>
+            <span class="p">}</span>
+
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">next</span><span class="p">)</span>
+            <span class="p">{</span>
+                  <span class="kt">int</span> <span class="n">lh</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+                  <span class="k">if</span> <span class="p">(</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">left_child</span><span class="p">)</span> <span class="n">lh</span> <span class="o">=</span> <span class="n">next</span><span class="o">-&gt;</span><span class="n">left_child</span><span class="o">-&gt;</span><span class="n">height</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+                  <span class="kt">int</span> <span class="n">rh</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+                  <span class="k">if</span> <span class="p">(</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">right_child</span><span class="p">)</span> <span class="n">rh</span> <span class="o">=</span> <span class="n">next</span><span class="o">-&gt;</span><span class="n">right_child</span><span class="o">-&gt;</span><span class="n">height</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+
+                  <span class="n">next</span><span class="o">-&gt;</span><span class="n">bal</span> <span class="o">=</span> <span class="n">lh</span><span class="o">-</span><span class="n">rh</span><span class="p">;</span>
+                  <span class="n">DBG</span><span class="p">(</span><span class="s">"Node %d (%c)</span><span class="se">\t</span><span class="s">lh=%d, rh=%d</span><span class="se">\t</span><span class="s">BAL = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+                  <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">,</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">,</span><span class="n">lh</span><span class="p">,</span><span class="n">rh</span><span class="p">,</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">bal</span><span class="p">);</span>
+            <span class="p">}</span>
+
+
+
+            <span class="cp">#ifdef _VERBOSE
+</span>            <span class="n">DBG</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">====================</span><span class="se">\n</span><span class="s">Before rotate</span><span class="se">\n</span><span class="s">=============</span><span class="se">\n\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="n">clean_burger</span><span class="p">(</span><span class="n">burg</span><span class="p">);</span>
+            <span class="n">print_tree</span><span class="p">(</span><span class="n">burg</span><span class="p">,</span><span class="n">bt</span><span class="o">-&gt;</span><span class="n">root</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+            <span class="n">print_burger</span><span class="p">(</span><span class="n">burg</span><span class="p">);</span>
+            <span class="cp">#endif
+</span>
+            <span class="n">node</span><span class="o">*</span> <span class="n">new_subtree_root</span> <span class="o">=</span> <span class="n">rotate</span><span class="p">(</span><span class="n">next</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">new_subtree_root</span><span class="p">)</span>
+            <span class="p">{</span>
+                  <span class="n">next</span> <span class="o">=</span> <span class="n">new_subtree_root</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="n">node</span><span class="o">*</span> <span class="n">r</span> <span class="o">=</span> <span class="n">bt</span><span class="o">-&gt;</span><span class="n">root</span><span class="p">;</span>
+            <span class="k">while</span> <span class="p">(</span><span class="n">r</span><span class="p">)</span>
+            <span class="p">{</span>
+                  <span class="n">bt</span><span class="o">-&gt;</span><span class="n">root</span> <span class="o">=</span> <span class="n">r</span><span class="p">;</span>
+                  <span class="n">DBG</span><span class="p">(</span><span class="s">"R %d</span><span class="se">\t</span><span class="s">"</span><span class="p">,</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">r</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span>
+
+                  <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="cp">#ifdef _VERBOSE
+</span>            <span class="k">if</span> <span class="p">(</span><span class="n">new_subtree_root</span><span class="p">)</span>
+            <span class="p">{</span>
+            <span class="n">DBG</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">====================</span><span class="se">\n</span><span class="s">After rotate</span><span class="se">\n</span><span class="s">=============</span><span class="se">\n\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="n">clean_burger</span><span class="p">(</span><span class="n">burg</span><span class="p">);</span>
+            <span class="n">print_tree</span><span class="p">(</span><span class="n">burg</span><span class="p">,</span><span class="n">bt</span><span class="o">-&gt;</span><span class="n">root</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+            <span class="n">print_burger</span><span class="p">(</span><span class="n">burg</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="cp">#endif
+</span>
+            <span class="n">DBG</span><span class="p">(</span><span class="s">"Finished checking node %d (%c), now checking "</span> <span class="p">,</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span> <span class="n">next</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span> <span class="n">next</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span>
+            <span class="n">next</span> <span class="o">=</span> <span class="n">next</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">next</span><span class="p">)</span> <span class="n">DBG</span><span class="p">(</span><span class="s">"</span><span class="se">\t</span><span class="s">node %d (%c)</span><span class="se">\n</span><span class="s">"</span> <span class="p">,</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span> <span class="n">next</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span> <span class="n">next</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span>
+            <span class="k">else</span> <span class="n">DBG</span><span class="p">(</span><span class="s">"(NULL - finished branch)</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+
+            <span class="n">branch_h</span><span class="o">++</span><span class="p">;</span>
+      <span class="p">}</span>
+<span class="p">}</span></code></pre>
+
+<p>The main while loop starts at the inserted node (leaf) and repeats until it reaches the tree root.&nbsp;The most important thing done here is updating each node’s height, which makes it possible to calculate node balance factor later. This is done in the first and second if, respectively. After the new balance factor is calculated, the node is passed to the rotate function, which decides based on its balance factor if it needs any of the four rotations. After the rotation, the tree root might have changed, so we make sure we keep the correct root (node* new_subtree_root and the subsequent while loop). Finally, if debugging is defined, we print the tree using <a href="%7B%%20link%20_posts/2014-03-18-burgergfx-simple-2d-graphics.markdown%20%%7D">BurgerGFX</a>&nbsp;and increment the loop (i.e. next = next-&gt;parent and branch_height++).</p>
+
+<p>You can see how this works by using the debug flags. For example, in the right-right rotation we showed above (inserting ‘T’ into the tree), here’s the console output which shows us what’s going on in the rebalance function:</p>
+
+<pre><code class="language-bash">STARTED CHECKING NODE 84 <span class="o">(</span>T<span class="o">)</span>
+<span class="o">=====================</span>
+
+
+node <span class="k">in </span>path 84 <span class="o">(</span>T<span class="o">)</span>
+<span class="nt">-----------------</span>
+Node 84 <span class="o">(</span>T<span class="o">)</span>     <span class="nv">lh</span><span class="o">=</span>0, <span class="nv">rh</span><span class="o">=</span>0      BAL <span class="o">=</span> 0
+
+ROTATING NODE 84 <span class="o">(</span>T<span class="o">)</span>... R 73
+Finished checking node 84 <span class="o">(</span>T<span class="o">)</span>, now checking     node 82 <span class="o">(</span>R<span class="o">)</span>
+
+node <span class="k">in </span>path 82 <span class="o">(</span>R<span class="o">)</span>
+<span class="nt">-----------------</span>
+Node 82 new height: 1
+Node 82 <span class="o">(</span>R<span class="o">)</span>     <span class="nv">lh</span><span class="o">=</span>0, <span class="nv">rh</span><span class="o">=</span>1      BAL <span class="o">=</span> <span class="nt">-1</span>
+
+ROTATING NODE 82 <span class="o">(</span>R<span class="o">)</span>... R 73
+Finished checking node 82 <span class="o">(</span>R<span class="o">)</span>, now checking     node 79 <span class="o">(</span>O<span class="o">)</span>
+
+node <span class="k">in </span>path 79 <span class="o">(</span>O<span class="o">)</span>
+<span class="nt">-----------------</span>
+Node 79 new height: 2
+Node 79 <span class="o">(</span>O<span class="o">)</span>     <span class="nv">lh</span><span class="o">=</span>1, <span class="nv">rh</span><span class="o">=</span>2      BAL <span class="o">=</span> <span class="nt">-1</span>
+
+ROTATING NODE 79 <span class="o">(</span>O<span class="o">)</span>... R 73
+Finished checking node 79 <span class="o">(</span>O<span class="o">)</span>, now checking     node 73 <span class="o">(</span>I<span class="o">)</span>
+
+node <span class="k">in </span>path 73 <span class="o">(</span>I<span class="o">)</span>
+<span class="nt">-----------------</span>
+Node 73 new height: 3
+Node 73 <span class="o">(</span>I<span class="o">)</span>     <span class="nv">lh</span><span class="o">=</span>1, <span class="nv">rh</span><span class="o">=</span>3      BAL <span class="o">=</span> <span class="nt">-2</span>
+
+ROTATING NODE 73 <span class="o">(</span>I<span class="o">)</span>... RR ROTATION
+
+R 73    R 79
+Finished checking node 79 <span class="o">(</span>O<span class="o">)</span>, now checking <span class="o">(</span>NULL - finished branch<span class="o">)</span></code></pre>
+
+<p>You may have noticed we didn’t mention deletion. Correct - I chose not to implement it. Full code can be found on github.</p>
+
+
+    </article>
+    <aside>Posted at: Apr 21, 2014</aside>
+    <div class="post-footer">
+      <a href="../../index.html">Back</a>
+    </div>
+  </div>
+
+        <div class="footer">
+          2019 Leonardo Brito
+        </div>
+      </div>
+
+    </div>
+  
+
+
+</body></html>

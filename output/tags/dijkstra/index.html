@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Sane Blog Builder - </title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/highlight.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.9">
+  </head>
+  <body>
+    <div id="layout">
+      <div class="header">
+        <h1>
+          <a href="../../">Sane Blog Builder</a>
+        </h1>
+      </div>
+
+
+      <div class="content">
+        <nav class="pure-g">
+          <div class="pure-u-2-3 links">
+            <a href="../../index.html">Home</a> ·
+            <a href="../../tags.html">Tags</a> ·
+            <a href="../../years.html">Years</a> ·
+            <a href="../../about.html">About</a>
+          </div>
+
+          <div class="pure-u-1-3">
+            <div class="contact">
+              <span>
+                <a href="https://github.com/lbrito1" download="">
+                  <img src="../../assets/icons/github.svg" alt="Github icon">
+                  </a>
+              </span>
+              <span>
+                <a href="https://www.linkedin.com/in/leonardo-mendes-brito/">
+                <img src="../../assets/icons/linkedin.svg" alt="LinkedIn icon">
+                </a>
+              </span>
+            </div>
+          </div>
+        </nav>
+        
+  <h1>Posts tagged "dijkstra"</h1>
+
+  <div class="pure-g">
+  
+    <div class="post-index pure-u-1-1">
+      <h2><a href="../../2014/04/shortest-path-part-i-dijkstras-algorithm.html">Shortest path, part I - Dijkstra's algorithm</a></h2>
+
+      <article class="text">
+          <p>Now that we have a way to represent <a href="%7B%%20link%20_posts/2014-03-23-graph.markdown%20%%7D">graphs</a>, we can discuss one of the most important problems in graph theory: the shortest path problem (SPP). More or less formally, we’ll define SPP as:</p>
+
+<p>Given a weighted&nbsp;graph G(V,E), find the sequence P = {v0, v1, v2, …, v(n-1)}, vi ∈ V, from vertex V0 to vertex V(n-1), such that&nbsp;the list of edges&nbsp;EP = {(v0,v1), (v1,v2), … (v(n-2), v(n-1))} exists and the summation of costs of all elements e&nbsp;∈ EP is the smallest possible.</p>
+
+<p>In other words, find the less expensive (ergo “shortest”)&nbsp;path between two vertices.</p>
+
+<p>The trivial solution is using <a href="%7B%%20link%20_posts/2014-03-31-trees-part-i.markdown%20%%7D">BFS</a>&nbsp;starting at vertex A and stopping when it reaches vertex B. However, BFS doesn’t look at the edge costs: it calculates the path with&nbsp;least edges, not the path with least total cost.</p>
+
+<p>Although not necessarily the fastest, Dijkstra’s algorithm is probably the most popular way to solve the shortest path problem due to its simplicity and elegance. The algorithm relies heavily on <a href="%7B%%20link%20_posts/2014-03-21-heap-priority-queues.markdown%20%%7D">priority queues</a>, so make sure to take a look at that if you haven’t already.</p>
+
+<p><strong>Pseudocode</strong></p>
+
+<pre><code class="language-bash">dist[from] <span class="o">=</span> 0
+<span class="k">for </span>v : G
+      <span class="k">if </span>v <span class="o">!=</span> <span class="nb">source
+            </span>dist[v] <span class="o">=</span> infinity
+      prev[v] <span class="o">=</span> <span class="nt">-1</span>
+      PQ.add<span class="o">(</span>v, dist[v]<span class="o">)</span>
+<span class="k">while </span>PQ.hasNext<span class="o">()</span>
+      u <span class="o">=</span> PQ.pop<span class="o">()</span>
+      <span class="k">for </span>each neighbor v of u
+            alt <span class="o">=</span> dist[u] + length<span class="o">(</span>u, v<span class="o">)</span>
+            <span class="k">if </span>alt &lt; dist[v]
+                  dist[v] <span class="o">=</span> alt
+                  prev[v] <span class="o">=</span> u
+                  PQ.decrease_key<span class="o">(</span>v,alt<span class="o">)</span>
+<span class="k">return </span>prev</code></pre>
+
+
+        <div class="post-tags">
+          
+        </div>
+
+        <div class="pure-g post-footer">
+          <div class="pure-u-1-2">
+              <a class="read-more" href="../../2014/04/shortest-path-part-i-dijkstras-algorithm.html">Continue reading ›</a>
+          </div>
+          <div class="pure-u-1-2 post-meta">
+            <aside>Posted Apr 06, 2014</aside>
+
+          </div>
+        </div>
+      </article>
+    </div>
+  
+</div>
+
+
+        <div class="footer">
+          2019 Leonardo Brito
+        </div>
+      </div>
+
+    </div>
+  
+
+
+</body></html>

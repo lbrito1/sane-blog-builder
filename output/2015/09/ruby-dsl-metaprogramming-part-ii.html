@@ -1,0 +1,157 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Sane Blog Builder - Ruby DSL &amp; metaprogramming, part II</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/highlight.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.9">
+  </head>
+  <body>
+    <div id="layout">
+      <div class="header">
+        <h1>
+          <a href="../../">Sane Blog Builder</a>
+        </h1>
+      </div>
+
+
+      <div class="content">
+        <nav class="pure-g">
+          <div class="pure-u-2-3 links">
+            <a href="../../index.html">Home</a> ·
+            <a href="../../tags.html">Tags</a> ·
+            <a href="../../years.html">Years</a> ·
+            <a href="../../about.html">About</a>
+          </div>
+
+          <div class="pure-u-1-3">
+            <div class="contact">
+              <span>
+                <a href="https://github.com/lbrito1" download="">
+                  <img src="../../assets/icons/github.svg" alt="Github icon">
+                  </a>
+              </span>
+              <span>
+                <a href="https://www.linkedin.com/in/leonardo-mendes-brito/">
+                <img src="../../assets/icons/linkedin.svg" alt="LinkedIn icon">
+                </a>
+              </span>
+            </div>
+          </div>
+        </nav>
+        
+  <div class="post-show">
+    <h1>Ruby DSL &amp; metaprogramming, part II</h1>
+    <article class="text">
+      <p>In the previous installment we built a simple text generator using some Ruby meta-programming tricks. It was still far from being our desired context-free grammar (CFG) generator, though, since it lacked many <a href="https://www.cs.rochester.edu/~nelson/courses/csc_173/grammars/cfg.html">CFG prerequisites</a>. Most flagrantly, we had no rule recursion and only one production (rule definition) per rule. Here’s the what a script that would use both features:</p>
+
+<pre><code class="language-bash">dictionary
+  noun <span class="s1">'dog'</span>, <span class="s1">'bus'</span>
+  verb <span class="s1">'barked'</span>, <span class="s1">'parked'</span>
+  preposition <span class="s1">'at'</span>
+
+rule <span class="s1">'phrase'</span>
+  opt <span class="s1">'The'</span>, noun, verb, preposition, <span class="s1">'a'</span>, noun
+  opt <span class="s1">'Here goes some'</span>, phrase, <span class="s1">'recursion.'</span>
+  opt <span class="s1">'Meet me'</span>, preposition, <span class="s1">'the station.'</span>
+
+grammar phrase: 10</code></pre>
+
+<p>The <code>dictionary</code> section is just as we left it. Let’s see what changed in the <code>rule</code> section.</p>
+
+<!-- more -->
+
+<p>Previously we had only one production per rule, so rule definitions such as <code>phrase</code> were captured by the <code>method_missing</code> method. This design would make multiple productions difficult to handle. Here’s how we re-implemented the rule method:</p>
+
+<pre><code class="language-ruby"><span class="k">def</span> <span class="nf">rule</span> <span class="o">*</span><span class="n">args</span>
+  <span class="n">verbose</span> <span class="s2">"Read rule: </span><span class="si">#{</span><span class="n">args</span><span class="p">.</span><span class="nf">to_s</span><span class="si">}</span><span class="s2">"</span>
+  <span class="vi">@last_rule</span> <span class="o">=</span> <span class="n">args</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">to_s</span>
+  <span class="vi">@grammar</span><span class="p">.</span><span class="nf">rules</span><span class="p">[</span><span class="vi">@last_rule</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="no">Rule</span><span class="p">.</span><span class="nf">new</span> <span class="vi">@last_rule</span><span class="p">)</span>
+  <span class="n">define_method</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">to_s</span><span class="p">)</span> <span class="p">{</span> <span class="vi">@grammar</span><span class="p">.</span><span class="nf">rules</span><span class="p">[</span><span class="n">args</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">to_s</span><span class="p">]</span> <span class="p">}</span>
+  <span class="vi">@state</span> <span class="o">=</span> <span class="ss">:rule</span>
+<span class="k">end</span></code></pre>
+
+<p>Once more we use <code>define_method</code> to dynamically define methods. Consider the <code>rule 'phrase'</code> statement present in our script: this would define a method named <code>phrase</code> which hopefully returns the <code>Rule</code> object within <code>@grammar.rules['phrase']</code>. Note that the returned rule <em>is not</em> evaluated (i.e., it is still a Rule object, not a String object).</p>
+
+<p>Now we keep track of the <code>@last_rule</code> so rule productions (options) are added to the appropriate rule. Options are captures by <code>opt</code>:</p>
+
+<pre><code class="language-ruby"><span class="k">def</span> <span class="nf">opt</span> <span class="o">*</span><span class="n">args</span>
+  <span class="k">if</span> <span class="vi">@state</span> <span class="o">==</span> <span class="ss">:rule</span>
+    <span class="n">verbose</span> <span class="s2">"Read option for rule </span><span class="si">#{</span><span class="vi">@last_rule</span><span class="si">}</span><span class="s2">: </span><span class="si">#{</span><span class="n">args</span><span class="p">.</span><span class="nf">to_s</span><span class="si">}</span><span class="s2">"</span>
+    <span class="vi">@grammar</span><span class="p">.</span><span class="nf">rules</span><span class="p">[</span><span class="vi">@last_rule</span><span class="p">].</span><span class="nf">options</span> <span class="o">&lt;&lt;</span> <span class="n">args</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+
+<p>Here, <code>args</code> is an array of Rule production symbols (both terminal and non-terminal, i.e., both Strings and Rules). The set of Rule options will ultimately be an Array of Arrays of Rule production symbols corresponding to each <code>opt</code> line written in the DSL script (e.g. in the example above, <code>phrase</code> would have 3 options).</p>
+
+<p>Rules are evaluated by <code>Grammar.generate</code>, which receives a Hash of rules and the amount of times they should be generated (e.g. <code>phrase: 10</code> in our example):</p>
+
+<pre><code class="language-ruby">  <span class="k">def</span> <span class="nf">generate</span> <span class="n">args</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s1">''</span>
+    <span class="n">args</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">rulename</span><span class="p">,</span> <span class="n">qty</span><span class="o">|</span>
+      <span class="p">(</span><span class="mi">1</span><span class="o">..</span><span class="n">qty</span><span class="p">).</span><span class="nf">each</span> <span class="p">{</span> <span class="n">text</span> <span class="o">&lt;&lt;</span> <span class="vi">@rules</span><span class="p">[</span><span class="n">rulename</span><span class="p">.</span><span class="nf">to_s</span><span class="p">].</span><span class="nf">to_s</span> <span class="p">}</span>
+    <span class="k">end</span>
+    <span class="nb">puts</span> <span class="s2">"Final result: </span><span class="se">\n</span><span class="s2">========</span><span class="se">\n</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="se">\n</span><span class="s2">========"</span>
+  <span class="k">end</span></code></pre>
+
+<p>How does Rule recursion work, though? Let’s take a look at the <code>to_s</code> method in <code>Rule</code>:</p>
+
+<pre><code class="language-ruby">  <span class="k">def</span> <span class="nf">to_s</span>
+    <span class="n">randkeys</span> <span class="o">=</span> <span class="n">options</span><span class="p">.</span><span class="nf">sample</span>
+    <span class="n">randkeys</span><span class="p">.</span><span class="nf">map!</span> <span class="p">{</span> <span class="o">|</span><span class="n">k</span><span class="o">|</span> <span class="n">k</span><span class="p">.</span><span class="nf">to_s</span> <span class="p">}</span>
+    <span class="n">verbose</span> <span class="s2">"Applying rule </span><span class="si">#{</span><span class="vi">@name</span><span class="si">}</span><span class="s2"> with keys: </span><span class="si">#{</span><span class="n">randkeys</span><span class="si">}</span><span class="s2">."</span>
+    <span class="n">randkeys</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s2">" "</span><span class="p">)</span>
+  <span class="k">end</span></code></pre>
+
+<p>Pretty straightforward: a production is chosen at random (e.g., 1 of the 3 options in our example), and each symbol in the production is evaluated into a String and concatenated into the final result. For example, say the first rule, <code>opt 'The', noun, verb, preposition, 'a', noun</code>, is chosen. Then <code>randkeys.map!</code> would call <code>to_s</code> for each key in the production: <code>'The'.to_s, noun.to_s</code>, etc. Recursion will happen if the key is a method that returns a Rule object (such as the <code>phrase</code> method we mentioned in the beginning of the post).</p>
+
+<p>Let’s try out a CFG classic: <a href="https://en.wikipedia.org/wiki/Context-free_grammar#Well-formed_parentheses">well-formed parenthesis</a>. Here’s the script:</p>
+
+<pre><code class="language-bash">rule <span class="s1">'par'</span>
+  opt <span class="s1">'()'</span>
+  opt <span class="s1">'('</span>, par, <span class="s1">')'</span>
+  opt par, par
+
+grammar par: 1</code></pre>
+
+<p>And here’s some sample output:</p>
+
+<pre><code class="language-bash"><span class="nv">$ </span>ruby lero.rb examples.le
+Final result:
+<span class="o">========</span>
+<span class="o">(</span> <span class="o">(</span> <span class="o">(</span> <span class="o">(</span> <span class="o">()</span> <span class="o">)</span> <span class="o">)</span> <span class="o">()</span> <span class="o">)</span> <span class="o">()</span> <span class="o">)</span>
+<span class="o">========</span>
+<span class="nv">$ </span>ruby lero.rb examples.le
+Final result:
+<span class="o">========</span>
+<span class="o">(</span> <span class="o">()</span> <span class="o">)</span>
+<span class="o">========</span>
+<span class="nv">$ </span>ruby lero.rb examples.le
+Final result:
+<span class="o">========</span>
+<span class="o">()</span> <span class="o">()</span>
+<span class="o">========</span></code></pre>
+
+<p>And now we’re done! With only 2 classes (Grammar and Rule) and 1 additional file that defines a DSL (lero.rb), we were able to build a CFG-like text generator with the most important CFG properties.</p>
+
+<p><a href="https://github.com/lbrito1/ruby_textgen">Full code</a> is available in the same repository.</p>
+
+    </article>
+    <aside>Posted at: Sep 20, 2015</aside>
+    <div class="post-footer">
+      <a href="../../index.html">Back</a>
+    </div>
+  </div>
+
+        <div class="footer">
+          2019 Leonardo Brito
+        </div>
+      </div>
+
+    </div>
+  
+
+
+</body></html>

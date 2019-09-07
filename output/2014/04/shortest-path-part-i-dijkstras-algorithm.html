@@ -1,0 +1,252 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Sane Blog Builder - Shortest path, part I - Dijkstra's algorithm</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/highlight.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.9">
+  </head>
+  <body>
+    <div id="layout">
+      <div class="header">
+        <h1>
+          <a href="../../">Sane Blog Builder</a>
+        </h1>
+      </div>
+
+
+      <div class="content">
+        <nav class="pure-g">
+          <div class="pure-u-2-3 links">
+            <a href="../../index.html">Home</a> ·
+            <a href="../../tags.html">Tags</a> ·
+            <a href="../../years.html">Years</a> ·
+            <a href="../../about.html">About</a>
+          </div>
+
+          <div class="pure-u-1-3">
+            <div class="contact">
+              <span>
+                <a href="https://github.com/lbrito1" download="">
+                  <img src="../../assets/icons/github.svg" alt="Github icon">
+                  </a>
+              </span>
+              <span>
+                <a href="https://www.linkedin.com/in/leonardo-mendes-brito/">
+                <img src="../../assets/icons/linkedin.svg" alt="LinkedIn icon">
+                </a>
+              </span>
+            </div>
+          </div>
+        </nav>
+        
+  <div class="post-show">
+    <h1>Shortest path, part I - Dijkstra's algorithm</h1>
+    <article class="text">
+      <p>Now that we have a way to represent <a href="%7B%%20link%20_posts/2014-03-23-graph.markdown%20%%7D">graphs</a>, we can discuss one of the most important problems in graph theory: the shortest path problem (SPP). More or less formally, we’ll define SPP as:</p>
+
+<p>Given a weighted&nbsp;graph G(V,E), find the sequence P = {v0, v1, v2, …, v(n-1)}, vi ∈ V, from vertex V0 to vertex V(n-1), such that&nbsp;the list of edges&nbsp;EP = {(v0,v1), (v1,v2), … (v(n-2), v(n-1))} exists and the summation of costs of all elements e&nbsp;∈ EP is the smallest possible.</p>
+
+<p>In other words, find the less expensive (ergo “shortest”)&nbsp;path between two vertices.</p>
+
+<p>The trivial solution is using <a href="%7B%%20link%20_posts/2014-03-31-trees-part-i.markdown%20%%7D">BFS</a>&nbsp;starting at vertex A and stopping when it reaches vertex B. However, BFS doesn’t look at the edge costs: it calculates the path with&nbsp;least edges, not the path with least total cost.</p>
+
+<p>Although not necessarily the fastest, Dijkstra’s algorithm is probably the most popular way to solve the shortest path problem due to its simplicity and elegance. The algorithm relies heavily on <a href="%7B%%20link%20_posts/2014-03-21-heap-priority-queues.markdown%20%%7D">priority queues</a>, so make sure to take a look at that if you haven’t already.</p>
+
+<p><strong>Pseudocode</strong></p>
+
+<pre><code class="language-bash">dist[from] <span class="o">=</span> 0
+<span class="k">for </span>v : G
+      <span class="k">if </span>v <span class="o">!=</span> <span class="nb">source
+            </span>dist[v] <span class="o">=</span> infinity
+      prev[v] <span class="o">=</span> <span class="nt">-1</span>
+      PQ.add<span class="o">(</span>v, dist[v]<span class="o">)</span>
+<span class="k">while </span>PQ.hasNext<span class="o">()</span>
+      u <span class="o">=</span> PQ.pop<span class="o">()</span>
+      <span class="k">for </span>each neighbor v of u
+            alt <span class="o">=</span> dist[u] + length<span class="o">(</span>u, v<span class="o">)</span>
+            <span class="k">if </span>alt &lt; dist[v]
+                  dist[v] <span class="o">=</span> alt
+                  prev[v] <span class="o">=</span> u
+                  PQ.decrease_key<span class="o">(</span>v,alt<span class="o">)</span>
+<span class="k">return </span>prev</code></pre>
+
+<!-- more -->
+
+<p>Lines 1-6 take care of initialization. Since we start at vertex “from”, it is marked as having distance = 0. We haven’t visited any other vertices yet, so we set there distances to infinity. prev[v] stores a pointer to vertex w such that by backtracking from v to prev[v] = w to prev[w] and so on we eventually arrive at vertex “from” by the shortest possible path. Since we don’t know the shortest paths yet, all prevs are set to -1 (i.e. unknown). Every key-value pair (vertex, dist[vertex]) is stored in the priority queue.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Lines 7-14 calculate the shortest paths. The main loop (line 7) repeats</td>
+      <td>V</td>
+      <td>times, since there are</td>
+      <td>V</td>
+      <td>elements in the PQ. The min element <em>u</em> is extracted at line 8 and lines 10-14 update the distances from u to all of u’s neighbors (v), which is called edge relaxation: if dist[u] + length(u, v) is smaller than v’s current distance, that means we’ve found a shorter path to v by going through u, so we update dist[v] and set prev[v] = u. Since the key-value pair (v,dist[v]) has changed, we update the priority queue with a decrease-key call (line 14).</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>As you may have noticed, Dijkstra’s algorithm calculates the shortest path from one vertex to all the other vertices in the graph. So if we’re only interested in the distance from one vertex to another, we may safely stop the algorithm after we’ve finished updating our target’s neighbors, i.e. when u = target, because since it has been popped from the PQ, it won’t ever be checked again.</p>
+
+<p>As an example, here’s how the algorithm works for the following graph (excerpt from the test output with _DEBUG flag):</p>
+
+<p><a href="../../assets/images/codedeposit/2014/04/graph1.png"><img src="../../assets/images/codedeposit/2014/04/graph1.png" alt="graph1"></a></p>
+
+<p>**Weights (last parameter): **</p>
+
+<pre><code class="language-bash">      add_edge<span class="o">(</span>g, v0, v1, 2<span class="o">)</span><span class="p">;</span>
+      add_edge<span class="o">(</span>g, v0, v2, 3<span class="o">)</span><span class="p">;</span>
+      add_edge<span class="o">(</span>g, v1, v2, 1<span class="o">)</span><span class="p">;</span>
+      add_edge<span class="o">(</span>g, v2, v3, 1<span class="o">)</span><span class="p">;</span>
+      add_edge<span class="o">(</span>g, v4, v2, 1<span class="o">)</span><span class="p">;</span>
+      add_edge<span class="o">(</span>g, v4, v1, 1<span class="o">)</span><span class="p">;</span>
+      add_edge<span class="o">(</span>g, v5, v4, 1<span class="o">)</span><span class="p">;</span></code></pre>
+
+<p>**First iteration: ** since our starting point is v0, it gets popped first. Neighbors 1 and 2 are updated.</p>
+
+<pre><code class="language-bash">NEIGHBORS OF v[0]:
+<span class="nt">--------------------</span>
+v[1]     optimal dist <span class="o">=</span> 2       prev dist <span class="o">=</span> 2147483647
+v[2]     optimal dist <span class="o">=</span> 3       prev dist <span class="o">=</span> 2147483647</code></pre>
+
+<p>**2nd &amp; 3rd iteration: ** v[1] had the smallest distance in PQ, followed by v[2]. Their neighbors are updated.</p>
+
+<pre><code class="language-bash">NEIGHBORS OF v[1]:
+<span class="nt">--------------------</span>
+v[0]     optimal dist <span class="o">=</span> 4
+v[2]     optimal dist <span class="o">=</span> 3
+v[4]     optimal dist <span class="o">=</span> 3       prev dist <span class="o">=</span> 2147483647
+
+
+NEIGHBORS OF v[2]:
+<span class="nt">--------------------</span>
+v[0]     optimal dist <span class="o">=</span> 6
+v[1]     optimal dist <span class="o">=</span> 4
+v[3]     optimal dist <span class="o">=</span> 4       prev dist <span class="o">=</span> 2147483647
+v[4]     optimal dist <span class="o">=</span> 4</code></pre>
+
+<p>**All the rest: **</p>
+
+<pre><code class="language-bash">NEIGHBORS OF v[4]:
+<span class="nt">--------------------</span>
+v[2]     optimal dist <span class="o">=</span> 4
+v[1]     optimal dist <span class="o">=</span> 4
+v[5]     optimal dist <span class="o">=</span> 4       prev dist <span class="o">=</span> 2147483647
+
+
+NEIGHBORS OF v[3]:
+<span class="nt">--------------------</span>
+v[2]     optimal dist <span class="o">=</span> 5
+
+
+NEIGHBORS OF v[5]:
+<span class="nt">--------------------</span>
+v[4]     optimal dist <span class="o">=</span> 5</code></pre>
+
+<p><strong>Final output (prev[] array):</strong></p>
+
+<pre><code class="language-bash">Previous
+<span class="o">===============</span>
+
+vert[0] <span class="nt">-1</span>
+vert[1] 0
+vert[2] 0
+vert[3] 2
+vert[4] 1
+vert[5] 4</code></pre>
+
+<p>i.e. the shortest path from 0 to 5 is: 0, 1, 4, 5. Path cost can be found at dist[vert5]. Verify that that’s the shortest path: cost(0,1) = 2 (whilst cost(0,2) = 3), cost(1,4) = 1 and cost(4,5) = 1.</p>
+
+<p>Below, the full code. We used our previously implemented <a href="%7B%%20link%20_posts/2014-03-21-heap-priority-queues.markdown%20%%7D">priority queues</a> working as the PQ, and made the stop-at-target modification mentioned above. As always, updated source code and companion test code can be found @ github.</p>
+
+<pre><code class="language-c"><span class="cp">#include 
+#include "../tests/graph_test.c"
+#include "../data_structures/heap.c"
+</span>
+<span class="kt">int</span><span class="o">*</span> <span class="nf">dijkstra</span><span class="p">(</span><span class="n">graph</span><span class="o">*</span> <span class="n">g</span><span class="p">,</span> <span class="kt">int</span> <span class="n">from</span><span class="p">,</span> <span class="kt">int</span> <span class="n">to</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kt">int</span> <span class="n">nv</span> <span class="o">=</span> <span class="n">get_nv</span><span class="p">(</span><span class="n">g</span><span class="p">);</span>
+
+      <span class="kt">int</span><span class="o">*</span> <span class="n">dist</span>         <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">*</span><span class="n">nv</span><span class="p">);</span>
+      <span class="kt">int</span><span class="o">*</span> <span class="n">previous</span>     <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">*</span><span class="n">nv</span><span class="p">);</span>
+      <span class="n">heap</span><span class="o">*</span> <span class="n">minheap</span> <span class="o">=</span> <span class="n">new_heap</span><span class="p">(</span><span class="n">nv</span><span class="p">,</span> <span class="n">ORD_ASC</span><span class="p">,</span> <span class="n">compare_kv</span><span class="p">);</span>
+
+      <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+      <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">nv</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+      <span class="p">{</span>
+            <span class="n">dist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">INT_MAX</span><span class="p">;</span>
+            <span class="n">previous</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+            <span class="n">kv</span><span class="o">*</span> <span class="n">val</span> <span class="o">=</span> <span class="n">new_kv</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">dist</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">compare_integer</span><span class="p">);</span>
+            <span class="n">push</span><span class="p">(</span><span class="n">minheap</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
+
+            <span class="cp">#ifdef _DEBUG
+</span>                  <span class="n">edge_iter</span><span class="o">*</span> <span class="n">itd</span> <span class="o">=</span> <span class="n">new_edge_it</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="n">get_vertex</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="n">i</span><span class="p">));</span>
+                  <span class="n">edge</span><span class="o">*</span> <span class="n">next</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+                  <span class="k">while</span> <span class="p">((</span><span class="n">next</span> <span class="o">=</span> <span class="n">next_edge</span><span class="p">(</span><span class="n">itd</span><span class="p">))</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="n">DBG</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">%d</span><span class="se">\t</span><span class="s">E(%lu,%lu) = %d"</span><span class="p">,</span><span class="n">itd</span><span class="o">-&gt;</span><span class="n">idx</span><span class="p">,</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">from</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">,</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">to</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">,</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">cost</span> <span class="p">)</span> <span class="p">;</span>
+                  <span class="n">free</span><span class="p">(</span><span class="n">itd</span><span class="p">);</span>
+            <span class="cp">#endif
+</span>      <span class="p">}</span>
+
+
+      <span class="n">dist</span><span class="p">[</span><span class="n">from</span><span class="p">]</span>        <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="n">previous</span><span class="p">[</span><span class="n">from</span><span class="p">]</span>    <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+
+      <span class="n">kv</span><span class="o">*</span> <span class="n">min</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="kt">int</span> <span class="n">found</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">;</span>
+      <span class="k">while</span> <span class="p">(((</span><span class="n">min</span> <span class="o">=</span> <span class="n">pop</span><span class="p">(</span><span class="n">minheap</span><span class="p">))</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">found</span><span class="p">)</span>
+      <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">u</span> <span class="o">=</span> <span class="n">min</span><span class="o">-&gt;</span><span class="n">k</span><span class="p">;</span>
+            <span class="n">visit_vert</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="n">u</span><span class="p">);</span>
+
+            <span class="n">edge_iter</span><span class="o">*</span> <span class="n">it</span> <span class="o">=</span> <span class="n">new_edge_it</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="n">get_vertex</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="n">u</span><span class="p">));</span>
+            <span class="n">edge</span><span class="o">*</span> <span class="n">next</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+
+
+            <span class="n">DBG</span><span class="p">(</span><span class="s">"</span><span class="se">\n\n\n</span><span class="s">NEIGHBORS OF v[%d]:</span><span class="se">\n</span><span class="s">--------------------"</span><span class="p">,</span><span class="n">u</span><span class="p">);</span>
+            <span class="k">while</span> <span class="p">((</span><span class="n">next</span> <span class="o">=</span> <span class="n">next_edge</span><span class="p">(</span><span class="n">it</span><span class="p">))</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span>
+            <span class="p">{</span>
+                  <span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="n">next</span><span class="o">-&gt;</span><span class="n">to</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">;</span>
+                  <span class="kt">int</span> <span class="n">ndist</span> <span class="o">=</span> <span class="n">dist</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">+</span> <span class="n">next</span><span class="o">-&gt;</span><span class="n">cost</span><span class="p">;</span>
+                  <span class="n">DBG</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">v[%d]"</span><span class="p">,</span><span class="n">v</span><span class="p">);</span>
+                  <span class="n">DBG</span><span class="p">(</span><span class="s">"</span><span class="se">\t</span><span class="s"> optimal dist = %d"</span><span class="p">,</span><span class="n">ndist</span><span class="p">);</span>
+
+                  <span class="c1">//relax edge</span>
+                  <span class="k">if</span> <span class="p">((</span><span class="n">ndist</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">ndist</span><span class="o">&lt;</span><span class="n">dist</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">u</span><span class="o">!=</span><span class="n">v</span><span class="p">))</span>
+                  <span class="p">{</span>
+                        <span class="n">DBG</span><span class="p">(</span><span class="s">"</span><span class="se">\t</span><span class="s">prev dist = %d"</span><span class="p">,</span><span class="n">dist</span><span class="p">[</span><span class="n">v</span><span class="p">]);</span>
+
+                        <span class="n">dist</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>     <span class="o">=</span> <span class="n">ndist</span><span class="p">;</span>
+                        <span class="n">previous</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span><span class="p">;</span>
+
+                        <span class="kt">int</span> <span class="n">vpos</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+                        <span class="n">kv</span><span class="o">*</span> <span class="n">candidate</span> <span class="o">=</span> <span class="n">get_kv</span><span class="p">(</span><span class="n">minheap</span><span class="o">-&gt;</span><span class="n">array</span><span class="p">,</span> <span class="n">minheap</span><span class="o">-&gt;</span><span class="n">heap_size</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">vpos</span><span class="p">);</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="n">candidate</span> <span class="o">!=</span><span class="nb">NULL</span><span class="p">)</span> <span class="n">update</span><span class="p">(</span><span class="n">minheap</span><span class="p">,</span> <span class="n">vpos</span><span class="p">);</span>
+                  <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">u</span><span class="o">==</span><span class="n">to</span><span class="p">)</span> <span class="n">found</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="k">return</span> <span class="n">previous</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span></code></pre>
+
+    </article>
+    <aside>Posted at: Apr 06, 2014</aside>
+    <div class="post-footer">
+      <a href="../../index.html">Back</a>
+    </div>
+  </div>
+
+        <div class="footer">
+          2019 Leonardo Brito
+        </div>
+      </div>
+
+    </div>
+  
+
+
+</body></html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Sane Blog Builder - The 5 stages of dealing with legacy code</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/stylesheet.css">
+    <link rel="stylesheet" href="../../assets/highlight.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.9">
+  </head>
+  <body>
+    <div id="layout">
+      <div class="header">
+        <h1>
+          <a href="../../">Sane Blog Builder</a>
+        </h1>
+      </div>
+
+
+      <div class="content">
+        <nav class="pure-g">
+          <div class="pure-u-2-3 links">
+            <a href="../../index.html">Home</a> ·
+            <a href="../../tags.html">Tags</a> ·
+            <a href="../../years.html">Years</a> ·
+            <a href="../../about.html">About</a>
+          </div>
+
+          <div class="pure-u-1-3">
+            <div class="contact">
+              <span>
+                <a href="https://github.com/lbrito1" download="">
+                  <img src="../../assets/icons/github.svg" alt="Github icon">
+                  </a>
+              </span>
+              <span>
+                <a href="https://www.linkedin.com/in/leonardo-mendes-brito/">
+                <img src="../../assets/icons/linkedin.svg" alt="LinkedIn icon">
+                </a>
+              </span>
+            </div>
+          </div>
+        </nav>
+        
+  <div class="post-show">
+    <h1>The 5 stages of dealing with legacy code</h1>
+    <article class="text">
+      <p>Yes, this article will use the <a href="https://en.wikipedia.org/wiki/K%C3%BCbler-Ross_model">5 stages of grief</a> as an analogy for something software development-related. There are at least a few thousand other articles with a similar motif (424,000 results for “grief stages software” according to <a href="https://www.google.es/search?q=grief+stages+software&amp;oq=grief+stages+software">Google</a>). But bear with me for the next 5 minutes and I promise you’ll get something out of this — if nothing else, at least the smirk of those who read their past follies put on text by someone else.</p>
+
+<p>I have been working on a rather big Rails project for the past year and half. The project is nearly 7 years old, and has an all-too-common successful-startup-bought-by-industry-giant background story. In a project with this kind of background, some things are bound to happen: many developers of many skill ranges have come and gone, many software fads (cough, Meteor, cough), and above all else <em>a lot</em> of legacy code that is, well, let’s put it nicely, <em>not so great</em>. None of this should be taken personally in any way — it is just natural for such things to occur in such projects.</p>
+
+<!-- more -->
+
+<p>These kinds of projects might be a bit unwelcoming and overwhelming to newcomers. In particular, the aforementioned <em>not so great</em> legacy code might become a huge source of distress for the developer. Some degree of unpleasantness is probably unavoidable in any real-world software project, but choosing to deal with <em>not so great</em> code in a productive, edifying way definitively helps to alleviate the potential nastinesses of working on legacy projects.</p>
+
+<p>Let us begin our analogy. The backstory is that you, dear reader, are assigned to work on a monolithic web app which is company X’s flagship product. It has been live for 5+ years and has thousands of customers. Three dozen developers have helped build the app over the years. The monolith uses a certain web framework since one of its earliest versions, and the team has haphazardly updated it to the latest stable version every once in a while. Leftovers are everywhere, and you have no clue if something is mission-critical code or just the remains of a failed, forgotten or otherwise removed feature or experiment. You are dumbstruck at the gigantic code-spaghetti and say to yourself:</p>
+
+<h2 id="nope-this-cant-be-right-im-just-going-to-ignore-it-and-itll-goaway">Nope, this can’t be right. I’m just going to ignore it and it’ll go&nbsp;away.</h2>
+
+<blockquote>
+  <p>This code is just so terrible, confusing or complex. I just can’t fathom any of it. It just can’t be right. It surely wasn’t meant for a human being to understand. I’m going to ignore it for a while so it can go away and get replaced by something nice and shiny.</p>
+</blockquote>
+
+<p>You’re in <strong>Denial</strong>. Take all the time you want — by the end of the day, the same code will still remain committed. Instead of ignoring it, take a deep breath and spend a couple of hours reading and trying to understand it. This is easier said than done for many reasons: the domain of your software might be complex, and thus the code might be as well; the code might be excessively complex or over-engineered; your employer might not be so keen of waiting for you to grasp the intricacies of some small code section; you might feel bad for not delivering the same performance you had on the last project/feature, when you were right up there in the productivity plateau and so on. Alas, the problem remains: at some point you will have to grasp the meaning of that code, even though it is pretty terrible.</p>
+
+<p>Time, patience and an understanding employer are the only things you need to get through. It also helps to have a senior coworker in this project that can guide you through the process. After some time you will begin to understand the codebase. You might start thinking that:</p>
+
+<h2 id="i-hatethis">I hate&nbsp;this.</h2>
+
+<blockquote>
+  <p>Ugh, <em>now</em> I get it. Now I can see how the code is badly written, so underoptimized, naive or otherwise <strong>plain wrong</strong>. What on Earth were they <em>thinking</em>? This statement is so non-idiomatic it seems like another programming language; this query is so unnecessarily slow that I could go for a walk while the DB toils away; this Javascript is so ugly it could be used as a your-mom joke;&nbsp;…</p>
+</blockquote>
+
+<p><strong>Anger</strong> is what follows when you finally get just how bad the code really is. I don’t know if everything happens for a reason, but I believe every line of code exists for a reason — bad code included. <a href="https://softwareengineering.stackexchange.com/questions/7530/how-do-you-deal-with-intentionally-bad-code">Very rarely</a> it is the case that a developer knowingly chose to make a bad decision. More often:</p>
+
+<p>The developer might have been inexperienced, tired or overworked. The idiom of your programming language might have changed. The specifications might have changed mid-development. The libraries that are mature and well-known today might have not even existed. So much could have happened that explains why the code is the way it is.</p>
+
+<p>It is fine to try to understand the reason something is written the way it is, but try to resist the urge of blaming someone out of anger over the wretchedness of their code (you might find yourself in their shoes some day!). Once you decide not to <code>git blame</code>all the time, you might start avoiding the elephant in the room:</p>
+
+<h2 id="im-just-going-to-write-this-new-feature-and-everything-will-befine">I’m just going to write this new feature and everything will be&nbsp;fine.</h2>
+
+<blockquote>
+  <p>I know the old code exists, but I’m just going to pretend it doesn’t for a while. I don’t want to deal with this right now. Besides, I don’t even know where to start, or whether I should start at all… is refactoring worth the trouble? Is it even possible?</p>
+</blockquote>
+
+<p>If you have the luxury of picking your own assignments, then it might be tempting to do some <strong>bargaining</strong> and just ignore the bad legacy code for a while, promising to refactor some of it later— which is totally fine. At least for some time. But the problem never solves itself, and delaying improvements might have some nasty long term consequences. Once you start working around the limitations of bad code instead of addressing its problems, you are actually contributing to its evil legacy by creating more unwanted dependencies, more nonsensical interfaces, more unnecessarily complex methods, etc.</p>
+
+<p>But you can’t avoid the smelly code forever. One of these days, your boss will assign you to a certain issue…</p>
+
+<h2 id="ive-been-assigned-to-solve-this-issue-which-relates-to-some-nasty-old-code-and-im-miserable">I’ve been assigned to solve this issue which relates to some nasty old code and I’m miserable.</h2>
+
+<blockquote>
+  <p>I can’t believe I’ve been assigned to improve this legacy stuff — I’ve successfully avoided it for months now! This just <em>sucks</em>.</p>
+</blockquote>
+
+<p>You knew what was coming towards your plate for some time, but now that it’s finally here, you’re suddenly <strong>depressed</strong>. That’s fine too, but don’t fall into self-pity: having to deal with bad code might greatly benefit your knowledge as a software developer. Think of it as <em>having room for improvement.</em> Which nicely leads us to…</p>
+
+<h2 id="hmmm-maybe-i-can-improvethings">Hmmm, maybe I can improve&nbsp;things…</h2>
+
+<blockquote>
+  <p>Wait a minute, I think I know how to improve this…</p>
+</blockquote>
+
+<p>This is the a-ha! moment. You <strong>accept</strong> the reality of legacy code, and instead of mulling over how bad it is, you realize that those columns — or tables — are useless, that those dependencies are no longer used, that there are many methods that are now superfluous, and so on. The tipping point here is when you gain enough knowledge of the codebase to start systematically questioning why the code is the way it is — and not just assuming that it is right, or that all of it is necessary.</p>
+
+<p>This last stage of legacy code grief takes, of course, the most time to arrive. In my case it started arriving many months into the project, when I found out a few ways to optimize our spec suite which <a href="https://goiabada.blog/improving-spec-speed-in-a-huge-old-rails-app-8f3ab05a33f9">resulted in a 41% speedup in CI execution</a>. As time passes and I understand the project more deeply, new ideas of how to optimize or otherwise improve some part of it start popping up more naturally. Eventually you reach a point in which you can see bad code more as an opportunity to improve something (and maybe learn something new in the process) or even try out different solutions or technologies rather than a huge grief you have to deal with as a part of your day job.</p>
+
+<h2 id="its-all-part-of-theprocess">It’s all part of the&nbsp;process</h2>
+
+<p>Working on a legacy project might not be as exciting as building a shiny new software from scratch, but it has its own merits. Unlike working on something new, on a legacy project you will need to understand how <em>other people</em> solved some problem — which includes understanding all the limitations they might have had at that time. It is also a humbling experience: the bright glow of hindsight exposes all the scars of bad programming and bad decisions made in the past, and if you’re being honest with yourself you’ll have no other option than to admit that <em>it could have been you</em>.</p>
+
+<p>By <a href="https://medium.com/@lbrito">Leonardo Brito</a> on <a href="https://medium.com/p/6d578205beeb">March 5, 2018</a>.</p>
+
+<p><a href="https://medium.com/@lbrito/the-5-stages-of-dealing-with-legacy-code-6d578205beeb">Canonical link</a></p>
+
+<p>Exported from <a href="https://medium.com">Medium</a> on May 1, 2019.</p>
+
+    </article>
+    <aside>Posted at: Mar 05, 2018</aside>
+    <div class="post-footer">
+      <a href="../../index.html">Back</a>
+    </div>
+  </div>
+
+        <div class="footer">
+          2019 Leonardo Brito
+        </div>
+      </div>
+
+    </div>
+  
+
+
+</body></html>
