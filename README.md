@@ -24,6 +24,10 @@ This uses Ruby (more specifically, the excellent [Nanoc](https://nanoc.ws) lib) 
 * Has stupid emojis 🎨 (okay that's just your browser);
 * That's about it.
 
+## Development
+
+The `master` branch is used only to show content in Github pages. Check out the `development` branch for the actual input files.
+
 ## Deployment instructions
 
 There's a [convenience script](deploy.sh) for Github Pages deployment.
