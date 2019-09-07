@@ -26,7 +26,7 @@ This uses Ruby (more specifically, the excellent [Nanoc](https://nanoc.ws) lib) 
 
 ## Development
 
-The `master` branch is used only to show content in Github pages. Check out the `development` branch for the actual input files.
+The `master` branch is used only to show content in Github Pages. Check out the `development` branch for the actual input files.
 
 ## Deployment instructions
 
