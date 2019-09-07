@@ -22,20 +22,20 @@ A pointer to the head element is enough to define a linked list. Each element co
 
 So we'll start with the data structure itself. Namely, the Element struct:
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 typedef struct Element
 {
       void *data_ptr;
       struct Element *next;
 } Element;
-</code></pre>
+</code></pre></div>
 
 
 Simple enough: each element has one data pointer and one pointer to the next element, just as we defined.
 
 Next, we need the 3 basic list element operations: add, remove and find. Since creating a new list is a matter of creating a new element and setting it as "head", we're omitting that.
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 void add(Element *list_head, void *data)
 {
       Element *e = list_head;
@@ -43,12 +43,12 @@ void add(Element *list_head, void *data)
       Element *toadd = new_element(data);
       e->next = toadd;
 }
-</code></pre>
+</code></pre></div>
 
 
 To add data to a list, first we find the last element (i.e., next=NULL) by traversing the list. Next we create a new element with the data we're adding, and point the last element to it, so now it is the last element. This costs O(n). A more efficient way of doing this is keeping a pointer to the last element so we don't have to traverse the list at all, resulting in O(1) cost.
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 Element *search(void *list_head, void *data)
 {
       Element *e = list_head;
@@ -62,12 +62,12 @@ Element *search(void *list_head, void *data)
       } while ((e = e->next) != NULL);
       return NULL;
 }
-</code></pre>
+</code></pre></div>
 
 
 Searching is trivial: we traverse the list and return the pointer to the element whose subsequent element is the one we're looking for. This costs O(n). The reason we want to get our hands on the _previous_ element and not the element itself will be explained later. Also, we make a necessary exception for the list head, since there is no previous element to it and it does not carry data (in our implementation).
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 int delete(Element *list_head, void *data)
 {
       Element *searched = search(list_head, data);
@@ -81,14 +81,14 @@ int delete(Element *list_head, void *data)
       }
       else return FALSE;
 }
-</code></pre>
+</code></pre></div>
 
 
 To remove an element, first we do a search in the list for the element we want deleted. The reason we wanted the pointer to the _previous_ element is that after we do the removal, we'll need to re-link the list: if we have A B C and remove B, A->next must point to C. If we have 3 or more elements this is trivial. If there are only 2 elements and we remove one of them (i.e. "C" in our example is NULL), then A->next will point to NULL and will become the first and last element, as expected.
 
 That's all we need for a linked list! Below you can find the full runnable code and the expected output.
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 
 //======================
 //      Linked list
@@ -223,9 +223,9 @@ int main()
       return 0;
 }
 
-</code></pre>
+</code></pre></div>
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 C:\code\c\cstuff>linked_list
 
 ==============
@@ -261,5 +261,5 @@ List [0]:       I'm the (permanent) list head. You can't delete me.
 List [1]:       I'm NEW element number 1337
 List [2]:       I'm NEW element number 98
 ==============
-</code></pre>
+</code></pre></div>
 

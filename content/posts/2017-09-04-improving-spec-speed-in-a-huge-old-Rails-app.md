@@ -37,7 +37,7 @@ Unfortunately, most of the 100 slowest tests were similarly slow, with the slowe
 
 The "example group" profiling section is where things got interesting. RSpec presents a list of groups (e.g. `describe` blocks) alongside their total running time and average running time of each example in the group. Again the average running times were very much alike and formed a very mild and reasonable slope, with no individual group that could be singled-out as significantly slower than the rest. However, a few groups caught my attention because of their really long total running time, even though they had good or normal average running times:
 
-<pre><code class="language-pseudo">
+<div class="highlight"><pre><code class="language-pseudo">
 Top 100 slowest example groups:
  Group 1
  3.02 seconds average (151.12 seconds / 50 examples) ./spec/…
@@ -58,7 +58,7 @@ Group 38
  0.58132 seconds average (95.34 seconds / 164 examples) ./spec/…
  Group 42
  0.20273 seconds average (72.17 seconds / 356 examples) ./spec/…
-</code></pre>
+</code></pre></div>
 
 Groups 1 through 4 are clearly candidates for a closer look, but so are groups 41 and 42, which were buried deep in the report because of their relatively good average running times.
 
@@ -71,7 +71,7 @@ The first spec we examined was Group 3, a large (250 examples) spec that took se
 It would be highly impractical to run a code profiler on a spec with 250 examples, so again we ran `rspec --profile` on this individual file to get an overview of the examples in this spec. As could be expected, all the examples took a similar time to complete. So we chose a single example among the ones that took a bit more time to complete and dumped a RubyProf call tree at the end of the spec:
 
 ### group_3_spec.rb
-<pre><code class="language-ruby">
+<div class="highlight"><pre><code class="language-ruby">
 ...
 
 it 'does something' do
@@ -80,11 +80,11 @@ it 'does something' do
   printer = RubyProf::CallTreePrinter.new(result)
   printer.print(path ".", profile: "profile")
 end
-</code></pre>
+</code></pre></div>
 
 Examining the generated call tree with [KCacheGrind](http://kcachegrind.sourceforge.net/html/Home.html), we found out that IO waits (`IO#wait_readable` in the screenshot) were responsible for most of the wall time for this particular spec:
 
-![Call tree for a sampled spec example in group\_3\_spec.rb .](https://cdn-images-1.medium.com/max/800/1*FjCiO6MvtgTo0pr533qZVw.png)
+![Call tree for a sampled spec example in group\_3\_spec.rb .](/assets/images/goiabada/1*FjCiO6MvtgTo0pr533qZVw.png)
 Call tree for a sampled spec example in group\_3\_spec.rb .
 
 This heavy IO load was odd: all the HTTP requests were handled with VCR and there was no other blatant IO use such as file loading. Further examining VCR configuration lead to an interesting discovery.

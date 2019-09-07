@@ -53,7 +53,7 @@
 
 <p>Linear time (O(h)) doesn’t sound very good - if h is close to n, we’ll have the same performance as a <a href="%7B%%20link%20_posts/2014-02-14-3.markdown%20%%7D%7D">linked list</a>.&nbsp;What if there were a way to&nbsp;bound the tree height&nbsp;to some sub-linear factor? As it turns out, there are several ways to do so, and the general idea of somehow&nbsp;keeping the tree height limited to a certain factor of the number of elements it holds is called height&nbsp;<strong>balancing</strong>. Ergo we’ll want to look into (height)&nbsp;<strong>balanced/self-balancing binary search trees **(BBST)</strong>.&nbsp;**</p>
 
-<pre><code class="language-bash">                      Burger
+<div class="highlight"><pre><code class="language-bash">                      Burger
 
 
                           M
@@ -70,7 +70,7 @@
                       <span class="nb">.</span>
                     <span class="nb">.</span>
                   <span class="nb">.</span>
-                F</code></pre>
+                F</code></pre></div>
 
 <p><em>AVL tree</em></p>
 
@@ -96,7 +96,7 @@
 
 <p>There is no easier way to explain rotations than by drawing them. The following drawing can be found in the code, commented:</p>
 
-<pre><code class="language-bash">  LEFT-RIGHT CASE        LEFT-LEFT CASE             BALANCED
+<div class="highlight"><pre><code class="language-bash">  LEFT-RIGHT CASE        LEFT-LEFT CASE             BALANCED
   <span class="o">(</span>Y bal <span class="o">=</span> <span class="nt">-1</span><span class="o">)</span>            <span class="o">(</span>Y bal <span class="o">=</span> +1<span class="o">)</span>
 
        +2                      +2                    <span class="o">(</span>0<span class="o">)</span>
@@ -108,7 +108,7 @@
      A   <span class="se">\ </span>      <span class="nt">----</span>/       /   C         <span class="nt">----</span>/    A   B  C   D
           Z         /       Y                 /
          / <span class="se">\ </span>              / <span class="se">\</span>
-        B   C             A   B</code></pre>
+        B   C             A   B</code></pre></div>
 
 <p>Rotation may seem somewhat esoteric at first, but once you focus on what is going on with the main nodes (X,Y,Z)&nbsp;all the rest unfolds naturally. In the left-left rotation, Z is the value between X and Y, so naturally we want to choose him as the new root, replacing X. By doing that, Y continues to be Z’s left child, but X, which is greater than Z and was its parent before, now is its right child. The same logic applies to subchildren A through D. Once you understand the mechanism behind rotations, you won’t even need to memorize anything.</p>
 
@@ -118,7 +118,7 @@
 
 <p>Here’s an example of a left-right rotation:</p>
 
-<pre><code class="language-bash">BEFORE INSERTING E
+<div class="highlight"><pre><code class="language-bash">BEFORE INSERTING E
 
                     Burger
 
@@ -156,11 +156,11 @@ AFTER INSERTING I AND MAKING A LR ROTATION
                    <span class="nb">.</span>     <span class="nb">.</span>
                  <span class="nb">.</span>         <span class="nb">.</span>
                <span class="nb">.</span>             <span class="nb">.</span>
-           D <span class="nb">.</span>                 I</code></pre>
+           D <span class="nb">.</span>                 I</code></pre></div>
 
 <p>And here’s a right-right rotation after inserting ‘T’:</p>
 
-<pre><code class="language-bash">BEFORE
+<div class="highlight"><pre><code class="language-bash">BEFORE
                Burger
 
 
@@ -197,7 +197,7 @@ AFTER
                 <span class="nb">.</span>     <span class="nb">.</span>                   <span class="nb">.</span>
               <span class="nb">.</span>         <span class="nb">.</span>                   <span class="nb">.</span>
             <span class="nb">.</span>             <span class="nb">.</span>                   <span class="nb">.</span>
-        G <span class="nb">.</span>                 N                   T</code></pre>
+        G <span class="nb">.</span>                 N                   T</code></pre></div>
 
 <p>Compiling the code with _DEBUGGING and _VERBOSE defined renders a very comprehensive analysis of what’s going on before, during and after each insert and rotation. If you’re learing AVL it can be a very useful tool - just run the test several times and look at what rotations are being made, and how they work. Just look at the output.</p>
 
@@ -205,7 +205,7 @@ AFTER
 
 <p>Just so you have an idea, this is what a left rotation looks like:</p>
 
-<pre><code class="language-c"><span class="c1">// LEFT ROTATION</span>
+<div class="highlight"><pre><code class="language-c"><span class="c1">// LEFT ROTATION</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">bal</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
       <span class="p">{</span>
             <span class="c1">// LEFT-RIGHT</span>
@@ -278,13 +278,13 @@ AFTER
 
             <span class="k">return</span> <span class="n">z</span><span class="p">;</span>
 
-      <span class="p">}</span></code></pre>
+      <span class="p">}</span></code></pre></div>
 
 <p>Not nice at all!</p>
 
 <p>We are, however, going to take a brief look at the rebalance function, which does the basic housekeeping after each insertion and&nbsp;calls the appropriate rotation.</p>
 
-<pre><code class="language-c"><span class="cm">/**
+<div class="highlight"><pre><code class="language-c"><span class="cm">/**
  *  @brief Recalculate heights in all nodes
  *  affected by a insertion, i.e. every node
  *  in the branch traversed during insertion.
@@ -397,13 +397,13 @@ AFTER
 
             <span class="n">branch_h</span><span class="o">++</span><span class="p">;</span>
       <span class="p">}</span>
-<span class="p">}</span></code></pre>
+<span class="p">}</span></code></pre></div>
 
 <p>The main while loop starts at the inserted node (leaf) and repeats until it reaches the tree root.&nbsp;The most important thing done here is updating each node’s height, which makes it possible to calculate node balance factor later. This is done in the first and second if, respectively. After the new balance factor is calculated, the node is passed to the rotate function, which decides based on its balance factor if it needs any of the four rotations. After the rotation, the tree root might have changed, so we make sure we keep the correct root (node* new_subtree_root and the subsequent while loop). Finally, if debugging is defined, we print the tree using <a href="%7B%%20link%20_posts/2014-03-18-burgergfx-simple-2d-graphics.markdown%20%%7D">BurgerGFX</a>&nbsp;and increment the loop (i.e. next = next-&gt;parent and branch_height++).</p>
 
 <p>You can see how this works by using the debug flags. For example, in the right-right rotation we showed above (inserting ‘T’ into the tree), here’s the console output which shows us what’s going on in the rebalance function:</p>
 
-<pre><code class="language-bash">STARTED CHECKING NODE 84 <span class="o">(</span>T<span class="o">)</span>
+<div class="highlight"><pre><code class="language-bash">STARTED CHECKING NODE 84 <span class="o">(</span>T<span class="o">)</span>
 <span class="o">=====================</span>
 
 
@@ -438,7 +438,7 @@ Node 73 <span class="o">(</span>I<span class="o">)</span>     <span class="nv">l
 ROTATING NODE 73 <span class="o">(</span>I<span class="o">)</span>... RR ROTATION
 
 R 73    R 79
-Finished checking node 79 <span class="o">(</span>O<span class="o">)</span>, now checking <span class="o">(</span>NULL - finished branch<span class="o">)</span></code></pre>
+Finished checking node 79 <span class="o">(</span>O<span class="o">)</span>, now checking <span class="o">(</span>NULL - finished branch<span class="o">)</span></code></pre></div>
 
 <p>You may have noticed we didn’t mention deletion. Correct - I chose not to implement it. Full code can be found on github.</p>
 

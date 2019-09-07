@@ -36,7 +36,7 @@ The process of compiling all our algorithms and data structures into shared libr
 
 Here's an example makefile that compiles one of our shared libraries, data_structures:
 
-<pre><code class="language-make">
+<div class="highlight"><pre><code class="language-make">
 CFLAGS=-fPIC -DPYLIB
 LDFLAGS=-shared -Wl,-soname,data_structures
 PYDEP=-I/usr/include/python2.7 -lpython2.7
@@ -44,26 +44,26 @@ SRCS:=$(wildcard src/*.c)
 
 ../shared/data_structures.so:
 	gcc $(SRCS) $(LDFLAGS) $(PYDEP) $(CFLAGS) $< -o $@
-</code></pre>
+</code></pre></div>
 
 **-fPIC** stands for position independent code. In short, compiled code will use a global offset table to reference addresses, which allows multiple processes to share the same code. See [2] and [3] for some nice discussions and explanations about PIC and why it is needed in this context. **-Wl** says that the next option should be passed as an argument to the linker. The option in this case is **-soname,data_structures**, which defines the shared object's name (hence _soname_) as the string "data_structures".
 
 Now let's define the Python interface. Let's start by __init__.py, where we'll load the shared libraries:
 
-<pre><code class="language-python">
+<div class="highlight"><pre><code class="language-python">
 import ctypes as ct
 from pdb import set_trace as bp
 libutil = ct.CDLL('shared/utils.so')
 libdata = ct.CDLL('shared/data_structures.so')
 libsort = ct.CDLL('shared/sorting.so')
 __all__ = ['ct', 'bp', 'libutil', 'libdata', 'libsort']
-</code></pre>
+</code></pre></div>
 
 [ctypes](https://docs.python.org/2/library/ctypes.html) is the native way of loading shared libraries in Python. As the official doc states: "ctypes is a foreign function library for Python. It provides C compatible data types, and allows calling functions in DLLs or shared libraries. It can be used to wrap these libraries in pure Python."
 
 All functions present in the **data_structures** library will be available in the Python object **libdata**. Now here's the linked list wrapper:
 
-<pre><code class="language-python">
+<div class="highlight"><pre><code class="language-python">
 from cdepo import *
 
 def intref(value):
@@ -90,11 +90,11 @@ class LinkedList():
 		return ""
 
 	def free(self):
-		libdata.delete_linked_list(self.ll)</code></pre>
+		libdata.delete_linked_list(self.ll)</code></pre></div>
 
 And here's a simple test that shows how we can use the Python class which uses our C functions underneath:
 
-<pre><code class="language-python">
+<div class="highlight"><pre><code class="language-python">
 from cdepo.data_structures.linked_list import *
 
 print "Creating list"
@@ -126,13 +126,13 @@ print "Deleting the remaining elements (list should be empty)"
 clist.delete(10)
 clist.delete(20)
 print str(clist)
-</code></pre>
+</code></pre></div>
 
 [Here's](https://gist.github.com/lbrito1/a1d0a1e60c126792d598) the output.
 
 In our little example we only used the same functionalities we already had in C. However, one of the great advantages of accessing a library with another language is using tools that are specific to that language. As an example, let's use Matplotlib to render some images that improve our [pathfinding]({% link _posts/2014-04-06-shortest-path-part-i-dijkstras-algorithm.markdown %}) visualization. We built Python wrappers for the necessary functions (Graph-related and Dijkstra's algorithm) in the same fashion as we did with Linked List. Here's the resulting script:
 
-<pre><code class="language-python">
+<div class="highlight"><pre><code class="language-python">
 import matplotlib.pyplot as plt
 from cdepo.data_structures.graph import *
 
@@ -153,7 +153,7 @@ plt.show()
 plt.imshow(g.dist_mat(dists), interpolation='nearest', cmap='gist_rainbow')
 plt.show()
 
-</code></pre>
+</code></pre></div>
 
 :-------------------------:|:-------------------------:
 [![figure_1](/assets/images/codedeposit/2015/10/figure_1.png?w=300)](/assets/images/codedeposit/2015/10/figure_1.png) | [![figure_2](/assets/images/codedeposit/2015/10/figure_2.png?w=300)](/assets/images/codedeposit/2015/10/figure_2.png)

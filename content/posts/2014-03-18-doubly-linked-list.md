@@ -26,7 +26,7 @@ We won't discuss implementation since it so similar to a linked list. If anythin
 
 Full source code with printable tests follows below, and can also be found at out github.
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 /*
     File: doubly_linked_list.c
 
@@ -270,4 +270,4 @@ int main()
 }
 
 #endif
-</code></pre>
+</code></pre></div>

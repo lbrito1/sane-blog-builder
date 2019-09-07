@@ -42,7 +42,7 @@ Node **U** is inserted as a right child of S, violating rule 3 again, and the su
 
 When inserting a new node in a Red-black tree, there are in total 6 situations where rotations and color changes are needed, but half are symmetric. Here is the insertion pseudocode identifying the 3 cases:
 
-<pre><code class="language-bash">
+<div class="highlight"><pre><code class="language-bash">
 def red_black_insert(value, tree)
   node n = tree.bst_insert(value)
   n.set_red
@@ -63,7 +63,7 @@ def red_black_insert(value, tree)
     elif grandfather(n).right == parent(n)
       // Symmetric cases
   tree.root.set_black
-</code></pre>
+</code></pre></div>
 
 As usual, source code in C can be found in our [Github repo](https://github.com/lbrito1/cstuff). Simple testing is provided [here](https://github.com/lbrito1/cstuff/blob/master/tests/rb_test.c) (renders the tree in colored ASCII as seen in this post). Only insertion is implemented for now (as is the case with AVL); hopefully I'll implement deletion in the future.
 

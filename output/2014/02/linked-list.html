@@ -55,27 +55,27 @@
 
 <p>So we’ll start with the data structure itself. Namely, the Element struct:</p>
 
-<pre><code class="language-c"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">Element</span>
+<div class="highlight"><pre><code class="language-c"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">Element</span>
 <span class="p">{</span>
       <span class="kt">void</span> <span class="o">*</span><span class="n">data_ptr</span><span class="p">;</span>
       <span class="k">struct</span> <span class="n">Element</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
-<span class="p">}</span> <span class="n">Element</span><span class="p">;</span></code></pre>
+<span class="p">}</span> <span class="n">Element</span><span class="p">;</span></code></pre></div>
 
 <p>Simple enough: each element has one data pointer and one pointer to the next element, just as we defined.</p>
 
 <p>Next, we need the 3 basic list element operations: add, remove and find. Since creating a new list is a matter of creating a new element and setting it as “head”, we’re omitting that.</p>
 
-<pre><code class="language-c"><span class="kt">void</span> <span class="nf">add</span><span class="p">(</span><span class="n">Element</span> <span class="o">*</span><span class="n">list_head</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-c"><span class="kt">void</span> <span class="nf">add</span><span class="p">(</span><span class="n">Element</span> <span class="o">*</span><span class="n">list_head</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">)</span>
 <span class="p">{</span>
       <span class="n">Element</span> <span class="o">*</span><span class="n">e</span> <span class="o">=</span> <span class="n">list_head</span><span class="p">;</span>
       <span class="k">while</span> <span class="p">(</span><span class="n">e</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="n">e</span> <span class="o">=</span> <span class="n">e</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
       <span class="n">Element</span> <span class="o">*</span><span class="n">toadd</span> <span class="o">=</span> <span class="n">new_element</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
       <span class="n">e</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">toadd</span><span class="p">;</span>
-<span class="p">}</span></code></pre>
+<span class="p">}</span></code></pre></div>
 
 <p>To add data to a list, first we find the last element (i.e., next=NULL) by traversing the list. Next we create a new element with the data we’re adding, and point the last element to it, so now it is the last element. This costs O(n). A more efficient way of doing this is keeping a pointer to the last element so we don’t have to traverse the list at all, resulting in O(1) cost.</p>
 
-<pre><code class="language-c"><span class="n">Element</span> <span class="o">*</span><span class="nf">search</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">list_head</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-c"><span class="n">Element</span> <span class="o">*</span><span class="nf">search</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">list_head</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">)</span>
 <span class="p">{</span>
       <span class="n">Element</span> <span class="o">*</span><span class="n">e</span> <span class="o">=</span> <span class="n">list_head</span><span class="p">;</span>
       <span class="n">Element</span> <span class="o">*</span><span class="n">prev</span> <span class="o">=</span> <span class="n">e</span><span class="p">;</span>
@@ -87,11 +87,11 @@
             <span class="n">prev</span> <span class="o">=</span> <span class="n">e</span><span class="p">;</span>
       <span class="p">}</span> <span class="k">while</span> <span class="p">((</span><span class="n">e</span> <span class="o">=</span> <span class="n">e</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">);</span>
       <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
-<span class="p">}</span></code></pre>
+<span class="p">}</span></code></pre></div>
 
 <p>Searching is trivial: we traverse the list and return the pointer to the element whose subsequent element is the one we’re looking for. This costs O(n). The reason we want to get our hands on the <em>previous</em> element and not the element itself will be explained later. Also, we make a necessary exception for the list head, since there is no previous element to it and it does not carry data (in our implementation).</p>
 
-<pre><code class="language-c"><span class="kt">int</span> <span class="nf">delete</span><span class="p">(</span><span class="n">Element</span> <span class="o">*</span><span class="n">list_head</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-c"><span class="kt">int</span> <span class="nf">delete</span><span class="p">(</span><span class="n">Element</span> <span class="o">*</span><span class="n">list_head</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">)</span>
 <span class="p">{</span>
       <span class="n">Element</span> <span class="o">*</span><span class="n">searched</span> <span class="o">=</span> <span class="n">search</span><span class="p">(</span><span class="n">list_head</span><span class="p">,</span> <span class="n">data</span><span class="p">);</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">searched</span><span class="p">)</span>
@@ -103,13 +103,13 @@
             <span class="k">return</span> <span class="n">TRUE</span><span class="p">;</span>
       <span class="p">}</span>
       <span class="k">else</span> <span class="k">return</span> <span class="n">FALSE</span><span class="p">;</span>
-<span class="p">}</span></code></pre>
+<span class="p">}</span></code></pre></div>
 
 <p>To remove an element, first we do a search in the list for the element we want deleted. The reason we wanted the pointer to the <em>previous</em> element is that after we do the removal, we’ll need to re-link the list: if we have A B C and remove B, A-&gt;next must point to C. If we have 3 or more elements this is trivial. If there are only 2 elements and we remove one of them (i.e. “C” in our example is NULL), then A-&gt;next will point to NULL and will become the first and last element, as expected.</p>
 
 <p>That’s all we need for a linked list! Below you can find the full runnable code and the expected output.</p>
 
-<pre><code class="language-c"><span class="c1">//======================</span>
+<div class="highlight"><pre><code class="language-c"><span class="c1">//======================</span>
 <span class="c1">//      Linked list</span>
 <span class="c1">// CC-BY Leonardo Brito</span>
 <span class="c1">// lbrito@gmail.com</span>
@@ -240,9 +240,9 @@
       <span class="n">print_list</span><span class="p">(</span><span class="n">head</span><span class="p">);</span>
 
       <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span></code></pre>
+<span class="p">}</span></code></pre></div>
 
-<pre><code class="language-c"><span class="nl">C:</span><span class="err">\</span><span class="n">code</span><span class="err">\</span><span class="n">c</span><span class="err">\</span><span class="n">cstuff</span><span class="o">&gt;</span><span class="n">linked_list</span>
+<div class="highlight"><pre><code class="language-c"><span class="nl">C:</span><span class="err">\</span><span class="n">code</span><span class="err">\</span><span class="n">c</span><span class="err">\</span><span class="n">cstuff</span><span class="o">&gt;</span><span class="n">linked_list</span>
 
 <span class="o">==============</span>
 <span class="n">List</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">:</span>       <span class="n">I</span><span class="err">'</span><span class="n">m</span> <span class="n">the</span> <span class="p">(</span><span class="n">permanent</span><span class="p">)</span> <span class="n">list</span> <span class="n">head</span><span class="p">.</span> <span class="n">You</span> <span class="n">can</span><span class="err">'</span><span class="n">t</span> <span class="n">delete</span> <span class="n">me</span><span class="p">.</span>
@@ -276,7 +276,7 @@
 <span class="n">List</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">:</span>       <span class="n">I</span><span class="err">'</span><span class="n">m</span> <span class="n">the</span> <span class="p">(</span><span class="n">permanent</span><span class="p">)</span> <span class="n">list</span> <span class="n">head</span><span class="p">.</span> <span class="n">You</span> <span class="n">can</span><span class="err">'</span><span class="n">t</span> <span class="n">delete</span> <span class="n">me</span><span class="p">.</span>
 <span class="n">List</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">:</span>       <span class="n">I</span><span class="err">'</span><span class="n">m</span> <span class="n">NEW</span> <span class="n">element</span> <span class="n">number</span> <span class="mi">1337</span>
 <span class="n">List</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">:</span>       <span class="n">I</span><span class="err">'</span><span class="n">m</span> <span class="n">NEW</span> <span class="n">element</span> <span class="n">number</span> <span class="mi">98</span>
-<span class="o">==============</span></code></pre>
+<span class="o">==============</span></code></pre></div>
 
 
     </article>

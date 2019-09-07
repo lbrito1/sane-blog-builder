@@ -45,7 +45,9 @@
   <div class="post-show">
     <h1>Trees - Part I</h1>
     <article class="text">
-      <p><a href="../../assets/images/codedeposit/2014/03/tree1.jpg"><img src="../../assets/images/codedeposit/2014/03/tree1.jpg" alt="tree"></a>&nbsp;<a href="http://commons.wikimedia.org/wiki/File%3ABright_green_tree_-_Waikato.jpg"><img src="//upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Bright_green_tree_-_Waikato.jpg/512px-Bright_green_tree_-_Waikato.jpg" alt="Bright green tree - Waikato"></a></p>
+      <p><a href="../../assets/images/codedeposit/2014/03/tree1.jpg"><img src="../../assets/images/codedeposit/2014/03/tree1.jpg" alt="tree"></a></p>
+
+<p><a href="http://commons.wikimedia.org/wiki/File%3ABright_green_tree_-_Waikato.jpg"><img src="//upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Bright_green_tree_-_Waikato.jpg/512px-Bright_green_tree_-_Waikato.jpg" alt="Bright green tree - Waikato"></a></p>
 
 <p>We used trees to build the <a href="%7B%%20link%20_posts/2014-03-21-heap-priority-queues.markdown%20%%7D">heap data structure</a> before, but we didn’t bother with the theory behind trees, which are abstract and concrete data structures themselves. There’s a huge range of material to cover so I’ll split this in several posts.</p>
 
@@ -61,7 +63,7 @@
 <!-- more -->
 To build a BST, we’re going to need a working binary tree (BT) first. There are several ways to implement a BT. I chose a linked data structure:</p>
 
-<pre><code class="language-c"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">node</span>
+<div class="highlight"><pre><code class="language-c"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">node</span>
 <span class="p">{</span>
       <span class="kt">void</span><span class="o">*</span> <span class="n">data</span><span class="p">;</span>
       <span class="k">struct</span> <span class="n">node</span><span class="o">*</span> <span class="n">parent</span><span class="p">;</span>
@@ -74,7 +76,7 @@ To build a BST, we’re going to need a working binary tree (BT) first. There ar
       <span class="n">node</span><span class="o">*</span> <span class="n">root</span><span class="p">;</span>
       <span class="kt">int</span> <span class="n">order</span><span class="p">;</span>
       <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">cmp</span><span class="p">)</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span><span class="p">);</span>
-<span class="p">}</span> <span class="n">binary_tree</span><span class="p">;</span></code></pre>
+<span class="p">}</span> <span class="n">binary_tree</span><span class="p">;</span></code></pre></div>
 
 <p>Together with their respective memory allocation functions (which I’ll omit for now), those two structs are enough to define a BT. Before we get into actually filling a tree with stuff, let’s assume we have a tree and take a look at tree traversal.</p>
 
@@ -82,7 +84,7 @@ To build a BST, we’re going to need a working binary tree (BT) first. There ar
 
 <p>Depth-first searches (DFS) start at the (sub)tree root and “sinks” down until it reaches a leaf. Breadth-first searches (BFS) start at the root and exhaust all of its children before descending any further. Visiting in DFS can be done <strong>pre-order</strong>, <strong>in-order</strong> or <strong>post-order</strong>. The “order” refers to the specific time when we visit the root: before, after or in between visiting the sibling(s).</p>
 
-<pre><code class="language-c"><span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">node</span><span class="o">*</span> <span class="n">n</span><span class="p">,</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">visit</span><span class="p">)</span> <span class="p">(</span><span class="n">node</span><span class="o">*</span><span class="p">),</span> <span class="kt">int</span> <span class="n">v_order</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-c"><span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">node</span><span class="o">*</span> <span class="n">n</span><span class="p">,</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">visit</span><span class="p">)</span> <span class="p">(</span><span class="n">node</span><span class="o">*</span><span class="p">),</span> <span class="kt">int</span> <span class="n">v_order</span><span class="p">)</span>
 <span class="p">{</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">n</span><span class="o">!=</span><span class="nb">NULL</span><span class="p">)</span>
       <span class="p">{</span>
@@ -96,7 +98,7 @@ To build a BST, we’re going to need a working binary tree (BT) first. There ar
 
             <span class="k">if</span><span class="p">(</span><span class="n">v_order</span> <span class="o">==</span> <span class="n">POST_ORDER</span><span class="p">)</span> <span class="n">visit</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
       <span class="p">}</span>
-<span class="p">}</span></code></pre>
+<span class="p">}</span></code></pre></div>
 
 <p>Now let’s take a look at binary search trees (BST). BSTs are binary trees with the following additional condition:</p>
 
@@ -106,7 +108,7 @@ To build a BST, we’re going to need a working binary tree (BT) first. There ar
 
 <p>To preserve the BST property, we need to insert stuff in a specific order:</p>
 
-<pre><code class="language-c"><span class="cm">/**
+<div class="highlight"><pre><code class="language-c"><span class="cm">/**
  *  @brief Insertion
  *
  *  Starting from the root, we dive down through
@@ -153,13 +155,13 @@ To build a BST, we’re going to need a working binary tree (BT) first. There ar
             <span class="n">DBG</span><span class="p">(</span><span class="s">"Node (#%d) set as ROOT</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">n</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span>
             <span class="n">bt</span><span class="o">-&gt;</span><span class="n">root</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
       <span class="p">}</span>
-<span class="p">}</span></code></pre>
+<span class="p">}</span></code></pre></div>
 
 <p>Starting at the root, we float down - moving left and right - until we reach the correct position for the node we’re inserting, always keeping track of the current node’s parent so it can be updated accordingly.</p>
 
 <p>Together with a in-order DFS traversal, we can already do something useful with our BST tree: ordering a random set of values (integers in our case).</p>
 
-<pre><code class="language-c"><span class="kt">void</span> <span class="nf">depth_first</span><span class="p">(</span><span class="n">binary_tree</span><span class="o">*</span> <span class="n">bt</span><span class="p">,</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">visit</span><span class="p">)</span> <span class="p">(</span><span class="n">node</span><span class="o">*</span><span class="p">),</span> <span class="kt">int</span> <span class="n">v_order</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-c"><span class="kt">void</span> <span class="nf">depth_first</span><span class="p">(</span><span class="n">binary_tree</span><span class="o">*</span> <span class="n">bt</span><span class="p">,</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">visit</span><span class="p">)</span> <span class="p">(</span><span class="n">node</span><span class="o">*</span><span class="p">),</span> <span class="kt">int</span> <span class="n">v_order</span><span class="p">)</span>
 <span class="p">{</span>
       <span class="n">DBG</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">STARTED DFS</span><span class="se">\n\n</span><span class="s">"</span><span class="p">);</span>
       <span class="n">dfs</span><span class="p">(</span><span class="n">bt</span><span class="o">-&gt;</span><span class="n">root</span><span class="p">,</span> <span class="n">visit</span><span class="p">,</span> <span class="n">v_order</span><span class="p">);</span>
@@ -185,11 +187,11 @@ To build a BST, we’re going to need a working binary tree (BT) first. There ar
 
       <span class="n">depth_first</span><span class="p">(</span><span class="n">bt</span><span class="p">,</span> <span class="n">visit</span><span class="p">,</span> <span class="n">IN_ORDER</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="cp">#endif</span></code></pre>
+<span class="cp">#endif</span></code></pre></div>
 
 <p>Here’s a sample output:</p>
 
-<pre><code class="language-bash">C:<span class="se">\c</span>ode<span class="se">\c\c</span>stuff<span class="se">\d</span>ata_structures&gt;bt
+<div class="highlight"><pre><code class="language-bash">C:<span class="se">\c</span>ode<span class="se">\c\c</span>stuff<span class="se">\d</span>ata_structures&gt;bt
 New node <span class="o">(</span><span class="c">#46)</span>
 Node <span class="o">(</span><span class="c">#46) set as ROOT</span>
 New node <span class="o">(</span><span class="c">#14)</span>
@@ -222,7 +224,7 @@ Visited node <span class="c">#60</span>
 Visited node <span class="c">#63</span>
 Visited node <span class="c">#72</span>
 Visited node <span class="c">#85</span>
-Visited node <span class="c">#91</span></code></pre>
+Visited node <span class="c">#91</span></code></pre></div>
 
 <p>Several other operations commented with concise explanations and printable tests can be found at <a href="https://github.com/lbrito1/cstuff/blob/master/data_structures/binary_search_tree.c">data_structures/binary_search_tree.c</a> in the blog’s Github.</p>
 

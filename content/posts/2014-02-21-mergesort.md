@@ -23,7 +23,7 @@ But before we dive into the actual algorithm, we need to make some changes to th
 
 On our previous post we weren't worried about instantiating multiple lists, but now we need a function that will do that and the data structure that will hold the necessary information:
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 typedef struct linked_list
 {
       element *head;
@@ -31,13 +31,13 @@ typedef struct linked_list
       unsigned size;
       int (*cmp) (void*, void*);
 } linked_list;
-</code></pre>
+</code></pre></div>
 
 We now have a tail element: as we mentioned previously, having a tail handy allows us to reduce list-add time to O(1). Other than that we have the list size (number of elements) and a pointer to the compare function specific to whatever data type we want to use.
 
 Okay, so let's get back to mergesort.
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 
 element* mergesort(linked_list* list, int order)
 {
@@ -55,11 +55,11 @@ element* mergesort(linked_list* list, int order)
 
       return merged;
 }
-</code></pre>
+</code></pre></div>
 
 Here we have divide step on line 8 (halve function) and conquer step on line 10 (merge function). On line 10, the first call to mergesort has precedence, so the algorithm will first recursively divide the left part of the list and then the right part - as in a pre-ordered traversal of a binary tree - and then go on to do the merging.
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 void halve(linked_list* list, linked_list* left, linked_list* right)
 {
       element* middle = list->head;
@@ -75,11 +75,11 @@ void halve(linked_list* list, linked_list* left, linked_list* right)
       right->head = middle_head;
       right->size = half;}
 }
-</code></pre>
+</code></pre></div>
 
 Halving is simple: using the list size as a placemark, we find the middle element, set it as left half list's last element and set its successor as the head of the right half.
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 
 element* merge(element* a, element* b, int (*cmp) (void*, void*), int order)
 {
@@ -103,13 +103,13 @@ element* merge(element* a, element* b, int (*cmp) (void*, void*), int order)
       return merged->next;
 }
 
-</code></pre>
+</code></pre></div>
 
 To merge both lists, we stich together each half by comparing elements from both, one by one. Depending on the order (ascending/descending) we choose who comes first and set it as next on the consolidated list.
 
 That's it! Fully runnable code can be found below as well as on github. After the code you can find compilation and expected output.
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 /*
     File: mergesort.c
 
@@ -253,9 +253,9 @@ int main()
       return 0;
 }
 //#endif
-</code></pre>
+</code></pre></div>
 
-<pre><code class="language-bash">
+<div class="highlight"><pre><code class="language-bash">
 C:\code\c\cstuff>gcc mergesort.c -o mergesort -D _TEST_SIZE_MSORT=20 -D DEBUGGING
 
 C:\code\c\cstuff>mergesort
@@ -302,4 +302,4 @@ Sorted:
 [17]    3802
 [18]    2549
 [19]    1327
-</code></pre>
+</code></pre></div>

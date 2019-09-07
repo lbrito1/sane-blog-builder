@@ -69,7 +69,7 @@
 
 <p>Let’s use an example to illustrate a misuse of DRY. Suppose you’re working on a car dealership software. The dealership sells and services a single car model, offering 3 scheduled maintenances at 10, 30 and 50 thousand miles:</p>
 
-<pre><code class="language-ruby"><span class="c1"># Example 1</span>
+<div class="highlight"><pre><code class="language-ruby"><span class="c1"># Example 1</span>
 <span class="k">class</span> <span class="nc">Car</span>
   <span class="kp">include</span> <span class="no">Checkups</span>
 
@@ -93,11 +93,11 @@
     <span class="n">check_spare_wheel</span>
     <span class="n">check_gearbox</span>
   <span class="k">end</span>
-<span class="k">end</span></code></pre>
+<span class="k">end</span></code></pre></div>
 
 <p>At a first glance, you may be tempted to DRY the code by extracting the three methods which are called in all maintenances: <code>check_break_fluid</code>, <code>check_battery_terminals</code> and <code>check_engine_oil</code>. The resulting code is more concise:</p>
 
-<pre><code class="language-ruby"><span class="c1"># Example 2</span>
+<div class="highlight"><pre><code class="language-ruby"><span class="c1"># Example 2</span>
 <span class="k">class</span> <span class="nc">Car</span>
   <span class="kp">include</span> <span class="no">Checkups</span>
 
@@ -123,7 +123,7 @@
     <span class="n">check_battery_terminals</span>
     <span class="n">check_engine_oil</span>
   <span class="k">end</span>
-<span class="k">end</span></code></pre>
+<span class="k">end</span></code></pre></div>
 
 <p>DRYing produces this new basic_maintenance method. It is not very descriptive: while <code>maintenance_*</code> methods convey exactly what it they are expected to do (i.e. “perform a 10, 30 or 50 thousand miles maintenance”), <code>basic_maintenance</code> is kind of an arbitrary name we made up that could mean anything. It is an abstract creation that exists only for our convenience and does not represent anything in the real world.</p>
 

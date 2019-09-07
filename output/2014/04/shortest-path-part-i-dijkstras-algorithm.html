@@ -57,7 +57,7 @@
 
 <p><strong>Pseudocode</strong></p>
 
-<pre><code class="language-bash">dist[from] <span class="o">=</span> 0
+<div class="highlight"><pre><code class="language-bash">dist[from] <span class="o">=</span> 0
 <span class="k">for </span>v : G
       <span class="k">if </span>v <span class="o">!=</span> <span class="nb">source
             </span>dist[v] <span class="o">=</span> infinity
@@ -71,7 +71,7 @@
                   dist[v] <span class="o">=</span> alt
                   prev[v] <span class="o">=</span> u
                   PQ.decrease_key<span class="o">(</span>v,alt<span class="o">)</span>
-<span class="k">return </span>prev</code></pre>
+<span class="k">return </span>prev</code></pre></div>
 
 <!-- more -->
 
@@ -97,24 +97,24 @@
 
 <p>**Weights (last parameter): **</p>
 
-<pre><code class="language-bash">      add_edge<span class="o">(</span>g, v0, v1, 2<span class="o">)</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-bash">      add_edge<span class="o">(</span>g, v0, v1, 2<span class="o">)</span><span class="p">;</span>
       add_edge<span class="o">(</span>g, v0, v2, 3<span class="o">)</span><span class="p">;</span>
       add_edge<span class="o">(</span>g, v1, v2, 1<span class="o">)</span><span class="p">;</span>
       add_edge<span class="o">(</span>g, v2, v3, 1<span class="o">)</span><span class="p">;</span>
       add_edge<span class="o">(</span>g, v4, v2, 1<span class="o">)</span><span class="p">;</span>
       add_edge<span class="o">(</span>g, v4, v1, 1<span class="o">)</span><span class="p">;</span>
-      add_edge<span class="o">(</span>g, v5, v4, 1<span class="o">)</span><span class="p">;</span></code></pre>
+      add_edge<span class="o">(</span>g, v5, v4, 1<span class="o">)</span><span class="p">;</span></code></pre></div>
 
 <p>**First iteration: ** since our starting point is v0, it gets popped first. Neighbors 1 and 2 are updated.</p>
 
-<pre><code class="language-bash">NEIGHBORS OF v[0]:
+<div class="highlight"><pre><code class="language-bash">NEIGHBORS OF v[0]:
 <span class="nt">--------------------</span>
 v[1]     optimal dist <span class="o">=</span> 2       prev dist <span class="o">=</span> 2147483647
-v[2]     optimal dist <span class="o">=</span> 3       prev dist <span class="o">=</span> 2147483647</code></pre>
+v[2]     optimal dist <span class="o">=</span> 3       prev dist <span class="o">=</span> 2147483647</code></pre></div>
 
 <p>**2nd &amp; 3rd iteration: ** v[1] had the smallest distance in PQ, followed by v[2]. Their neighbors are updated.</p>
 
-<pre><code class="language-bash">NEIGHBORS OF v[1]:
+<div class="highlight"><pre><code class="language-bash">NEIGHBORS OF v[1]:
 <span class="nt">--------------------</span>
 v[0]     optimal dist <span class="o">=</span> 4
 v[2]     optimal dist <span class="o">=</span> 3
@@ -126,11 +126,11 @@ NEIGHBORS OF v[2]:
 v[0]     optimal dist <span class="o">=</span> 6
 v[1]     optimal dist <span class="o">=</span> 4
 v[3]     optimal dist <span class="o">=</span> 4       prev dist <span class="o">=</span> 2147483647
-v[4]     optimal dist <span class="o">=</span> 4</code></pre>
+v[4]     optimal dist <span class="o">=</span> 4</code></pre></div>
 
 <p>**All the rest: **</p>
 
-<pre><code class="language-bash">NEIGHBORS OF v[4]:
+<div class="highlight"><pre><code class="language-bash">NEIGHBORS OF v[4]:
 <span class="nt">--------------------</span>
 v[2]     optimal dist <span class="o">=</span> 4
 v[1]     optimal dist <span class="o">=</span> 4
@@ -144,11 +144,11 @@ v[2]     optimal dist <span class="o">=</span> 5
 
 NEIGHBORS OF v[5]:
 <span class="nt">--------------------</span>
-v[4]     optimal dist <span class="o">=</span> 5</code></pre>
+v[4]     optimal dist <span class="o">=</span> 5</code></pre></div>
 
 <p><strong>Final output (prev[] array):</strong></p>
 
-<pre><code class="language-bash">Previous
+<div class="highlight"><pre><code class="language-bash">Previous
 <span class="o">===============</span>
 
 vert[0] <span class="nt">-1</span>
@@ -156,13 +156,13 @@ vert[1] 0
 vert[2] 0
 vert[3] 2
 vert[4] 1
-vert[5] 4</code></pre>
+vert[5] 4</code></pre></div>
 
 <p>i.e. the shortest path from 0 to 5 is: 0, 1, 4, 5. Path cost can be found at dist[vert5]. Verify that that’s the shortest path: cost(0,1) = 2 (whilst cost(0,2) = 3), cost(1,4) = 1 and cost(4,5) = 1.</p>
 
 <p>Below, the full code. We used our previously implemented <a href="%7B%%20link%20_posts/2014-03-21-heap-priority-queues.markdown%20%%7D">priority queues</a> working as the PQ, and made the stop-at-target modification mentioned above. As always, updated source code and companion test code can be found @ github.</p>
 
-<pre><code class="language-c"><span class="cp">#include 
+<div class="highlight"><pre><code class="language-c"><span class="cp">#include 
 #include "../tests/graph_test.c"
 #include "../data_structures/heap.c"
 </span>
@@ -231,7 +231,7 @@ vert[5] 4</code></pre>
 
       <span class="k">return</span> <span class="n">previous</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span></code></pre>
+<span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span></code></pre></div>
 
     </article>
     <aside>Posted at: Apr 06, 2014</aside>

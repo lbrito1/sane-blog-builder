@@ -50,7 +50,9 @@
       <h2><a href="../../2014/03/trees-part-i.html">Trees - Part I</a></h2>
 
       <article class="text">
-          <p><a href="../../assets/images/codedeposit/2014/03/tree1.jpg"><img src="../../assets/images/codedeposit/2014/03/tree1.jpg" alt="tree"></a>&nbsp;<a href="http://commons.wikimedia.org/wiki/File%3ABright_green_tree_-_Waikato.jpg"><img src="//upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Bright_green_tree_-_Waikato.jpg/512px-Bright_green_tree_-_Waikato.jpg" alt="Bright green tree - Waikato"></a></p>
+          <p><a href="../../assets/images/codedeposit/2014/03/tree1.jpg"><img src="../../assets/images/codedeposit/2014/03/tree1.jpg" alt="tree"></a></p>
+
+<p><a href="http://commons.wikimedia.org/wiki/File%3ABright_green_tree_-_Waikato.jpg"><img src="//upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Bright_green_tree_-_Waikato.jpg/512px-Bright_green_tree_-_Waikato.jpg" alt="Bright green tree - Waikato"></a></p>
 
 <p>We used trees to build the <a href="%7B%%20link%20_posts/2014-03-21-heap-priority-queues.markdown%20%%7D">heap data structure</a> before, but we didn’t bother with the theory behind trees, which are abstract and concrete data structures themselves. There’s a huge range of material to cover so I’ll split this in several posts.</p>
 
@@ -90,21 +92,21 @@
 
 <p>In computer science, we’re interested in the (abstract) data structure used to implement the graph mathematical concept. Let’s first discuss the basic elements in a graph - vertices and edges:</p>
 
-<pre><code class="language-c"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">vertex</span>
+<div class="highlight"><pre><code class="language-c"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">vertex</span>
 <span class="p">{</span>
  <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">id</span><span class="p">;</span>
  <span class="kt">int</span> <span class="n">status</span><span class="p">;</span>
  <span class="kt">double</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">;</span>
  <span class="kt">void</span><span class="o">*</span> <span class="n">data</span><span class="p">;</span>
-<span class="p">}</span> <span class="n">vertex</span><span class="p">;</span></code></pre>
+<span class="p">}</span> <span class="n">vertex</span><span class="p">;</span></code></pre></div>
 
 <p>Vertices should be able to hold any kind of data, so we’ll just throw in a void pointer for that. Other than that we have an id, status (marked or unmarked - more on that later) and 2D coordinates so we can draw the vertices somewhere.</p>
 
-<pre><code class="language-c"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">edge</span>
+<div class="highlight"><pre><code class="language-c"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">edge</span>
 <span class="p">{</span>
  <span class="n">vertex</span><span class="o">*</span> <span class="n">from</span><span class="p">,</span> <span class="o">*</span><span class="n">to</span><span class="p">;</span>
  <span class="kt">int</span> <span class="n">cost</span><span class="p">;</span>
-<span class="p">}</span> <span class="n">edge</span><span class="p">;</span></code></pre>
+<span class="p">}</span> <span class="n">edge</span><span class="p">;</span></code></pre></div>
 
 <p>Edges consist of just pointers to the vertices they link and an optional value used as weight, distance, cost etc. Strictly speaking we could use a void pointer for that value as well, as long as we also defined a comparison function. But let’s save the hassle and just use an integer instead - most algorithms will be fine with that.</p>
 
@@ -141,7 +143,7 @@
 
 <p><strong>Pseudocode</strong></p>
 
-<pre><code class="language-bash">dist[from] <span class="o">=</span> 0
+<div class="highlight"><pre><code class="language-bash">dist[from] <span class="o">=</span> 0
 <span class="k">for </span>v : G
       <span class="k">if </span>v <span class="o">!=</span> <span class="nb">source
             </span>dist[v] <span class="o">=</span> infinity
@@ -155,7 +157,7 @@
                   dist[v] <span class="o">=</span> alt
                   prev[v] <span class="o">=</span> u
                   PQ.decrease_key<span class="o">(</span>v,alt<span class="o">)</span>
-<span class="k">return </span>prev</code></pre>
+<span class="k">return </span>prev</code></pre></div>
 
 
         <div class="post-tags">

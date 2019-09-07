@@ -60,23 +60,23 @@
 
 <p>As any other data structure, we need at least the two basic operations: insert data and remove data. PQs also warrant an update priority operation. Here’s how we’ll implement those.</p>
 
-<pre><code class="language-c"><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-c"><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
       <span class="kt">void</span><span class="o">**</span> <span class="n">array</span><span class="p">;</span>
       <span class="kt">int</span> <span class="n">array_size</span><span class="p">;</span>
       <span class="kt">int</span> <span class="n">heap_size</span><span class="p">;</span>
       <span class="kt">int</span> <span class="n">order</span><span class="p">;</span>
       <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">cmp</span><span class="p">)</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span><span class="p">);</span>
-<span class="p">}</span> <span class="n">heap</span><span class="p">;</span></code></pre>
+<span class="p">}</span> <span class="n">heap</span><span class="p">;</span></code></pre></div>
 
 <p>First we have the heap structure. The binary tree is implemented as an array, using the following macros to get the child and parent indexes:</p>
 
-<pre><code class="language-c"><span class="cp">#define PARENT(i) i&gt;&gt;1
+<div class="highlight"><pre><code class="language-c"><span class="cp">#define PARENT(i) i&gt;&gt;1
 #define LEFT(i) i&lt;&lt;1
-#define RIGHT(i) (i&lt;&lt;1)+1</span></code></pre>
+#define RIGHT(i) (i&lt;&lt;1)+1</span></code></pre></div>
 
 <p>heap_size is the actual number of elements in the heap, and array_size is the maximum heap size. Here’s the initialization code for a heap struct:</p>
 
-<pre><code class="language-c"><span class="cm">/**
+<div class="highlight"><pre><code class="language-c"><span class="cm">/**
  *  @brief Create new heap data structure
  *
  *  @param [in] size    maximum heap size
@@ -94,13 +94,13 @@
       <span class="n">h</span><span class="o">-&gt;</span><span class="n">cmp</span> <span class="o">=</span> <span class="n">compare</span><span class="p">;</span>
       <span class="n">h</span><span class="o">-&gt;</span><span class="n">order</span> <span class="o">=</span> <span class="n">ord</span><span class="p">;</span>
       <span class="k">return</span> <span class="n">h</span><span class="p">;</span>
-<span class="p">}</span></code></pre>
+<span class="p">}</span></code></pre></div>
 
 <p>Because we won’t be using array index 0 (since both children would also be 0), we need to remember two things: increasing by 1 the request maximum heap size (and allocating accordingly) and always filling aray[0] with something we know (preferably NULL) so we don’t get bogus memory reads if we do something wrong.</p>
 
 <p>To maintain the heap property, we must use the heapify subroutine. Heapify works as following: given an array index i such that array[i] may have a lower priority than its children (thus violating the heap property), “float down” array[i] until it reaches the correct level, guaranteeing i is the root of a valid heap:</p>
 
-<pre><code class="language-c"><span class="cm">/**
+<div class="highlight"><pre><code class="language-c"><span class="cm">/**
  *  @brief Heapifies subtree rooted at h-&gt;array[idx], assuming
  *  that its two subtree children are already heaps. This is done
  *  by "floating down" the value at idx, which may violate heap
@@ -126,7 +126,7 @@
             <span class="k">if</span> <span class="p">((</span><span class="n">r</span><span class="o">&lt;=</span><span class="n">h</span><span class="o">-&gt;</span><span class="n">heap_size</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">h</span><span class="o">-&gt;</span><span class="n">cmp</span><span class="p">(</span><span class="n">h</span><span class="o">-&gt;</span><span class="n">array</span><span class="p">[</span><span class="n">r</span><span class="p">],</span> <span class="n">h</span><span class="o">-&gt;</span><span class="n">array</span><span class="p">[</span><span class="n">largest</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">))</span> <span class="n">largest</span> <span class="o">=</span> <span class="n">r</span><span class="p">;</span>       <span class="p">}</span>              <span class="k">if</span> <span class="p">(</span><span class="n">largest</span> <span class="o">!=</span> <span class="n">idx</span><span class="p">)</span>        <span class="p">{</span>             <span class="n">exch</span><span class="p">(</span><span class="o">&amp;</span><span class="n">h</span><span class="o">-&gt;</span><span class="n">array</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">h</span><span class="o">-&gt;</span><span class="n">array</span><span class="p">[</span><span class="n">largest</span><span class="p">]);</span>
             <span class="n">heapify</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">largest</span><span class="p">);</span>
       <span class="p">}</span>
-<span class="p">}</span></code></pre>
+<span class="p">}</span></code></pre></div>
 
 <p>The remaining operations are rather simple:</p>
 
@@ -138,7 +138,7 @@
 
 <p>Full code can be found below and on my Github, at data_structures/heap.c. Runnable tests can be found in tests/test_heap.c</p>
 
-<pre><code class="language-c"><span class="cm">/*
+<div class="highlight"><pre><code class="language-c"><span class="cm">/*
     File: heap.c
 
     Copyright (c) 2014 Leonardo Brito &lt;lbrito@gmail.com&gt;
@@ -304,7 +304,7 @@
 <span class="p">}</span>
 
 
-<span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span></code></pre>
+<span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span></code></pre></div>
 
     </article>
     <aside>Posted at: Mar 21, 2014</aside>

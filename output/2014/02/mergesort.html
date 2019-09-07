@@ -55,19 +55,19 @@
 
 <p>On our previous post we weren’t worried about instantiating multiple lists, but now we need a function that will do that and the data structure that will hold the necessary information:</p>
 
-<pre><code class="language-c"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">linked_list</span>
+<div class="highlight"><pre><code class="language-c"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">linked_list</span>
 <span class="p">{</span>
       <span class="n">element</span> <span class="o">*</span><span class="n">head</span><span class="p">;</span>
       <span class="n">element</span> <span class="o">*</span><span class="n">tail</span><span class="p">;</span>
       <span class="kt">unsigned</span> <span class="n">size</span><span class="p">;</span>
       <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">cmp</span><span class="p">)</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span><span class="p">);</span>
-<span class="p">}</span> <span class="n">linked_list</span><span class="p">;</span></code></pre>
+<span class="p">}</span> <span class="n">linked_list</span><span class="p">;</span></code></pre></div>
 
 <p>We now have a tail element: as we mentioned previously, having a tail handy allows us to reduce list-add time to O(1). Other than that we have the list size (number of elements) and a pointer to the compare function specific to whatever data type we want to use.</p>
 
 <p>Okay, so let’s get back to mergesort.</p>
 
-<pre><code class="language-c"><span class="n">element</span><span class="o">*</span> <span class="nf">mergesort</span><span class="p">(</span><span class="n">linked_list</span><span class="o">*</span> <span class="n">list</span><span class="p">,</span> <span class="kt">int</span> <span class="n">order</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-c"><span class="n">element</span><span class="o">*</span> <span class="nf">mergesort</span><span class="p">(</span><span class="n">linked_list</span><span class="o">*</span> <span class="n">list</span><span class="p">,</span> <span class="kt">int</span> <span class="n">order</span><span class="p">)</span>
 <span class="p">{</span>
       <span class="n">linked_list</span> <span class="o">*</span><span class="n">left</span> <span class="o">=</span> <span class="n">new_list</span><span class="p">(</span><span class="n">list</span><span class="o">-&gt;</span><span class="n">cmp</span><span class="p">);</span>
       <span class="n">linked_list</span> <span class="o">*</span><span class="n">right</span> <span class="o">=</span> <span class="n">new_list</span><span class="p">(</span><span class="n">list</span><span class="o">-&gt;</span><span class="n">cmp</span><span class="p">);</span>
@@ -82,11 +82,11 @@
       <span class="n">free</span><span class="p">(</span><span class="n">right</span><span class="p">);</span>
 
       <span class="k">return</span> <span class="n">merged</span><span class="p">;</span>
-<span class="p">}</span></code></pre>
+<span class="p">}</span></code></pre></div>
 
 <p>Here we have divide step on line 8 (halve function) and conquer step on line 10 (merge function). On line 10, the first call to mergesort has precedence, so the algorithm will first recursively divide the left part of the list and then the right part - as in a pre-ordered traversal of a binary tree - and then go on to do the merging.</p>
 
-<pre><code class="language-c"><span class="kt">void</span> <span class="nf">halve</span><span class="p">(</span><span class="n">linked_list</span><span class="o">*</span> <span class="n">list</span><span class="p">,</span> <span class="n">linked_list</span><span class="o">*</span> <span class="n">left</span><span class="p">,</span> <span class="n">linked_list</span><span class="o">*</span> <span class="n">right</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-c"><span class="kt">void</span> <span class="nf">halve</span><span class="p">(</span><span class="n">linked_list</span><span class="o">*</span> <span class="n">list</span><span class="p">,</span> <span class="n">linked_list</span><span class="o">*</span> <span class="n">left</span><span class="p">,</span> <span class="n">linked_list</span><span class="o">*</span> <span class="n">right</span><span class="p">)</span>
 <span class="p">{</span>
       <span class="n">element</span><span class="o">*</span> <span class="n">middle</span> <span class="o">=</span> <span class="n">list</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">middle</span><span class="o">!=</span><span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
@@ -100,11 +100,11 @@
 
       <span class="n">right</span><span class="o">-&gt;</span><span class="n">head</span> <span class="o">=</span> <span class="n">middle_head</span><span class="p">;</span>
       <span class="n">right</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="n">half</span><span class="p">;}</span>
-<span class="p">}</span></code></pre>
+<span class="p">}</span></code></pre></div>
 
 <p>Halving is simple: using the list size as a placemark, we find the middle element, set it as left half list’s last element and set its successor as the head of the right half.</p>
 
-<pre><code class="language-c"><span class="n">element</span><span class="o">*</span> <span class="nf">merge</span><span class="p">(</span><span class="n">element</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="n">element</span><span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">cmp</span><span class="p">)</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span><span class="p">),</span> <span class="kt">int</span> <span class="n">order</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-c"><span class="n">element</span><span class="o">*</span> <span class="nf">merge</span><span class="p">(</span><span class="n">element</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="n">element</span><span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">cmp</span><span class="p">)</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span><span class="p">),</span> <span class="kt">int</span> <span class="n">order</span><span class="p">)</span>
 <span class="p">{</span>
       <span class="n">element</span><span class="o">*</span> <span class="n">c</span> <span class="o">=</span> <span class="n">new_element</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
       <span class="n">element</span><span class="o">*</span> <span class="n">merged</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
@@ -124,13 +124,13 @@
       <span class="p">}</span>
       <span class="n">c</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="o">?</span> <span class="n">b</span> <span class="o">:</span> <span class="n">a</span><span class="p">;</span>
       <span class="k">return</span> <span class="n">merged</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-<span class="p">}</span></code></pre>
+<span class="p">}</span></code></pre></div>
 
 <p>To merge both lists, we stich together each half by comparing elements from both, one by one. Depending on the order (ascending/descending) we choose who comes first and set it as next on the consolidated list.</p>
 
 <p>That’s it! Fully runnable code can be found below as well as on github. After the code you can find compilation and expected output.</p>
 
-<pre><code class="language-c"><span class="cm">/*
+<div class="highlight"><pre><code class="language-c"><span class="cm">/*
     File: mergesort.c
 
     Copyright (c) 2014 Leonardo Brito &lt;lbrito@gmail.com&gt;
@@ -273,7 +273,7 @@
       <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="c1">//#endif</span>
-<span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
 
 
 <span class="n">C</span><span class="o">:</span><span class="err">\</span><span class="n">code</span><span class="err">\</span><span class="n">c</span><span class="err">\</span><span class="n">cstuff</span><span class="o">&gt;</span><span class="n">gcc</span> <span class="n">mergesort</span><span class="p">.</span><span class="n">c</span> <span class="o">-</span><span class="n">o</span> <span class="n">mergesort</span> <span class="o">-</span><span class="n">D</span> <span class="n">_TEST_SIZE_MSORT</span><span class="o">=</span><span class="mi">20</span> <span class="o">-</span><span class="n">D</span> <span class="n">DEBUGGING</span>
@@ -321,7 +321,7 @@
 <span class="p">[</span><span class="mi">16</span><span class="p">]</span>    <span class="mi">7193</span>
 <span class="p">[</span><span class="mi">17</span><span class="p">]</span>    <span class="mi">3802</span>
 <span class="p">[</span><span class="mi">18</span><span class="p">]</span>    <span class="mi">2549</span>
-<span class="p">[</span><span class="mi">19</span><span class="p">]</span>    <span class="mi">1327</span></code></pre>
+<span class="p">[</span><span class="mi">19</span><span class="p">]</span>    <span class="mi">1327</span></code></pre></div>
 
     </article>
     <aside>Posted at: Feb 21, 2014</aside>

@@ -27,7 +27,7 @@ So we (pardon the [nosism](http://en.wikipedia.org/wiki/Nosism), but I think it
 
 Linear time (O(h)) doesn't sound very good - if h is close to n, we'll have the same performance as a [linked list]({% link _posts/2014-02-14-3.markdown %}}). What if there were a way to bound the tree height to some sub-linear factor? As it turns out, there are several ways to do so, and the general idea of somehow keeping the tree height limited to a certain factor of the number of elements it holds is called height **balancing**. Ergo we'll want to look into (height) **balanced/self-balancing binary search trees **(BBST)**. **
 
-<pre><code class="language-bash">
+<div class="highlight"><pre><code class="language-bash">
 
                       Burger
 
@@ -47,7 +47,7 @@ Linear time (O(h)) doesn't sound very good - if h is close to n, we'll have the 
                     .
                   .
                 F
-</code></pre>
+</code></pre></div>
 
 
 
@@ -81,7 +81,7 @@ Depending on Z's balance factor, we'll need to do a left-left or a left-right ro
 
 There is no easier way to explain rotations than by drawing them. The following drawing can be found in the code, commented:
 
-<pre><code class="language-bash">
+<div class="highlight"><pre><code class="language-bash">
 
   LEFT-RIGHT CASE        LEFT-LEFT CASE             BALANCED
   (Y bal = -1)            (Y bal = +1)
@@ -98,7 +98,7 @@ There is no easier way to explain rotations than by drawing them. The following 
         B   C             A   B
 
 
-</code></pre>
+</code></pre></div>
 
 
 
@@ -110,7 +110,7 @@ As we mentioned before, rotations are all we need to maintain AVL property: each
 
 Here's an example of a left-right rotation:
 
-<pre><code class="language-bash">
+<div class="highlight"><pre><code class="language-bash">
 
 BEFORE INSERTING E
 
@@ -152,13 +152,13 @@ AFTER INSERTING I AND MAKING A LR ROTATION
                .             .
            D .                 I
 
-</code></pre>
+</code></pre></div>
 
 
 
 And here's a right-right rotation after inserting 'T':
 
-<pre><code class="language-bash">
+<div class="highlight"><pre><code class="language-bash">
 
 BEFORE
                Burger
@@ -201,7 +201,7 @@ AFTER
 
 
 
-</code></pre>
+</code></pre></div>
 
 Compiling the code with _DEBUGGING and _VERBOSE defined renders a very comprehensive analysis of what's going on before, during and after each insert and rotation. If you're learing AVL it can be a very useful tool - just run the test several times and look at what rotations are being made, and how they work. Just look at the output.
 
@@ -209,7 +209,7 @@ I'm not going to bother with full code this time, given that the nature of rotat
 
 Just so you have an idea, this is what a left rotation looks like:
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 
 // LEFT ROTATION
       if (bal == 2)
@@ -286,13 +286,13 @@ Just so you have an idea, this is what a left rotation looks like:
 
       }
 
-</code></pre>
+</code></pre></div>
 
 Not nice at all!
 
 We are, however, going to take a brief look at the rebalance function, which does the basic housekeeping after each insertion and calls the appropriate rotation.
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 
 
 /**
@@ -409,13 +409,13 @@ void rebalance(binary_tree* bt, node* leaf)
             branch_h++;
       }
 }
-</code></pre>
+</code></pre></div>
 
 The main while loop starts at the inserted node (leaf) and repeats until it reaches the tree root. The most important thing done here is updating each node's height, which makes it possible to calculate node balance factor later. This is done in the first and second if, respectively. After the new balance factor is calculated, the node is passed to the rotate function, which decides based on its balance factor if it needs any of the four rotations. After the rotation, the tree root might have changed, so we make sure we keep the correct root (node* new_subtree_root and the subsequent while loop). Finally, if debugging is defined, we print the tree using [BurgerGFX]({% link _posts/2014-03-18-burgergfx-simple-2d-graphics.markdown %}) and increment the loop (i.e. next = next->parent and branch_height++).
 
 You can see how this works by using the debug flags. For example, in the right-right rotation we showed above (inserting 'T' into the tree), here's the console output which shows us what's going on in the rebalance function:
 
-<pre><code class="language-bash">
+<div class="highlight"><pre><code class="language-bash">
 STARTED CHECKING NODE 84 (T)
 =====================
 
@@ -452,7 +452,7 @@ ROTATING NODE 73 (I)... RR ROTATION
 
 R 73    R 79
 Finished checking node 79 (O), now checking (NULL - finished branch)
-</code></pre>
+</code></pre></div>
 
 You may have noticed we didn't mention deletion. Correct - I chose not to implement it. Full code can be found on github.
 

@@ -26,7 +26,7 @@ Setting up the drawing canvas, which I call burger, is simple: call create(width
 
 Here's the code for your enjoyment.
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 /*
     File: burgergfx.c
 
@@ -198,4 +198,4 @@ void put_line(burger* bgfx, double dx1, double dy1, double dx2, double dy2)
             }
       }
 }
-</code></pre>
+</code></pre></div>

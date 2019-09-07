@@ -111,7 +111,7 @@
       <article class="text">
           <p>In the previous installment we built a simple text generator using some Ruby meta-programming tricks. It was still far from being our desired context-free grammar (CFG) generator, though, since it lacked many <a href="https://www.cs.rochester.edu/~nelson/courses/csc_173/grammars/cfg.html">CFG prerequisites</a>. Most flagrantly, we had no rule recursion and only one production (rule definition) per rule. Here’s the what a script that would use both features:</p>
 
-<pre><code class="language-bash">dictionary
+<div class="highlight"><pre><code class="language-bash">dictionary
   noun <span class="s1">'dog'</span>, <span class="s1">'bus'</span>
   verb <span class="s1">'barked'</span>, <span class="s1">'parked'</span>
   preposition <span class="s1">'at'</span>
@@ -121,7 +121,7 @@ rule <span class="s1">'phrase'</span>
   opt <span class="s1">'Here goes some'</span>, phrase, <span class="s1">'recursion.'</span>
   opt <span class="s1">'Meet me'</span>, preposition, <span class="s1">'the station.'</span>
 
-grammar phrase: 10</code></pre>
+grammar phrase: 10</code></pre></div>
 
 <p>The <code>dictionary</code> section is just as we left it. Let’s see what changed in the <code>rule</code> section.</p>
 
@@ -207,13 +207,13 @@ grammar phrase: 10</code></pre>
 
 <p>Suppose the following script:</p>
 
-<pre><code class="language-ruby"><span class="n">dictionary</span> <span class="s1">'noun'</span><span class="p">,</span> <span class="s1">'dog'</span><span class="p">,</span> <span class="s1">'bus'</span>
+<div class="highlight"><pre><code class="language-ruby"><span class="n">dictionary</span> <span class="s1">'noun'</span><span class="p">,</span> <span class="s1">'dog'</span><span class="p">,</span> <span class="s1">'bus'</span>
 <span class="n">dictionary</span> <span class="s1">'verb'</span><span class="p">,</span> <span class="s1">'barked'</span><span class="p">,</span> <span class="s1">'parked'</span>
 <span class="n">dictionary</span> <span class="s1">'preposition'</span><span class="p">,</span> <span class="s1">'at'</span>
 
 <span class="n">rule</span> <span class="s1">'phrase'</span><span class="p">,</span> <span class="s1">'noun'</span><span class="p">,</span> <span class="s1">'verb'</span><span class="p">,</span> <span class="s1">'preposition'</span><span class="p">,</span> <span class="s1">'noun'</span>
 
-<span class="n">codex</span> <span class="s1">'phrase'</span></code></pre>
+<span class="n">codex</span> <span class="s1">'phrase'</span></code></pre></div>
 
 <p>We’d like <code>dictionary</code> to store some words according to their classes, and <code>rule</code> to define a specific ordering of words. For now let’s not worry about <code>codex</code> (it’s just a collection of rules).</p>
 

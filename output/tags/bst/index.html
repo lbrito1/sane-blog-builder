@@ -50,7 +50,9 @@
       <h2><a href="../../2014/03/trees-part-i.html">Trees - Part I</a></h2>
 
       <article class="text">
-          <p><a href="../../assets/images/codedeposit/2014/03/tree1.jpg"><img src="../../assets/images/codedeposit/2014/03/tree1.jpg" alt="tree"></a>&nbsp;<a href="http://commons.wikimedia.org/wiki/File%3ABright_green_tree_-_Waikato.jpg"><img src="//upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Bright_green_tree_-_Waikato.jpg/512px-Bright_green_tree_-_Waikato.jpg" alt="Bright green tree - Waikato"></a></p>
+          <p><a href="../../assets/images/codedeposit/2014/03/tree1.jpg"><img src="../../assets/images/codedeposit/2014/03/tree1.jpg" alt="tree"></a></p>
+
+<p><a href="http://commons.wikimedia.org/wiki/File%3ABright_green_tree_-_Waikato.jpg"><img src="//upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Bright_green_tree_-_Waikato.jpg/512px-Bright_green_tree_-_Waikato.jpg" alt="Bright green tree - Waikato"></a></p>
 
 <p>We used trees to build the <a href="%7B%%20link%20_posts/2014-03-21-heap-priority-queues.markdown%20%%7D">heap data structure</a> before, but we didn’t bother with the theory behind trees, which are abstract and concrete data structures themselves. There’s a huge range of material to cover so I’ll split this in several posts.</p>
 
@@ -92,7 +94,7 @@
 
 <p>Linear time (O(h)) doesn’t sound very good - if h is close to n, we’ll have the same performance as a <a href="%7B%%20link%20_posts/2014-02-14-3.markdown%20%%7D%7D">linked list</a>.&nbsp;What if there were a way to&nbsp;bound the tree height&nbsp;to some sub-linear factor? As it turns out, there are several ways to do so, and the general idea of somehow&nbsp;keeping the tree height limited to a certain factor of the number of elements it holds is called height&nbsp;<strong>balancing</strong>. Ergo we’ll want to look into (height)&nbsp;<strong>balanced/self-balancing binary search trees **(BBST)</strong>.&nbsp;**</p>
 
-<pre><code class="language-bash">                      Burger
+<div class="highlight"><pre><code class="language-bash">                      Burger
 
 
                           M
@@ -109,7 +111,7 @@
                       <span class="nb">.</span>
                     <span class="nb">.</span>
                   <span class="nb">.</span>
-                F</code></pre>
+                F</code></pre></div>
 
 <p><em>AVL tree</em></p>
 

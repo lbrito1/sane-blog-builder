@@ -18,7 +18,9 @@ tags:
 - tree
 ---
 
-[![tree](/assets/images/codedeposit/2014/03/tree1.jpg)](/assets/images/codedeposit/2014/03/tree1.jpg) [![Bright green tree - Waikato](//upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Bright_green_tree_-_Waikato.jpg/512px-Bright_green_tree_-_Waikato.jpg)](http://commons.wikimedia.org/wiki/File%3ABright_green_tree_-_Waikato.jpg)
+[![tree](/assets/images/codedeposit/2014/03/tree1.jpg)](/assets/images/codedeposit/2014/03/tree1.jpg)
+
+[![Bright green tree - Waikato](//upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Bright_green_tree_-_Waikato.jpg/512px-Bright_green_tree_-_Waikato.jpg)](http://commons.wikimedia.org/wiki/File%3ABright_green_tree_-_Waikato.jpg)
 
 We used trees to build the [heap data structure]({% link _posts/2014-03-21-heap-priority-queues.markdown %}) before, but we didn't bother with the theory behind trees, which are abstract and concrete data structures themselves. There's a huge range of material to cover so I'll split this in several posts.
 
@@ -34,7 +36,7 @@ Trees are classified according to some of those properties above and some other
 <!-- more -->
 To build a BST, we're going to need a working binary tree (BT) first. There are several ways to implement a BT. I chose a linked data structure:
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 typedef struct node
 {
       void* data;
@@ -49,7 +51,7 @@ typedef struct
       int order;
       int (*cmp) (void*, void*);
 } binary_tree;
-</code></pre>
+</code></pre></div>
 
 Together with their respective memory allocation functions (which I'll omit for now), those two structs are enough to define a BT. Before we get into actually filling a tree with stuff, let's assume we have a tree and take a look at tree traversal.
 
@@ -57,7 +59,7 @@ Traversing a tree means visiting all the nodes in the tree data structure. Whils
 
 Depth-first searches (DFS) start at the (sub)tree root and "sinks" down until it reaches a leaf. Breadth-first searches (BFS) start at the root and exhaust all of its children before descending any further. Visiting in DFS can be done **pre-order**, **in-order** or **post-order**. The "order" refers to the specific time when we visit the root: before, after or in between visiting the sibling(s).
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 
 void dfs(node* n, void (*visit) (node*), int v_order)
 {
@@ -74,7 +76,7 @@ void dfs(node* n, void (*visit) (node*), int v_order)
             if(v_order == POST_ORDER) visit(n);
       }
 }
-</code></pre>
+</code></pre></div>
 
 Now let's take a look at binary search trees (BST). BSTs are binary trees with the following additional condition:
 
@@ -84,7 +86,7 @@ In other words, for every node in a BST (with unique elements), all values to t
 
 To preserve the BST property, we need to insert stuff in a specific order:
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 
 /**
  *  @brief Insertion
@@ -134,13 +136,13 @@ void tree_insert(binary_tree* bt, node* n)
             bt->root = n;
       }
 }
-</code></pre>
+</code></pre></div>
 
 Starting at the root, we float down - moving left and right - until we reach the correct position for the node we're inserting, always keeping track of the current node's parent so it can be updated accordingly.
 
 Together with a in-order DFS traversal, we can already do something useful with our BST tree: ordering a random set of values (integers in our case).
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 void depth_first(binary_tree* bt, void (*visit) (node*), int v_order)
 {
       DBG("\nSTARTED DFS\n\n");
@@ -168,11 +170,11 @@ int main()
       depth_first(bt, visit, IN_ORDER);
 }
 #endif
-</code></pre>
+</code></pre></div>
 
 Here's a sample output:
 
-<pre><code class="language-bash">
+<div class="highlight"><pre><code class="language-bash">
 C:\code\c\cstuff\data_structures>bt
 New node (#46)
 Node (#46) set as ROOT
@@ -207,7 +209,7 @@ Visited node #63
 Visited node #72
 Visited node #85
 Visited node #91
-</code></pre>
+</code></pre></div>
 
 Several other operations commented with concise explanations and printable tests can be found at [data_structures/binary_search_tree.c](https://github.com/lbrito1/cstuff/blob/master/data_structures/binary_search_tree.c) in the blog's Github.
 

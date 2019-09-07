@@ -78,7 +78,7 @@
 
 <p>When inserting a new node in a Red-black tree, there are in total 6 situations where rotations and color changes are needed, but half are symmetric. Here is the insertion pseudocode identifying the 3 cases:</p>
 
-<pre><code class="language-bash">def red_black_insert<span class="o">(</span>value, tree<span class="o">)</span>
+<div class="highlight"><pre><code class="language-bash">def red_black_insert<span class="o">(</span>value, tree<span class="o">)</span>
   node n <span class="o">=</span> tree.bst_insert<span class="o">(</span>value<span class="o">)</span>
   n.set_red
   <span class="k">while</span> <span class="o">((</span>tree.root <span class="o">!=</span> n<span class="o">)</span> <span class="o">&amp;&amp;</span> parent<span class="o">(</span>n<span class="o">)</span>.is_red<span class="o">)</span>
@@ -97,7 +97,7 @@
         right_rotate<span class="o">(</span>n<span class="o">)</span>
     <span class="k">elif </span>grandfather<span class="o">(</span>n<span class="o">)</span>.right <span class="o">==</span> parent<span class="o">(</span>n<span class="o">)</span>
       // Symmetric cases
-  tree.root.set_black</code></pre>
+  tree.root.set_black</code></pre></div>
 
 <p>As usual, source code in C can be found in our <a href="https://github.com/lbrito1/cstuff">Github repo</a>. Simple testing is provided <a href="https://github.com/lbrito1/cstuff/blob/master/tests/rb_test.c">here</a> (renders the tree in colored ASCII as seen in this post). Only insertion is implemented for now (as is the case with AVL); hopefully I’ll implement deletion in the future.</p>
 

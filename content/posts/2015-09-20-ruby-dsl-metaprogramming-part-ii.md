@@ -17,7 +17,7 @@ tags:
 
 In the previous installment we built a simple text generator using some Ruby meta-programming tricks. It was still far from being our desired context-free grammar (CFG) generator, though, since it lacked many [CFG prerequisites](https://www.cs.rochester.edu/~nelson/courses/csc_173/grammars/cfg.html). Most flagrantly, we had no rule recursion and only one production (rule definition) per rule. Here's the what a script that would use both features:
 
-<pre><code class="language-bash">
+<div class="highlight"><pre><code class="language-bash">
 dictionary
   noun 'dog', 'bus'
   verb 'barked', 'parked'
@@ -29,7 +29,7 @@ rule 'phrase'
   opt 'Meet me', preposition, 'the station.'
 
 grammar phrase: 10
-</code></pre>
+</code></pre></div>
 
 The `dictionary` section is just as we left it. Let's see what changed in the `rule` section.
 
@@ -37,7 +37,7 @@ The `dictionary` section is just as we left it. Let's see what changed in the `r
 
 Previously we had only one production per rule, so rule definitions such as `phrase` were captured by the `method_missing` method. This design would make multiple productions difficult to handle. Here's how we re-implemented the rule method:
 
-<pre><code class="language-ruby">
+<div class="highlight"><pre><code class="language-ruby">
 def rule *args
   verbose "Read rule: #{args.to_s}"
   @last_rule = args.first.to_s
@@ -45,26 +45,26 @@ def rule *args
   define_method(args.first.to_s) { @grammar.rules[args.first.to_s] }
   @state = :rule
 end
-</code></pre>
+</code></pre></div>
 
 Once more we use `define_method` to dynamically define methods. Consider the `rule 'phrase'` statement present in our script: this would define a method named `phrase` which hopefully returns the `Rule` object within `@grammar.rules['phrase']`. Note that the returned rule _is not_ evaluated (i.e., it is still a Rule object, not a String object).
 
 Now we keep track of the `@last_rule` so rule productions (options) are added to the appropriate rule. Options are captures by `opt`:
 
-<pre><code class="language-ruby">
+<div class="highlight"><pre><code class="language-ruby">
 def opt *args
   if @state == :rule
     verbose "Read option for rule #{@last_rule}: #{args.to_s}"
     @grammar.rules[@last_rule].options << args
   end
 end
-</code></pre>
+</code></pre></div>
 
 Here, `args` is an array of Rule production symbols (both terminal and non-terminal, i.e., both Strings and Rules). The set of Rule options will ultimately be an Array of Arrays of Rule production symbols corresponding to each `opt` line written in the DSL script (e.g. in the example above, `phrase` would have 3 options).
 
 Rules are evaluated by `Grammar.generate`, which receives a Hash of rules and the amount of times they should be generated (e.g. `phrase: 10` in our example):
 
-<pre><code class="language-ruby">
+<div class="highlight"><pre><code class="language-ruby">
   def generate args
     text = ''
     args.each do |rulename, qty|
@@ -72,35 +72,35 @@ Rules are evaluated by `Grammar.generate`, which receives a Hash of rules and th
     end
     puts "Final result: \n========\n#{text}\n========"
   end
-</code></pre>
+</code></pre></div>
 
 How does Rule recursion work, though? Let's take a look at the `to_s` method in `Rule`:
 
-<pre><code class="language-ruby">
+<div class="highlight"><pre><code class="language-ruby">
   def to_s
     randkeys = options.sample
     randkeys.map! { |k| k.to_s }
     verbose "Applying rule #{@name} with keys: #{randkeys}."
     randkeys.join(" ")
   end
-</code></pre>
+</code></pre></div>
 
 Pretty straightforward: a production is chosen at random (e.g., 1 of the 3 options in our example), and each symbol in the production is evaluated into a String and concatenated into the final result. For example, say the first rule, `opt 'The', noun, verb, preposition, 'a', noun`, is chosen. Then `randkeys.map!` would call `to_s` for each key in the production: `'The'.to_s, noun.to_s`, etc. Recursion will happen if the key is a method that returns a Rule object (such as the `phrase` method we mentioned in the beginning of the post).
 
 Let's try out a CFG classic: [well-formed parenthesis](https://en.wikipedia.org/wiki/Context-free_grammar#Well-formed_parentheses). Here's the script:
 
-<pre><code class="language-bash">
+<div class="highlight"><pre><code class="language-bash">
 rule 'par'
   opt '()'
   opt '(', par, ')'
   opt par, par
 
 grammar par: 1
-</code></pre>
+</code></pre></div>
 
 And here's some sample output:
 
-<pre><code class="language-bash">
+<div class="highlight"><pre><code class="language-bash">
 $ ruby lero.rb examples.le
 Final result:
 ========
@@ -116,7 +116,7 @@ Final result:
 ========
 () ()
 ========
-</code></pre>
+</code></pre></div>
 
 And now we're done! With only 2 classes (Grammar and Rule) and 1 additional file that defines a DSL (lero.rb), we were able to build a CFG-like text generator with the most important CFG properties.
 

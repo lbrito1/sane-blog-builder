@@ -34,7 +34,7 @@ A _piece_ of knowledge hints at a well-defined knowledge _unit_, which may vary 
 
 Let’s use an example to illustrate a misuse of DRY. Suppose you’re working on a car dealership software. The dealership sells and services a single car model, offering 3 scheduled maintenances at 10, 30 and 50 thousand miles:
 
-<pre><code class="language-ruby">
+<div class="highlight"><pre><code class="language-ruby">
 # Example 1
 class Car
   include Checkups
@@ -60,11 +60,11 @@ class Car
     check_gearbox
   end
 end
-</code></pre>
+</code></pre></div>
 
 At a first glance, you may be tempted to DRY the code by extracting the three methods which are called in all maintenances: `check_break_fluid`, `check_battery_terminals` and `check_engine_oil`. The resulting code is more concise:
 
-<pre><code class="language-ruby">
+<div class="highlight"><pre><code class="language-ruby">
 # Example 2
 class Car
   include Checkups
@@ -92,7 +92,7 @@ class Car
     check_engine_oil
   end
 end
-</code></pre>
+</code></pre></div>
 
 DRYing produces this new basic\_maintenance method. It is not very descriptive: while `maintenance_*` methods convey exactly what it they are expected to do (i.e. “perform a 10, 30 or 50 thousand miles maintenance”), `basic_maintenance` is kind of an arbitrary name we made up that could mean anything. It is an abstract creation that exists only for our convenience and does not represent anything in the real world.
 

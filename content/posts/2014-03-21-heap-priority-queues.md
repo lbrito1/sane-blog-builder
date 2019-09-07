@@ -32,7 +32,7 @@ Each element of a heap has two pieces of information: a key and a value, hence w
 
 As any other data structure, we need at least the two basic operations: insert data and remove data. PQs also warrant an update priority operation. Here’s how we’ll implement those.
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 typedef struct {
       void** array;
       int array_size;
@@ -40,19 +40,19 @@ typedef struct {
       int order;
       int (*cmp) (void*, void*);
 } heap;
-</code></pre>
+</code></pre></div>
 
 First we have the heap structure. The binary tree is implemented as an array, using the following macros to get the child and parent indexes:
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 
 #define PARENT(i) i>>1
 #define LEFT(i) i<<1
-#define RIGHT(i) (i<<1)+1  </code></pre>
+#define RIGHT(i) (i<<1)+1  </code></pre></div>
 
 heap_size is the actual number of elements in the heap, and array_size is the maximum heap size. Here’s the initialization code for a heap struct:
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 
 
 /**
@@ -76,13 +76,13 @@ heap* new_heap(int size, int ord, int (*compare) (void*, void*))
 }
 
 
-</code></pre>
+</code></pre></div>
 
 Because we won’t be using array index 0 (since both children would also be 0), we need to remember two things: increasing by 1 the request maximum heap size (and allocating accordingly) and always filling aray[0] with something we know (preferably NULL) so we don’t get bogus memory reads if we do something wrong.
 
 To maintain the heap property, we must use the heapify subroutine. Heapify works as following: given an array index i such that array[i] may have a lower priority than its children (thus violating the heap property), “float down” array[i] until it reaches the correct level, guaranteeing i is the root of a valid heap:
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 
 /**
  *  @brief Heapifies subtree rooted at h->array[idx], assuming
@@ -111,7 +111,7 @@ void heapify(heap* h, int idx)
             heapify(h, largest);
       }
 }
-</code></pre>
+</code></pre></div>
 
 The remaining operations are rather simple:
 
@@ -123,7 +123,7 @@ Update (aka “decrease-key” or “increase-key”) changes the priority of a 
 
 Full code can be found below and on my Github, at data_structures/heap.c. Runnable tests can be found in tests/test_heap.c
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 
 
 /*
@@ -292,4 +292,4 @@ void update(heap* h, int pos)
 }
 
 
-</code></pre>
+</code></pre></div>

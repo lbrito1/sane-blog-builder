@@ -30,7 +30,7 @@ Although not necessarily the fastest, Dijkstra's algorithm is probably the most 
 
 **Pseudocode**
 
-<pre><code class="language-bash">
+<div class="highlight"><pre><code class="language-bash">
 dist[from] = 0
 for v : G
       if v != source
@@ -46,7 +46,7 @@ while PQ.hasNext()
                   prev[v] = u
                   PQ.decrease_key(v,alt)
 return prev
-</code></pre>
+</code></pre></div>
 
 <!-- more -->
 
@@ -62,7 +62,7 @@ As an example, here's how the algorithm works for the following graph (excerpt f
 
 **Weights (last parameter): **
 
-<pre><code class="language-bash">
+<div class="highlight"><pre><code class="language-bash">
       add_edge(g, v0, v1, 2);
       add_edge(g, v0, v2, 3);
       add_edge(g, v1, v2, 1);
@@ -70,20 +70,20 @@ As an example, here's how the algorithm works for the following graph (excerpt f
       add_edge(g, v4, v2, 1);
       add_edge(g, v4, v1, 1);
       add_edge(g, v5, v4, 1);
-</code></pre>
+</code></pre></div>
 
 **First iteration: ** since our starting point is v0, it gets popped first. Neighbors 1 and 2 are updated.
 
-<pre><code class="language-bash">
+<div class="highlight"><pre><code class="language-bash">
 NEIGHBORS OF v[0]:
 --------------------
 v[1]     optimal dist = 2       prev dist = 2147483647
 v[2]     optimal dist = 3       prev dist = 2147483647
-</code></pre>
+</code></pre></div>
 
 **2nd & 3rd iteration: ** v[1] had the smallest distance in PQ, followed by v[2]. Their neighbors are updated.
 
-<pre><code class="language-bash">
+<div class="highlight"><pre><code class="language-bash">
 NEIGHBORS OF v[1]:
 --------------------
 v[0]     optimal dist = 4
@@ -97,11 +97,11 @@ v[0]     optimal dist = 6
 v[1]     optimal dist = 4
 v[3]     optimal dist = 4       prev dist = 2147483647
 v[4]     optimal dist = 4
-</code></pre>
+</code></pre></div>
 
 **All the rest: **
 
-<pre><code class="language-bash">
+<div class="highlight"><pre><code class="language-bash">
 NEIGHBORS OF v[4]:
 --------------------
 v[2]     optimal dist = 4
@@ -117,11 +117,11 @@ v[2]     optimal dist = 5
 NEIGHBORS OF v[5]:
 --------------------
 v[4]     optimal dist = 5
-</code></pre>
+</code></pre></div>
 
 **Final output (prev[] array):**
 
-<pre><code class="language-bash">
+<div class="highlight"><pre><code class="language-bash">
 
 Previous
 ===============
@@ -132,13 +132,13 @@ vert[2] 0
 vert[3] 2
 vert[4] 1
 vert[5] 4
-</code></pre>
+</code></pre></div>
 
 i.e. the shortest path from 0 to 5 is: 0, 1, 4, 5. Path cost can be found at dist[vert5]. Verify that that's the shortest path: cost(0,1) = 2 (whilst cost(0,2) = 3), cost(1,4) = 1 and cost(4,5) = 1.
 
 Below, the full code. We used our previously implemented [priority queues]({% link _posts/2014-03-21-heap-priority-queues.markdown %}) working as the PQ, and made the stop-at-target modification mentioned above. As always, updated source code and companion test code can be found @ github.
 
-<pre><code class="language-c">
+<div class="highlight"><pre><code class="language-c">
 
 #include <limits.h>
 #include "../tests/graph_test.c"
@@ -209,5 +209,5 @@ int* dijkstra(graph* g, int from, int to)
 
       return previous;
 }
-</code></pre>
+</code></pre></div>
 
