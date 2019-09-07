@@ -9,10 +9,9 @@ categories:
 - Engineering
 tags:
 - Remote work
-overlay_image: /assets/images/goiabada/spb.png
 ---
 
-![](https://cdn-images-1.medium.com/max/2560/1*mgVZOuAHmp9Ipm2asL0IQQ.png)
+![](/assets/images/goiabada/1*mgVZOuAHmp9Ipm2asL0IQQ.jpg)
 
 We're a small team here at Guava, and we've always considered ourselves _remote friendly._ Most of us work remotely every now and then pushed by varied _force majeure_ situations— be it the flu, the need to supervise renovation or construction work at home, flash floods near the office, receiving guests at home or any number of other situations. We've also had a few of us working remotely for a few days or weeks while traveling to or back from a conference, or when visiting relatives that live out of town. In other words, remote working has always been a very temporary and circumstantial thing among us.
 

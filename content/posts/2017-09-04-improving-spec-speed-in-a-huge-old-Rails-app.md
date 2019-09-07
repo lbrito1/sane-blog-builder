@@ -84,7 +84,7 @@ end
 
 Examining the generated call tree with [KCacheGrind](http://kcachegrind.sourceforge.net/html/Home.html), we found out that IO waits (`IO#wait_readable` in the screenshot) were responsible for most of the wall time for this particular spec:
 
-![Call tree for a sampled spec example in group\_3\_spec.rb .](/assets/images/goiabada/1*FjCiO6MvtgTo0pr533qZVw.png)
+![Call tree for a sampled spec example in group\_3\_spec.rb .](/assets/images/goiabada/1*FjCiO6MvtgTo0pr533qZVw.jpg)
 Call tree for a sampled spec example in group\_3\_spec.rb .
 
 This heavy IO load was odd: all the HTTP requests were handled with VCR and there was no other blatant IO use such as file loading. Further examining VCR configuration lead to an interesting discovery.

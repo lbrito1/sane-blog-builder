@@ -26,7 +26,7 @@ In an ideal world, the correct or most appropriate technology stack would be cho
 
 Back to our concrete case: we had a massive and steadily-increasing set of highly normalized data on a RDB. Adding insult to injury, the input data was incredibly sparse, with batch-like data peaks followed by several hours with little activity. The data distribution made it clear that we would have to do some kind of pagination. The following figure shows our input data distribution, where the x-axis units represent 1 hour worth of data, and the y-axis represents the data count in that hour:
 
-![](/assets/images/goiabada/0*71RikbZX7I55dU74.png)
+![](/assets/images/goiabada/0*71RikbZX7I55dU74.jpg)
 
 As we can see in the chart, many 1-hour blocks had nearly no data at all, and the great majority of blocks had less than 100k entries. A few blocks have a huge amount of data, surpassing 700k entries. This chart has 1-hour precision, but if we zoom in and investigate the same data set with 1-minute precision, the chart would look more or less the same. This is only a small sample of the data set we were dealing with: the full set had over 20M entries, growing at a rate of about 1M entries per month.
 
