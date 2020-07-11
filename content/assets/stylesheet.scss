@@ -22,7 +22,7 @@ aside { font-family:  $font-serif; }
 body {
   color: #222;
   font-family:  $font-serif;
-  font-size: 22px;
+  font-size: 16px;
 }
 
 .text {
@@ -90,7 +90,7 @@ nav {
   h1 {
     margin: 0.2em 0;
     font-weight: 300;
-    font-size: 300%;
+    font-size: 200%;
   }
   a {
     color: $color1;
@@ -171,19 +171,12 @@ article {
 }
 
 // Responsive media queries
-@media(max-width: 1000px) {
+@media(max-width: 480px) {
   .content {
     margin: 0.5em;
     max-width: 100%;
   }
-  * { font-size: 110%; }
-  h2 {
-    font-size: 180%;
+    h2 {
     line-height: 1.5em;
-  }
-  nav {
-    a {
-      font-size: 120%;
-    }
   }
 }
